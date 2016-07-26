@@ -3,7 +3,7 @@
 <head>
 	<meta name="viewport" content="width=device-width">
 	<title>iPMS - IDIS</title>
-	<meta name="description" content="Prego is a project management app built for learning purposes">
+	<meta name="description" content="iPMS is a project management system of IDIS">
 
 	<!-- Typekit Fonts -->
 	<script src="//use.typekit.net/udt8boc.js"></script>
@@ -13,6 +13,7 @@
 </head>
 <body>
 	<div class="container">
+		@include('layouts.partials.alerts')
 		@yield('content')
 	</div>
 </body>
