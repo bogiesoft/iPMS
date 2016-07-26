@@ -3252,5 +3252,48 @@
         ],
         "description": "Symfony DomCrawler Component",
         "homepage": "https://symfony.com"
+    },
+    {
+        "name": "dhtmlx/connector-php",
+        "version": "3.0.4",
+        "version_normalized": "3.0.4.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/DHTMLX/connector-php.git",
+            "reference": "918dcc77e75e44a42ed4570423c7813b264eb5d9"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/DHTMLX/connector-php/zipball/918dcc77e75e44a42ed4570423c7813b264eb5d9",
+            "reference": "918dcc77e75e44a42ed4570423c7813b264eb5d9",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.4.0"
+        },
+        "time": "2016-06-10 13:39:04",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "yii2": "1.0.0-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Dhtmlx\\Connector\\": "codebase/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "GNU"
+        ],
+        "description": "PHP extension for the DHTMLX library",
+        "homepage": "http://dhtmlx.com/docs/products/dhtmlxConnector/index.shtml",
+        "keywords": [
+            "connector",
+            "connector-php",
+            "dhtmlx"
+        ]
     }
 ]

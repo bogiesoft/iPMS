@@ -12,5 +12,6 @@ return array(
     'JakubOnderka\\PhpConsoleHighlighter' => array($vendorDir . '/jakub-onderka/php-console-highlighter/src'),
     'JakubOnderka\\PhpConsoleColor' => array($vendorDir . '/jakub-onderka/php-console-color/src'),
     'Doctrine\\Common\\Inflector\\' => array($vendorDir . '/doctrine/inflector/lib'),
+    'Dhtmlx\\Connector\\' => array($vendorDir . '/dhtmlx/connector-php/codebase'),
     'Cron' => array($vendorDir . '/mtdowling/cron-expression/src'),
 );

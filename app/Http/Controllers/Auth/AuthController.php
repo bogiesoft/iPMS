@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace iPMS\Http\Controllers\Auth;
 
-use App\User;
+use iPMS\User;
 use Validator;
-use App\Http\Controllers\Controller;
+use iPMS\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 

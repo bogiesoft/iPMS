@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'Asia/Seoul',
 
     /*
     |--------------------------------------------------------------------------
@@ -153,10 +153,10 @@ return [
         /*
          * Application Service Providers...
          */
-        App\Providers\AppServiceProvider::class,
-        App\Providers\AuthServiceProvider::class,
-        App\Providers\EventServiceProvider::class,
-        App\Providers\RouteServiceProvider::class,
+        iPMS\Providers\AppServiceProvider::class,
+        iPMS\Providers\AuthServiceProvider::class,
+        iPMS\Providers\EventServiceProvider::class,
+        iPMS\Providers\RouteServiceProvider::class,
 
     ],
 
