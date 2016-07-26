@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta name="viewport" content="width=device-width">
-	<title>iPMS - Project Management</title>
+	<title>iPMS - IDIS</title>
 	<meta name="description" content="Prego is a project management app built for learning purposes">
 
 	<!-- Typekit Fonts -->
