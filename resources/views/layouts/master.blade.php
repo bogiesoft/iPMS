@@ -13,7 +13,7 @@
 </head>
 <body>
 	<div class="container">
-		@include('layouts.partials.alerts')
+		@include('layouts.alerts')
 		@yield('content')
 	</div>
 </body>
