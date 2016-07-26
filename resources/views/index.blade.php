@@ -13,5 +13,5 @@
 
 	<a class="btn btn-large btn-info" href="/auth/register">Sign Up</a>
 
-	<p class="login">Already signed up? <a class="btn btn-large btn-info" href="/auth/signin">Login</a></p>
+	<p class="login">Already signed up? <a class="btn btn-large btn-info" href="/auth/login">Login</a></p>
 @stop

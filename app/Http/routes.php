@@ -15,3 +15,25 @@ Route::get('/', [
 	'uses' => 'HomeController@index',
 	'as'   => 'index'
 ]);
+
+Route::get('/auth/register', [
+	'uses' => 'AuthController@getRegister',
+	'as'   => 'auth.register',
+	'middleware' => ['guest']
+]);
+
+Route::post('/auth/register', [
+	'uses' => 'AuthController@postRegister',
+	'middleware' => ['guest']
+]);
+
+Route::get('/auth/login', [
+	'uses' => 'AuthController@getLogin',
+	'as'   => 'auth.login',
+	'middleware' => ['guest']
+]);
+
+Route::post('/auth/login', [
+	'uses' => 'AuthController@postLogin',
+	'middleware' => ['guest']
+]);
