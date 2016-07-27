@@ -11,7 +11,7 @@
 
 	<p><img src="{{ asset('images/project-management.jpg') }}" /></p>
 
-	<a class="btn btn-large btn-info" href="/auth/register">Sign Up</a>
+	<a class="btn btn-large btn-info" href="/auth/login">Login</a>
 
-	<p class="login">Already signed up? <a class="btn btn-large btn-info" href="/auth/login">Login</a></p>
+	<p class="login">Don't have an account? <a class="btn btn-large btn-info" href="/auth/register">Register</a></p>
 @stop
