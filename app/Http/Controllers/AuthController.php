@@ -24,6 +24,7 @@ class AuthController extends Controller
 			'uid' => 'required|unique:users|alpha_dash|max:20',
 			'password' => 'required|min:6',
 			'email' => 'required|unique:users|email|max:255',
+			'fullname' => 'required|max:255',
 		]);
 
 		User::create([

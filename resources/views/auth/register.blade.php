@@ -37,7 +37,7 @@
 			<div class="form-group{{ $errors->has('fullname') ? ' has-error' : '' }}">
 				<label for="fullname" class="control-label col-sm-2">Full Name</label>
 				<div class="col-sm-10">
-					<input type="text" name="fullname" class="form-control" id="fullname" placeholder="Enter Your Full Name">
+					<input type="text" name="fullname" class="form-control" id="fullname"  value="{{ old('fullname') ?: '' }}" placeholder="Enter Your Full Name">
 					@if ($errors->has('fullname'))
 						<span class="help-block">{{ $errors->first('fullname') }}</span>
 					@endif
