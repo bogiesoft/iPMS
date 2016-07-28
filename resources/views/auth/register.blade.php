@@ -1,39 +1,55 @@
 @extends('layouts.master')
 
 @section('content')
+<h1><a href={{ route('index') }}>iPMS</a> <span class="small">Register</span></h1>
+<br>
 
-	<h3><a href={{ route('index') }}> iPMS - IDIS Project Management System </a></h3>
-	<h3>Register Here</h3><br>
-
-	<div class="row">
-		<div class="col-lg-6">
-			<form class="form-vertical" role="form" method="post" action="{{ route('auth.register') }}">
-				<div class="form-group{{ $errors->has('uid') ? ' has-error' : '' }}">
-					<label for="uid" class="control-label">Choose a User ID</label>
-					<input type="text" name="uid" class="form-control" id="uid" value="{{ old('uid') ?: '' }}">
+<div class="row">
+	<div class="col-lg-6">
+		<form class="form-horizontal" role="form" method="post" action="{{ route('auth.register') }}">
+			<div class="form-group{{ $errors->has('uid') ? ' has-error' : '' }}">
+				<label for="uid" class="control-label col-sm-2">User ID</label>
+				<div class="col-sm-10">
+					<input type="text" name="uid" class="form-control" id="uid" value="{{ old('uid') ?: '' }}" placeholder="Enter User ID">
 					@if ($errors->has('uid'))
-						<span class="help-block">{{ $errors->first('uid') }}</span>
+						<span class="help-block">This field is required.</span>
 					@endif
 				</div>
-				<div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-					<label for="email" class="control-label">Your Email Address</label>
-					<input type="text" name="email" class="form-control" id="email" value="{{ old('email') ?: '' }}">
-					@if ($errors->has('email'))
-						<span class="help-block">{{ $errors->first('email') }}</span>
-					@endif
-				</div>
-				<div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-					<label for="password" class="control-label">Choose a Password</label>
-					<input type="password" name="password" class="form-control" id="password">
+			</div>
+			<div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+				<label for="password" class="control-label col-sm-2">Password</label>
+				<div class="col-sm-10">
+					<input type="password" name="password" class="form-control" id="password" placeholder="Enter Password">
 					@if ($errors->has('password'))
-						<span class="help-block">{{ $errors->first('password') }}</span>
+						<span class="help-block">This field is required.</span>
 					@endif
 				</div>
-				<div class="form-group">
-					<button type="submit" class="btn btn-default">Sign up</button>
+			</div>
+			<div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+				<label for="email" class="control-label col-sm-2">Email Address</label>
+				<div class="col-sm-10">
+					<input type="text" name="email" class="form-control" id="email" value="{{ old('email') ?: '' }}" placeholder="Enter Your Email Address">
+					@if ($errors->has('email'))
+						<span class="help-block">This field is required.</span>
+					@endif
 				</div>
-				<input type="hidden" name="_token" value="{{ csrf_token() }}">
-			</form>
-		</div>
+			</div>
+			<div class="form-group{{ $errors->has('fullname') ? ' has-error' : '' }}">
+				<label for="fullname" class="control-label col-sm-2">Full Name</label>
+				<div class="col-sm-10">
+					<input type="text" name="fullname" class="form-control" id="fullname" placeholder="Enter Your Full Name">
+					@if ($errors->has('fullname'))
+						<span class="help-block">{{ $errors->first('fullname') }}</span>
+					@endif
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-offset-2 col-sm-10">
+					<button type="submit" class="btn btn-info">Sign up</button>
+				</div>
+			</div>
+			<input type="hidden" name="_token" value="{{ csrf_token() }}">
+		</form>
 	</div>
+</div>
 @stop

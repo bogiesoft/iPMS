@@ -22,14 +22,15 @@ class AuthController extends Controller
 	{
 		$this->validate($request, [
 			'uid' => 'required|unique:users|alpha_dash|max:20',
-			'email' => 'required|unique:users|email|max:255',
 			'password' => 'required|min:6',
+			'email' => 'required|unique:users|email|max:255',
 		]);
 
 		User::create([
 			'uid' => $request->input('uid'),
+			'password' => bcrypt($request->input('password')),
 			'email' => $request->input('email'),
-			'password' => bcrypt($request->input('password'))
+			'fullname' => $request->input('fullname'),
 		]);
 
 		return redirect()
@@ -46,9 +47,15 @@ class AuthController extends Controller
 
 		$authStatus = Auth::attempt($request->only(['uid', 'password']), $request->has('remember'));
 		if (!$authStatus) {
-			return redirect()->back()->with('info', 'Invalid Email or Password');
+			return redirect()->back()->with('info', 'Invalid User ID or Password');
 		}
 
 		return redirect()->route('index')->with('info', 'You are now signed in');
+	}
+
+	public function logOut()
+	{
+		Auth::logout();
+		return redirect()->route('index');
 	}
 }

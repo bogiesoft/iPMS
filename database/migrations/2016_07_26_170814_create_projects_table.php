@@ -15,14 +15,21 @@ class CreateProjectsTable extends Migration
 		Schema::create('projects', function(Blueprint $table) {
 			$table->increments('id')->unsigned();
 			$table->string('title');
-			$table->longText('notes');
+			$table->string('product');
+			$table->longText('notes')->nullable();
 			$table->integer('version')->default(0);
 			$table->string('status')->default('Upcoming');
+			$table->integer('group')->unsigned();
+			$table->integer('master_id')->unsigned()->default(0);
 			$table->integer('pm_id')->unsigned();
 			$table->date('start_date');
 			$table->date('due_date');
 			$table->timestamps();
 
+			$table->foreign('master_id')
+				->references('id')->on('projects')
+				->onUpdate('cascade')
+				->onDelete('cascade');
 			$table->foreign('pm_id')
 				->references('id')->on('resources')
 				->onUpdate('cascade')
