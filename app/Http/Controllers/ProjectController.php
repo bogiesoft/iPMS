@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 
 use iPMS\Http\Requests;
 use iPMS\Project;
+//use iPMS\GanttTask;
+//use iPMS\GanttLink;
+//use Dhtmlx\Connector\GanttConnector;
 
 class ProjectController extends Controller
 {
@@ -27,7 +30,11 @@ class ProjectController extends Controller
 
 	public function show($id)
 	{
-		//
+		//$connector = new GanttConnector(null, "PHPLaravel");
+		//$connector->render_links(new GanttLink(), "id", "source,target,type");
+	   	//$connector->render_table(new GanttTask(),"id","start_date,duration,text,progress,parent");
+
+		return view('projects.task');
 	}
 
 	public function update(Request $request, $id)

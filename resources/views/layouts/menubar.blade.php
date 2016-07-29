@@ -15,7 +15,8 @@
 			<li class="dropdown">
 				<a class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-list-alt"></span> Projects <span class="caret"></span></a>
 				<ul class="dropdown-menu">
-					<li><a href="#">List Project</a></li>
+					<li><a href="/projects">List Project</a></li>
+					<li><a href="/projects/0">Show Project</a></li>
 					<li><a href="{{ route('projects.create') }}">New Project</a></li>
 				</ul>
 			</li>
@@ -30,4 +31,4 @@
 		</ul>
 	</div>
 </nav>
-<br>
+<br>&nbsp

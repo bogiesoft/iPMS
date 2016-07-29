@@ -1,8 +1,9 @@
 @extends('layouts.master')
 
 @section('content')
-<h1><a href={{ route('index') }}>iPMS</a> <span class="small">Register</span></h1>
-<br>
+<h1 class="page-header">
+	<a href={{ route('index') }}>iPMS</a> <span class="small">Register</span>
+</h1><br>
 
 <div class="row">
 	<div class="col-lg-6">

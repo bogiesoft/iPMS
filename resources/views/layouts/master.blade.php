@@ -18,9 +18,11 @@
 <!--
 	<link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
 -->
+
+	@yield('library')
 </head>
 <body>
-	<div class="container">
+	<div class="container-fluid">
 		@include('layouts.alerts')
 		@yield('content')
 	</div>
