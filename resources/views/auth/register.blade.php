@@ -39,7 +39,7 @@
 				<div class="col-sm-10">
 					<input type="text" name="fullname" class="form-control" id="fullname"  value="{{ old('fullname') ?: '' }}" placeholder="Enter Your Full Name">
 					@if ($errors->has('fullname'))
-						<span class="help-block">{{ $errors->first('fullname') }}</span>
+						<span class="help-block">This field is required.</span>
 					@endif
 				</div>
 			</div>

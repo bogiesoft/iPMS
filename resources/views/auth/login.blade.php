@@ -5,7 +5,7 @@
 			<div class="form-group{{ $errors->has('uid') ? ' has-error' : '' }}">
 				<label for="uid" class="control-label col-sm-3">User ID</label>
 				<div class="col-sm-9">
-					<input type="text" name="uid" class="form-control" id="uid" placeholder="Enter User ID">
+					<input type="text" name="uid" class="form-control" id="uid" value="{{ old('uid') ?: '' }}" placeholder="Enter User ID">
 					@if ($errors->has('uid'))
 						<span class="help-block">This field is required.</span>
 					@endif

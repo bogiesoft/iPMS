@@ -36,7 +36,7 @@ class AuthController extends Controller
 
 		return redirect()
 			->route('index')
-			->withInfo('Your account has been created and you can now sign in');
+			->withInfo('Your account has been created and you can now sign in.');
 	}
 
 	public function postLogin(Request $request)
@@ -48,10 +48,12 @@ class AuthController extends Controller
 
 		$authStatus = Auth::attempt($request->only(['uid', 'password']), $request->has('remember'));
 		if (!$authStatus) {
-			return redirect()->back()->with('info', 'Invalid User ID or Password');
+			return redirect()->back()
+				->with('info', 'Invalid User ID or Password.');
 		}
 
-		return redirect()->route('index')->with('info', 'You are now signed in');
+		return redirect()->route('index')
+			->with('info', 'You are now signed in.');
 	}
 
 	public function logOut()
