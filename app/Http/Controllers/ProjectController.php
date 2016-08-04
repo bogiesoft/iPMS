@@ -46,4 +46,9 @@ class ProjectController extends Controller
 	{
 		//
 	}
+
+	public function summary()
+	{
+		return view('projects.summary');
+	}
 }

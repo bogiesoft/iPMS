@@ -52,8 +52,7 @@ class AuthController extends Controller
 				->with('info', 'Invalid User ID or Password.');
 		}
 
-		return redirect()->route('index')
-			->with('info', 'You are now signed in.');
+		return redirect()->route('projects.index');
 	}
 
 	public function logOut()
