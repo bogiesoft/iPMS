@@ -15,10 +15,10 @@
 
 <div id="gantt" style='width:100%; height:450px'></div>
 
-<style type="text/css">
+<style>
 	.weekend {background:#f4f7f4 !important; color:#ffa0a0 !important;}
 </style>
-<script type="text/javascript">
+<script>
 	function setScale(val) {
 		setConfigScale(val);
 		gantt.render();
