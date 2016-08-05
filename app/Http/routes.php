@@ -45,3 +45,5 @@ Route::get('/logout', [
 
 Route::resource('projects', 'ProjectController');
 
+Route::match(['get', 'post'], '/gantt_data', "GanttController@data");
+Route::match(['get', 'post'], '/usergrid_data', "UserGridController@data");

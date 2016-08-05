@@ -3,6 +3,6 @@
 cd storage
 rm -f database.sqlite
 touch database.sqlite
-php ../artisan migrate
+../artisan migrate
 chmod 666 database.sqlite
 cd ..

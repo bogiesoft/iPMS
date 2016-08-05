@@ -14,13 +14,12 @@
 
 @if( $project->isEmpty() )
 <h3>There are currently no Projects</h3>
-<div id="gridbox" style="width:100%; height:240;"></div>
-</br>
+<div id="project_grid" style="width:100%; height:240;"></div></br>
 
 <style>
-	.odd   {background:#fffff8;}
+	.odd   {background:#fcfcfc;}
 	.even  {background:#ffffff;}
-	.hover {background:#fff8f8;}
+	.hover {background:#fffff8;}
 </style>
 <script>
 var data = {
@@ -98,15 +97,15 @@ var data = {
 	]
 };
 
-	var myGrid = new dhtmlXGridObject('gridbox');
-	myGrid.setImagePath("/images/");
-	myGrid.setHeader("Sales,<h5>Book Title</h5>,Author,Price,In Store,Shipping,Bestseller,Date of Publication");
-	myGrid.setInitWidths("80,*,100,80,80,80,80,100");
-	myGrid.setColAlign("right,left,left,right,center,left,center,center");
-	myGrid.setColTypes("dyn,ed,txt,price,ch,coro,ra,ro");
-	myGrid.setColSorting("int,str,str,int,str,str,str,date");
+	var projectGrid = new dhtmlXGridObject('project_grid');
+	projectGrid.setImagePath("/images/");
+	projectGrid.setHeader("Sales,Book Title,Author,Price,In Store,Shipping,Bestseller,Date of Publication");
+	projectGrid.setInitWidths("80,*,100,80,80,80,80,100");
+	projectGrid.setColAlign("right,left,left,right,center,left,center,center");
+	projectGrid.setColTypes("dyn,ed,txt,price,ch,coro,ra,ro");
+	projectGrid.setColSorting("int,str,str,int,str,str,str,date");
 	//set values for select box in 5th column
-	var combobox = myGrid.getCombo(5);
+	var combobox = projectGrid.getCombo(5);
 	combobox.put("1","1 Hour");
 	combobox.put("12","12 Hours");
 	combobox.put("24","24 Hours");
@@ -114,20 +113,37 @@ var data = {
 	combobox.put("168","1 week");
 	combobox.put("pick","pick up");
 	combobox.put("na","na");
-//	myGrid.enablePaging(true, 10, 3, "pagingArea");
-//	myGrid.setPagingSkin("toolbar");
-	myGrid.enableAutoWidth(true);
-	myGrid.enableAutoHeight(true, 150);
-	myGrid.setEditable(false);
-	myGrid.init();
+//	projectGrid.enableAutoWidth(true);
+	projectGrid.enableAutoHeight(true, 150);
+	projectGrid.setEditable(false);
+//	projectGrid.enablePaging(true, 10, 3, "pagingArea");
+//	projectGrid.setPagingSkin("toolbar");
+	projectGrid.init();
 
-	myGrid.enableAlterCss("odd","even");
-	myGrid.enableRowsHover(true, "hover");
-
-	//myGrid.load("../common/grid.xml");
-	myGrid.parse(data, "json");
+	projectGrid.enableAlterCss("odd","even");
+	projectGrid.enableRowsHover(true, "hover");
+	projectGrid.parse(data, "json");
 </script>
 @endif
+
+<h3>User List</h3>
+<div id="user_grid" style="width:100%; height:240;"></div></br>
+<script>
+	var userGrid = new dhtmlXGridObject('user_grid');
+	userGrid.setImagePath("/images/");
+	userGrid.setHeader("User ID, Full Name, E-mail");
+//	userGrid.setInitWidths("200, 250, 250");
+	userGrid.setColAlign("left, left, left");
+	userGrid.setColSorting("str, str, str");
+//	userGrid.enableAutoWidth(true);
+	userGrid.enableAutoHeight(true, 150);
+	userGrid.setEditable(false);
+	userGrid.init();
+
+	userGrid.enableAlterCss("odd","even");
+	userGrid.enableRowsHover(true, "hover");
+	userGrid.load("./usergrid_data");
+</script>
 
 <a class="btn btn-info" href="{{ route('projects.create') }}">New Project</a>
 @stop

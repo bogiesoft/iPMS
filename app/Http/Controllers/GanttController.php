@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace iPMS\Http\Controllers;
 
-use App\GanttTask;
-use App\GanttLink;
+use iPMS\GanttTask;
+use iPMS\GanttLink;
 use Dhtmlx\Connector\GanttConnector;
 
 class GanttController extends Controller
