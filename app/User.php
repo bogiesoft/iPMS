@@ -26,6 +26,7 @@ class User extends Authenticatable
 
 	public function getAvatarUrl()
 	{
-		return "http://www.gravatar.com/avatar/" . md5(strtolower(trim($this->email))) . "?d=mm&s=40";
+        return "/images/avatar.jpg";
+		//return "http://www.gravatar.com/avatar/" . md5(strtolower(trim($this->email))) . "?d=mm&s=40";
 	}
 }

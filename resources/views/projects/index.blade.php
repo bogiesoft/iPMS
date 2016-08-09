@@ -9,141 +9,48 @@
 @include('layouts.menubar')
 <h1 class="page-header">Project Status</h1>
 
-@if( $project )
-@endif
-
 @if( $project->isEmpty() )
 <h3>There are currently no Projects</h3>
+@else
+
+<h3>새로 등록한 Project</h3>
 <div id="project_grid" style="width:100%; height:240;"></div></br>
-
-<style>
-	.odd   {background:#fcfcfc;}
-	.even  {background:#ffffff;}
-	.hover {background:#fffff8;}
-</style>
 <script>
-var data = {
-	rows:[
-		{id:1, data:[
-			"-1500",
-			"A Time to Kill",
-			"John Grisham",
-			"12.99",
-			"1",
-			"24",
-			"0",
-			"05/01/1998",
-		]},
-		{id:2, data:[
-			"1000",
-			"Blood and Smoke",
-			"Stephen King",
-			"0",
-			"1",
-			"24",
-			"0",
-			"01/01/2000",
-		]},
-		{id:3, data:[
-			"-200",
-			"The Rainmaker",
-			"John Grisham",
-			"7.99",
-			"0",
-			"48",
-			"0",
-			"12/01/2001",
-		]},
-		{id:4, data:[
-			"350",
-			"The Green Mile",
-			"Stephen King",
-			"11.10",
-			"1",
-			"24",
-			"0",
-			"01/01/1992",
-		]},
-		{id:5, data:[
-			"700",
-			"Misery",
-			"Stephen King",
-			"7.70",
-			"0",
-			"na",
-			"0",
-			"01/01/2003",
-		]},
-		{id:6, data:[
-			"-1200",
-			"The Dark Half",
-			"Stephen King",
-			"0",
-			"0",
-			"48",
-			"0",
-			"10/30/1999",
-		]},
-		{id:7, data:[
-			"1500",
-			"The Partner",
-			"John Grisham",
-			"12.99",
-			"1",
-			"48",
-			"1",
-			"01/01/2005",
-		]},
-	]
-};
+	var prjGrid = new dhtmlXGridObject('project_grid');
+	prjGrid.setImagePath("/images/");
+	prjGrid.setHeader("Title,Product,Start Date,End Date,Version,Status,Progress");
+	prjGrid.setColSorting("str,str,date,date,int,str,na");
+	prjGrid.enableAutoHeight(true, 250);
+	prjGrid.setEditable(false);
+	prjGrid.init();
 
-	var projectGrid = new dhtmlXGridObject('project_grid');
-	projectGrid.setImagePath("/images/");
-	projectGrid.setHeader("Sales,Book Title,Author,Price,In Store,Shipping,Bestseller,Date of Publication");
-	projectGrid.setInitWidths("80,*,100,80,80,80,80,100");
-	projectGrid.setColAlign("right,left,left,right,center,left,center,center");
-	projectGrid.setColTypes("dyn,ed,txt,price,ch,coro,ra,ro");
-	projectGrid.setColSorting("int,str,str,int,str,str,str,date");
-	//set values for select box in 5th column
-	var combobox = projectGrid.getCombo(5);
-	combobox.put("1","1 Hour");
-	combobox.put("12","12 Hours");
-	combobox.put("24","24 Hours");
-	combobox.put("48","2 days");
-	combobox.put("168","1 week");
-	combobox.put("pick","pick up");
-	combobox.put("na","na");
-//	projectGrid.enableAutoWidth(true);
-	projectGrid.enableAutoHeight(true, 150);
-	projectGrid.setEditable(false);
-//	projectGrid.enablePaging(true, 10, 3, "pagingArea");
-//	projectGrid.setPagingSkin("toolbar");
-	projectGrid.init();
-
-	projectGrid.enableAlterCss("odd","even");
-	projectGrid.enableRowsHover(true, "hover");
-	projectGrid.parse(data, "json");
+	prjGrid.enableAlterCss("grid_odd", "grid_even");
+	prjGrid.enableRowsHover(true, "grid_hover");
+	prjGrid.load("./grid_data/projects");
 </script>
 @endif
 
-<h3>User List</h3>
+<h3>새로 등록한 사용자</h3>
 <div id="user_grid" style="width:100%; height:240;"></div></br>
 <script>
 	var userGrid = new dhtmlXGridObject('user_grid');
 	userGrid.setImagePath("/images/");
-	userGrid.setHeader("User ID, Full Name, E-mail");
-//	userGrid.setInitWidths("200, 250, 250");
-	userGrid.setColAlign("left, left, left");
-	userGrid.setColSorting("str, str, str");
+//	userGrid.setStyle("background:#ffffff; color:black; font-weight:bold;");
+	userGrid.setHeader("User ID,Full Name,E-mail");
+	userGrid.setColSorting("str,str,str");
+//	userGrid.setInitWidths("200,250,250");
+//	userGrid.setColAlign("left,left,left");
 //	userGrid.enableAutoWidth(true);
 	userGrid.enableAutoHeight(true, 150);
 	userGrid.setEditable(false);
 	userGrid.init();
 
-	userGrid.enableAlterCss("odd","even");
-	userGrid.enableRowsHover(true, "hover");
-	userGrid.load("./usergrid_data");
+	userGrid.enableAlterCss("grid_odd", "grid_even");
+	userGrid.enableRowsHover(true, "grid_hover");
+	userGrid.load("./grid_data/users");
 </script>
 
+{{--
 <a class="btn btn-info" href="{{ route('projects.create') }}">New Project</a>
+--}}
 @stop

@@ -16,14 +16,14 @@ class CreateProjectsTable extends Migration
 			$table->increments('id')->unsigned();
 			$table->string('title');
 			$table->string('product');
-			$table->longText('notes')->nullable();
-			$table->integer('version')->default(0);
-			$table->string('status')->default('Upcoming');
-			$table->integer('group')->unsigned();
-			$table->integer('master_id')->unsigned()->default(0);
-			$table->integer('pm_id')->unsigned();
 			$table->date('start_date');
 			$table->date('due_date');
+			$table->integer('version')->default(0);
+			$table->string('status')->default('Upcoming');
+			$table->integer('master_id')->unsigned()->default(0);
+			$table->integer('pm_id')->unsigned()->default(0);
+			$table->string('group')->nullable();
+			$table->longText('notes')->nullable();
 			$table->timestamps();
 
 			$table->foreign('master_id')

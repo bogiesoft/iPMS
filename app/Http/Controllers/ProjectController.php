@@ -6,9 +6,6 @@ use Illuminate\Http\Request;
 
 use iPMS\Http\Requests;
 use iPMS\Project;
-//use iPMS\GanttTask;
-//use iPMS\GanttLink;
-//use Dhtmlx\Connector\GanttConnector;
 
 class ProjectController extends Controller
 {
@@ -25,7 +22,33 @@ class ProjectController extends Controller
 
 	public function store(Request $request)
 	{
-		//
+        $this->validate($request, [
+            'title' => 'required|min:3',
+            'product' => 'required|min:3',
+            'start_date' => 'required|date',
+            'due_date' => 'required|date',
+            'version' => 'required',
+			'status' => 'required',
+/**
+            'master_id' => 'required',
+            'pm_id' => 'required',
+            'status' => 'required',
+            'group' => 'required',
+**/
+        ]);
+
+        Project::create([
+        	'title' => $request->input('title'),
+        	'product' => $request->input('product'),
+        	'start_date' => $request->input('start_date'),
+        	'due_date' => $request->input('due_date'),
+        	'version' => $request->input('version'),
+        	'status' => $request->input('status'),
+        	'notes' => $request->input('notes'),
+        ]);
+
+        return redirect()->route('projects.index');
+//        	->with('info','Your Project has been created successfully');
 	}
 
 	public function show($id)
