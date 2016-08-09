@@ -16,7 +16,7 @@ class GridController extends Controller
 			break;
 		case "projects":
 			$model = new Project;
-			$data  = "title, product, start_date, due_date, version, status";
+			$data  = "title, product, start_date, due_date, version, status, ext";
 			break;
 		}
 

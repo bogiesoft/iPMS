@@ -18,7 +18,7 @@
 <script>
 	var prjGrid = new dhtmlXGridObject('project_grid');
 	prjGrid.setImagePath("/images/");
-	prjGrid.setHeader("Title,Product,Start Date,End Date,Version,Status,Progress");
+	prjGrid.setHeader("Title,Product,Start Date,End Date,Version,Status,Etc");
 	prjGrid.setColSorting("str,str,date,date,int,str,na");
 	prjGrid.enableAutoHeight(true, 250);
 	prjGrid.setEditable(false);
