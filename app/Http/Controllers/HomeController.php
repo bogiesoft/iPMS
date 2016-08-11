@@ -9,9 +9,13 @@ use iPMS\Http\Controllers\Controller;
 
 class HomeController extends Controller
 {
-	// Displays the index page of the app
 	public function index()
 	{
 		return view('index');
+	}
+
+	public function statistics()
+	{
+		return view('statistics');
 	}
 }

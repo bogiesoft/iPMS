@@ -1,4 +1,4 @@
-<nav class="navbar navbar-inverse navbar-fixed-top">
+<nav class="navbar navbar-inverse navbar-fixed-top" id="menubar">
 	<div class="container-fluid">
 		<div class="navbar-header">
 			<a class="navbar-brand"><span>
@@ -13,7 +13,7 @@
 
 			<li class="dropdown">
 				<a class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-list-alt"></span> Projects <span class="caret"></span></a>
-				<ul class="dropdown-menu">
+				<ul class="dropdown-menu" style="background:#fffff8">
 					<li><a href="/projects">List Project</a></li>
 					<li><a href="/projects/0">Show Project</a></li>
 					<li><a href="{{ route('projects.create') }}">New Project</a></li>
@@ -22,8 +22,9 @@
 
 			<li><a href="#"><span class="glyphicon glyphicon-calendar"></span> Calendar</a></li>
 			<li><a href="#"><span class="glyphicon glyphicon-user"></span> Resource</a></li>
-			<li><a href="#"><span class="glyphicon glyphicon-equalizer"></span> Statistics</a></li>
-			<li><a href="#"><span class="glyphicon glyphicon-cog"></span> Manage</a></li> 
+			<li><a href="{{ route('statistics') }}">
+				<span class="glyphicon glyphicon-equalizer"></span> Statistics</a></li>
+			<li><a href="#"><span class="glyphicon glyphicon-cog"></span> Manage</a></li>
 		</ul>
 		<ul class="nav navbar-nav navbar-right">
 			<li><a href="{{ route('auth.logout') }}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>

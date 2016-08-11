@@ -1,8 +1,8 @@
 @extends('layouts.master')
 
 @section('library')
-<script src="/js/dhtmlxgrid.js"></script>
-<link rel="stylesheet" href="/css/dhtmlxgrid.css">
+<script src="/js/dhtmlx.js"></script>
+<link rel="stylesheet" href="/css/dhtmlx.css">
 @stop
 
 @section('content')
@@ -14,13 +14,18 @@
 @else
 
 <h3>새로 등록한 Project</h3>
-<div id="project_grid" style="width:100%; height:240;"></div></br>
+<div id="project_grid" style="width:100%; height:240;"></div>
+<div id="project_grid_info"></div></br>
 <script>
 	var prjGrid = new dhtmlXGridObject('project_grid');
 	prjGrid.setImagePath("/images/");
-	prjGrid.setHeader("Title,Product,Start Date,End Date,Version,Status,Etc");
-	prjGrid.setColSorting("str,str,date,date,int,str,na");
-	prjGrid.enableAutoHeight(true, 250);
+	prjGrid.setHeader("&nbsp;,Title,Product,Start Date,End Date,Version,Status");
+	prjGrid.setColSorting("na,str,str,date,date,int,str,na");
+	prjGrid.setColTypes("sub_row,ed,ed,ed,ed,ed,ed,ed");
+	prjGrid.setInitWidths("30,200,200,100,100,60,100");
+	prjGrid.enableAutoHeight(true, 250, 250);
+	prjGrid.enablePaging(true, 10, 1,"project_grid_info");
+	prjGrid.setPagingSkin("toolbar");
 	prjGrid.setEditable(false);
 	prjGrid.init();
 

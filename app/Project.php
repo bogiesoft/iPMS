@@ -12,6 +12,6 @@ class Project extends Model
 
 	public function getExtAttribute()
 	{
-		return $this->version ."-". $this->status;
+		return "<hr>". $this->version ."-". $this->status;
 	}
 }

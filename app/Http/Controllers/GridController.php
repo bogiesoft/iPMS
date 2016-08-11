@@ -11,12 +11,13 @@ class GridController extends Controller
 	public function data($tbl) {
 		switch ($tbl) {
 		case "users":
-			$model = new User;
+			//$model = new User;
+			$model = User::where('id', '>', 0)->get();
 			$data  = "uid, fullname, email";
 			break;
 		case "projects":
 			$model = new Project;
-			$data  = "title, product, start_date, due_date, version, status, ext";
+			$data  = "ext, title, product, start_date, due_date, version, status";
 			break;
 		}
 
