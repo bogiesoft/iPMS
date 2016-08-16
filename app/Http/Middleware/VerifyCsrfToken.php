@@ -12,7 +12,7 @@ class VerifyCsrfToken extends BaseVerifier
      * @var array
      */
     protected $except = [
-		'gantt_data',
-		'usergrid_data',
+		'grid_data/*',
+		'gantt_data/*'
     ];
 }

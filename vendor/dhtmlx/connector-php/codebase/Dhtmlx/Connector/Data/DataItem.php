@@ -60,9 +60,14 @@ class DataItem {
     */
     public function get_id(){
         $id = $this->config->id["name"];
+		/**
         if (array_key_exists($id,$this->data))
             return $this->data[$id];
         return false;
+		**/ // workaround???
+		if (isset($this->data[$id]))
+			return $this->data[$id];
+		return " ";
     }
     /*! change id of element
 

@@ -26,7 +26,7 @@ class ProjectController extends Controller
             'title' => 'required|min:3',
             'product' => 'required|min:3',
             'start_date' => 'required|date',
-            'due_date' => 'required|date',
+            'end_date' => 'required|date',
             'version' => 'required',
 			'status' => 'required',
 /**
@@ -41,7 +41,7 @@ class ProjectController extends Controller
         	'title' => $request->input('title'),
         	'product' => $request->input('product'),
         	'start_date' => $request->input('start_date'),
-        	'due_date' => $request->input('due_date'),
+        	'end_date' => $request->input('end_date'),
         	'version' => $request->input('version'),
         	'status' => $request->input('status'),
         	'notes' => $request->input('notes'),
@@ -53,16 +53,26 @@ class ProjectController extends Controller
 
 	public function show($id)
 	{
-		//$connector = new GanttConnector(null, "PHPLaravel");
-		//$connector->render_links(new GanttLink(), "id", "source,target,type");
-	   	//$connector->render_table(new GanttTask(),"id","start_date,duration,text,progress,parent");
-
 		return view('projects.task');
 	}
 
 	public function update(Request $request, $id)
 	{
-		//
+		$project = Project::findOrFail($id);
+		$this->validate($request, [
+            'title' => 'required|min:3',
+            'product' => 'required|min:3',
+            'start_date' => 'required|date',
+            'end_date' => 'required|date',
+			'status' => 'required',
+        ]);
+
+        $project->version += 1;
+        $values = $request->all();
+        $project->fill($values)->save();
+
+        return redirect()->back()
+        	->with('info', 'Your Project has been updated successfully');
 	}
 
 	public function destroy($id)

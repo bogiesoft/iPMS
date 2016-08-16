@@ -22,6 +22,11 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->timestamps();
         });
+
+		DB::table('users')->insert(
+			['uid' => 'admin', 'password' => bcrypt('admin'), 'email' => 'ipms@idis.co.kr', 'fullname' => '관리자', 'level' => 9]);
+		DB::table('users')->insert(
+			['uid' => 'sjyun', 'password' => bcrypt('123456'), 'email' => 'sjyun@idis.co.kr', 'fullname' => '윤성진']);
     }
 
     /**

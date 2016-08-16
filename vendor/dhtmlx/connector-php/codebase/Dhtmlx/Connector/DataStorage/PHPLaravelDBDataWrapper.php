@@ -44,14 +44,16 @@ class PHPLaravelDBDataWrapper extends ArrayDBDataWrapper {
 	}
 
 	public function delete($data, $source) {
-		$className = get_class($source->get_source());
-		$className::destroy($data->get_id());
+		//$className = get_class($source->get_source());
+		//$className::destroy($data->get_id());
+		$source->get_source()->find($data->get_id())->delete();
 		$data->success();
 	}
 
 	public function update($data, $source) {
-		$className = get_class($source->get_source());
-		$obj = $className::find($data->get_id());
+		//$className = get_class($source->get_source());
+		//$obj = $className::find($data->get_id());
+		$obj = $source->get_source()->find($data->get_id());
 		$this->fill_model($obj, $data)->save();
 		$data->success();
 	}

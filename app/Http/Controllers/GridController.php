@@ -9,19 +9,21 @@ use Dhtmlx\Connector\GridConnector;
 class GridController extends Controller
 {
 	public function data($tbl) {
+		$connector = new GridConnector(null, "PHPLaravel");
+
 		switch ($tbl) {
 		case "users":
-			//$model = new User;
+			//$model = new User();
 			$model = User::where('id', '>', 0)->get();
-			$data  = "uid, fullname, email";
+			$data  = "uid,fullname,email";
 			break;
 		case "projects":
-			$model = new Project;
-			$data  = "ext, title, product, start_date, due_date, version, status";
+			$model = new Project();
+			//$connector->mix("ext2", "111");
+			$data  = "ext,title,product,plan_start,plan_end,start_date,end_date,version,status";
 			break;
 		}
 
-		$connector = new GridConnector(null, "PHPLaravel");
 		$connector->configure($model, "id", $data);
 		$connector->render();
 	}

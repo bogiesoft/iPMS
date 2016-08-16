@@ -10,7 +10,7 @@ class GanttDataItem extends DataItem {
     function to_xml(){
         if ($this->skip) return "";
 
-        $str="<task id='".$this->get_id()."' >";
+        $str="<task id='".$this->get_id()."'>";
         $str.="<start_date><![CDATA[".$this->data[$this->config->text[0]["name"]]."]]></start_date>";
         $str.="<".$this->config->text[1]["name"]."><![CDATA[".$this->data[$this->config->text[1]["name"]]."]]></".$this->config->text[1]["name"].">";
         $str.="<text><![CDATA[".$this->data[$this->config->text[2]["name"]]."]]></text>";

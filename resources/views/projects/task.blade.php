@@ -184,7 +184,7 @@
 		{name: "description", type: "textarea", map_to: "text", height: 28, focus: true},
 		{name: "type", type: "typeselect", map_to: "type"},
 		{name: "progress", type: "select", map_to: "progress", options: [
-			{key:"0", label: "Not started"},
+			{key:"0.0", label: "Not started"},
 			{key:"0.1", label: "10%"},
 			{key:"0.2", label: "20%"},
 			{key:"0.3", label: "30%"},
@@ -194,7 +194,7 @@
 			{key:"0.7", label: "70%"},
 			{key:"0.8", label: "80%"},
 			{key:"0.9", label: "90%"},
-			{key:"1", label: "Complete"} ]},
+			{key:"1.0", label: "Complete"} ]},
 		{name: "time", type: "duration", map_to: "auto", time_format:["%Y", "%m", "%d"]}
 	];
 
@@ -286,49 +286,9 @@
 	})();
 
 	gantt.init("gantt");
-
-var tasks = {
-	"data":[
-		{"id":11, "text":"Project #1", "start_date":"", "duration":"", "progress": 0.6, "open": true, type:gantt.config.types.project},
-		{"id":12, "text":"Task #1", "start_date":"2016-08-03", "duration":"5", "parent":"11", "progress": 1, "open": true},
-		{"id":13, "text":"Task #2", "start_date":"", "duration":"", "parent":"11", "progress": 0.5, "open": true},
-		{"id":14, "text":"Task #3", "start_date":"2016-08-02", "duration":"6", "parent":"11", "progress": 0.8, "open": true},
-		{"id":15, "text":"Task #4", "start_date":"", "duration":"", "parent":"11", "progress": 0.2, "open": true},
-		{"id":16, "text":"Task #5", "start_date":"2016-08-12", "duration":"17", "parent":"11", "progress": 0, "open": true},
-
-		{"id":17, "text":"Task #2.1", "start_date":"2016-08-03", "duration":"8", "parent":"13", "progress": 1, "open": true},
-		{"id":18, "text":"Task #2.2", "start_date":"2016-08-06", "duration":"20", "parent":"13", "progress": 0.8, "open": true},
-		{"id":19, "text":"Task #2.3", "start_date":"2016-08-10", "duration":"14", "parent":"13", "progress": 0.2, "open": true},
-		{"id":20, "text":"Task #2.4", "start_date":"2016-08-10", "duration":"18", "parent":"13", "progress": 0, "open": true},
-		{"id":21, "text":"Task #4.1", "start_date":"2016-10-03", "duration":"14", "parent":"15", "progress": 0.5, "open": true},
-		{"id":22, "text":"Task #4.2", "start_date":"2016-10-03", "duration":"16", "parent":"15", "progress": 0.1, "open": true},
-		{"id":23, "text":"Task #4.3", "start_date":"2016-10-03", "duration":"18", "parent":"15", "progress": 0, "open": true},
-		{"id":24, "text":"Mielstone #5", "start_date":"2016-08-29", "duration":"0", "parent":"11", type:gantt.config.types.milestone},
-	],
-	"links":[
-		{"id":"10","source":"11","target":"12","type":"1"},
-		{"id":"11","source":"11","target":"13","type":"1"},
-		{"id":"12","source":"11","target":"14","type":"1"},
-		{"id":"13","source":"11","target":"15","type":"1"},
-		{"id":"14","source":"11","target":"16","type":"1"},
-		{"id":"15","source":"13","target":"17","type":"1"},
-		{"id":"16","source":"17","target":"18","type":"0"},
-		{"id":"17","source":"18","target":"19","type":"0"},
-		{"id":"18","source":"19","target":"20","type":"0"},
-		{"id":"19","source":"15","target":"21","type":"2"},
-		{"id":"20","source":"15","target":"22","type":"2"},
-		{"id":"21","source":"15","target":"23","type":"2"},
-		{"id":"22","source":"16","target":"24","type":"0"},
-	]
-};
-	gantt.parse(tasks);
-
-	// refers to the 'data' action that we will create in the next substep
-	//gantt.load("data.xml", "xml");
-	//gantt.load("data.json", "json");
-
-	// refers to the 'data' action as well
-	//var dp = new gantt.dataProcessor("./gantt_data");
-	//dp.init(gantt);
+	gantt.load("/gantt_data/1", "xml");
+	var dp = new dataProcessor("/gantt_data/1");
+	dp.init(gantt);
+	dp.setTransactionMode("POST", false);
 </script>
 @stop

@@ -37,12 +37,12 @@
 				@endif
 			</div>
 
-			<div class="form-group{{ $errors->has('due_date') ? ' has-error' : '' }}">
-				<label for="due_date" class="control-label col-sm-2">Due Date</label>
+			<div class="form-group{{ $errors->has('end_date') ? ' has-error' : '' }}">
+				<label for="end_date" class="control-label col-sm-2">End Date</label>
 				<div class="col-sm-10">
-					<input type="date" name="due_date" class="form-control" id="due_date">
+					<input type="date" name="end_date" class="form-control" id="end_date">
 				</div>
-				@if ($errors->has('due_date'))
+				@if ($errors->has('end_date'))
 					<span class="help-block">This field is required.</span>
 				@endif
 			</div>

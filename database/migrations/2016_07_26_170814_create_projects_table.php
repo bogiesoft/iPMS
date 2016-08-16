@@ -17,7 +17,9 @@ class CreateProjectsTable extends Migration
 			$table->string('title');
 			$table->string('product');
 			$table->date('start_date');
-			$table->date('due_date');
+			$table->date('end_date');
+			$table->date('plan_start')->nullable();
+			$table->date('plan_end')->nullable();
 			$table->integer('version')->default(0);
 			$table->string('status')->default('Upcoming');
 			$table->integer('master_id')->unsigned()->default(0);
@@ -35,6 +37,21 @@ class CreateProjectsTable extends Migration
 				->onUpdate('cascade')
 				->onDelete('cascade');
 		});
+
+		DB::table('projects')->insert([
+			['title' => 'PM1', 'product' => '',
+			'start_date' => '', 'end_date' => '',
+			'status' => 'Template', 'notes' => "Proto / ES / ES DQA / PP / PP DQA"],
+			['title' => 'PM2', 'product' => '',
+			'start_date' => '', 'end_date' => '',
+			'status' => 'Template', 'notes' => "ES / ES DQA / PP / PP DQA"],
+			['title' => 'PM3', 'product' => '',
+			'start_date' => '', 'end_date' => '',
+			'status' => 'Template', 'notes' => "ES / ES DQA / PP"],
+			['title' => 'Test Project', 'product' => 'DR-1234',
+			'start_date' => '2016-08-01', 'end_date' => '2016-12-30',
+			'status' => 'Upcoming', 'notes' => "이거슨 TEST 프로젝트다."],
+		]);
     }
 
     /**
