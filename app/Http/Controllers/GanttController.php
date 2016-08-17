@@ -12,11 +12,12 @@ use Dhtmlx\Connector\GanttConnector;
 class GanttController extends Controller
 {
 	public function data($id) {
-		$connector = new GanttConnector(null, "PHPLaravel");
-		$connector->mix("open", "1");
-		$connector->render_links(new GanttLink(), "id", "source,target,type");
-		$connector->render_table(new GanttTask(), "id",
-			"start_date,duration,text,progress,type,parent,open");
+		$conn = new GanttConnector(null, "PHPLaravel");
+		$conn->enable_order("sortorder");
+		$conn->render_links(new GanttLink(), "id", "source,target,type");
+		$conn->render_table(new GanttTask(), "id",
+			"start_date,duration,text,progress,sortorder,type,parent,open");
+			//, false, "parent");
 	}
 
 	public function save(Request $request, $id) {

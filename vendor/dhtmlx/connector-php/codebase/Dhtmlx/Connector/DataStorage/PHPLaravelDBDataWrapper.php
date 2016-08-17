@@ -2,6 +2,7 @@
 namespace Dhtmlx\Connector\DataStorage;
 use Dhtmlx\Connector\DataProcessor\DataProcessor;
 use \Exception;
+use DB;
 
 class PHPLaravelDBDataWrapper extends ArrayDBDataWrapper {
 
@@ -46,7 +47,7 @@ class PHPLaravelDBDataWrapper extends ArrayDBDataWrapper {
 	public function delete($data, $source) {
 		//$className = get_class($source->get_source());
 		//$className::destroy($data->get_id());
-		$source->get_source()->find($data->get_id())->delete();
+		$source->get_source()->destroy($data->get_id());
 		$data->success();
 	}
 
@@ -78,11 +79,31 @@ class PHPLaravelDBDataWrapper extends ArrayDBDataWrapper {
 	}
 
 	public function escape($str) {
-		throw new Exception("Not implemented");
+		return str_replace("'","''",$str);
+//		throw new Exception("Not implemented");
 	}
 
 	public function query($str) {
-		throw new Exception("Not implemented");
+//echo "\n>". $str;
+//echo ":". strtolower(strtok($str, " "));
+		switch (strtolower(strtok($str, " "))) {
+		case 'select':
+			$ret = new ArrayQueryWrapper(DB::select($str));
+			return $ret;
+		case 'update':
+			DB::update($str);
+			break;
+		case 'insert':
+			DB::insert($str);
+			break;
+		case 'delete':
+			DB::delete($str);
+			break;
+		default;
+			//DB::statement($str);
+		}
+
+//		throw new Exception("Not implemented");
 	}
 
 	public function get_new_id() {

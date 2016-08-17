@@ -15,10 +15,13 @@ class CreateGanttTasksTable extends Migration
 		Schema::create('gantt_tasks', function(Blueprint $table) {
 			$table->increments('id')->unsigned();
 			$table->string('text');
-			$table->datetime('start_date');
+			$table->datetime('start_date')->default('');
+			$table->datetime('end_date')->default('');
 			$table->integer('duration')->default(0);
 			$table->float('progress')->default(0);
 			$table->string('type')->default('task');
+			$table->integer('sortorder')->default(0);
+			$table->integer('open')->default(1);
 			$table->integer('parent')->unsigned();
 
 			$table->foreign('parent')

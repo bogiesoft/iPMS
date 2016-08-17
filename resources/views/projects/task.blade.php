@@ -13,9 +13,12 @@
 @include('layouts.menubar')
 <h1 class="page-header">Project Task</h1>
 
-<label class="radio-inline"><input type="radio" name="scale" onclick="setScale('day')" checked>Day</label>
-<label class="radio-inline"><input type="radio" name="scale" onclick="setScale('month')">Month</label>
-<label class="radio-inline"><input type="radio" name="scale" onclick="setScale('year')">Year</label>
+<div style="height:30px">
+	<label class="radio-inline"><input type="radio" name="scale" onclick="setScale('day')" checked>Day</label>
+	<label class="radio-inline"><input type="radio" name="scale" onclick="setScale('month')">Month</label>
+	<label class="radio-inline"><input type="radio" name="scale" onclick="setScale('year')">Year</label>
+	<button class="btn-xs btn-primary" style="float:right" onclick="update()">Update</button>
+</div>
 
 <div id="gantt" style='width:100%; height:450px'></div>
 
@@ -87,9 +90,9 @@
 	.gantt_task_link:hover .gantt_line_wrapper div {
 		box-shadow: 0 0 5px 0px #9fa6ff;
 	}
-	.gantt_task_line .gantt_task_progress{
-		opacity: 0.3;
-		background-color: #444444;
+	.gantt_task_line .gantt_task_progress {
+		opacity: 0.5;
+		background-color: red;
 	}
 	.gantt_grid_data .gantt_cell {border-right: 1px solid #ececec;}
 	.gantt_grid_data .gantt_cell.gantt_last_cell {border-right: none;}
@@ -112,6 +115,10 @@
 	.gantt_selected .weekend {background:#FFF3A1 !important;}
 </style>
 <script>
+	function update() {
+		dp.sendData();
+	}
+
 	function setScale(val) {
 		setConfigScale(val);
 		gantt.render();
@@ -161,7 +168,7 @@
 
 	gantt.config.xml_date = "%Y-%m-%d %H:%i:%s";
 	gantt.config.step = 1;
-	//gantt.config.work_time = true;	// 월화수목금금금
+	//gantt.config.work_time = true;	// 월화수목금토일
 	gantt.config.order_branch = true;
 	gantt.config.auto_scheduling = true;
 	gantt.config.auto_scheduling_strict = true;
@@ -287,8 +294,8 @@
 
 	gantt.init("gantt");
 	gantt.load("/gantt_data/1", "xml");
-	var dp = new dataProcessor("/gantt_data/1");
+	var dp = new gantt.dataProcessor("/gantt_data/1");
 	dp.init(gantt);
-	dp.setTransactionMode("POST", false);
+	dp.setUpdateMode("off");
 </script>
 @stop

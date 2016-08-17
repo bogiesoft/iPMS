@@ -87,7 +87,7 @@ class GanttConnector extends Connector {
         $value  = $action->get_id();
         $parent = $action->get_value("parent");
 
-        $table = $this->request->get_source();
+        $table = $this->request->get_source()->getTable();
         $id    = $this->config->id["db_name"];
 
         $this->sql->query("UPDATE $table SET parent = $parent WHERE $id = $value");

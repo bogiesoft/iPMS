@@ -51,7 +51,7 @@ abstract class DBDataWrapper extends DataWrapper {
     {
         $order = $source->get_order();
         if ($order) {
-            $table = $source->get_source();
+            $table = $source->get_source()->getTable();
             $id = $this->config->id["db_name"];
             $idvalue = $action->get_new_id();
 
@@ -72,6 +72,7 @@ abstract class DBDataWrapper extends DataWrapper {
             $dropnext = true;
             $id2 = str_replace("next:", "", $target);
         } else {
+            $dropnext = false;
             $id2 = $target;
         }
         $id2 = $this->escape($id2);
@@ -90,7 +91,7 @@ abstract class DBDataWrapper extends DataWrapper {
 
 
         $name = $source->get_order();
-        $table = $source->get_source();
+        $table = $source->get_source()->getTable();
         $idkey = $this->config->id["db_name"];
 
         $source = $this->queryOne("select $relation_select $name as dhx_index from $table where $idkey = '$id1'");
@@ -148,14 +149,14 @@ abstract class DBDataWrapper extends DataWrapper {
         $where = $this->build_where($source->get_filters(), $source->get_relation());
         $sort = $this->build_order($source->get_sort_by());
 
-        return $this->query($this->select_query($select, $source->get_source(), $where, $sort, $source->get_start(), $source->get_count()));
+        return $this->query($this->select_query($select, $source->get_source()->getTable(), $where, $sort, $source->get_start(), $source->get_count()));
     }
 
     public function queryOne($sql)
     {
         $res = $this->query($sql);
         if ($res)
-            return $this->get_next($res);
+            return (array) $this->get_next($res);
         return false;
     }
 
@@ -278,7 +279,7 @@ abstract class DBDataWrapper extends DataWrapper {
             sql string, which updates record with provided data
     */
     protected function update_query($data,$request){
-        $sql="UPDATE ".$request->get_source()." SET ";
+        $sql="UPDATE ".$request->get_source()->getTable()." SET ";
         $temp=array();
         for ($i=0; $i < sizeof($this->config->text); $i++) {
             $step=$this->config->text[$i];
@@ -311,7 +312,7 @@ abstract class DBDataWrapper extends DataWrapper {
             sql string, which delete record
     */
     protected function delete_query($data,$request){
-        $sql="DELETE FROM ".$request->get_source();
+        $sql="DELETE FROM ".$request->get_source()->getTable();
         $sql.=" WHERE ".$this->escape_name($this->config->id["db_name"])."='".$this->escape($data->get_id())."'";
 
         //if we have limited set - set constraints
@@ -349,7 +350,7 @@ abstract class DBDataWrapper extends DataWrapper {
             $temp_v[]=$this->sequence;
         }
 
-        $sql="INSERT INTO ".$request->get_source()."(".implode(",",$temp_n).") VALUES (".implode(",",$temp_v).")";
+        $sql="INSERT INTO ".$request->get_source()->getTable()."(".implode(",",$temp_n).") VALUES (".implode(",",$temp_v).")";
 
         return $sql;
     }
