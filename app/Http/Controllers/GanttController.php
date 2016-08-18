@@ -16,8 +16,7 @@ class GanttController extends Controller
 		$conn->enable_order("sortorder");
 		$conn->render_links(new GanttLink(), "id", "source,target,type");
 		$conn->render_table(new GanttTask(), "id",
-			"start_date,duration,text,progress,sortorder,type,parent,open");
-			//, false, "parent");
+			"start_date,duration,text,progress,sortorder,type,parent");
 	}
 
 	public function save(Request $request, $id) {

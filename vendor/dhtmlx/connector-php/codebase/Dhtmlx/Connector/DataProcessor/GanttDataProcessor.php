@@ -12,7 +12,7 @@ class GanttDataProcessor extends DataProcessor {
             return $this->config->id["name"];
         if ($data=="duration" && $this->config->text[1]["name"] == "duration")
             return $this->config->text[1]["name"];
-        if ($data=="end_date" && $this->config->text[1]["name"] == "end_date")
+		else if ($data=="end_date" && $this->config->text[1]["name"] == "end_date")
             return $this->config->text[1]["name"];
         if ($data=="text")
             return $this->config->text[2]["name"];

@@ -97,7 +97,7 @@ class GanttConnector extends Connector {
         if (isset($this->options["links"])){
             $links = $this->options["links"];
             $value = $this->sql->escape($action->get_new_id());
-            $table = $links->get_request()->get_source();
+            $table = $links->get_request()->get_source()->getTable();
 
             $this->sql->query("DELETE FROM $table WHERE source = '$value'");
             $this->sql->query("DELETE FROM $table WHERE target = '$value'");

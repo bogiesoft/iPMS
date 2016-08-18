@@ -5,6 +5,7 @@
 <script src="/js/dhtmlxgantt_fullscreen.js"></script>
 <script src="/js/dhtmlxgantt_auto_scheduling.js"></script>
 <script src="/js/dhtmlxgantt_marker.js"></script>
+<script src="/js/dhtmlxgantt_undo.js"></script>
 <link rel="stylesheet" href="/css/dhtmlxgantt.css">
 <link rel="stylesheet" href="/css/font-awesome.min.css">
 @stop
@@ -17,10 +18,11 @@
 	<label class="radio-inline"><input type="radio" name="scale" onclick="setScale('day')" checked>Day</label>
 	<label class="radio-inline"><input type="radio" name="scale" onclick="setScale('month')">Month</label>
 	<label class="radio-inline"><input type="radio" name="scale" onclick="setScale('year')">Year</label>
-	<button class="btn-xs btn-primary" style="float:right" onclick="update()">Update</button>
+	<button class="btn-xs fa fa-undo" style="margin-left:220px" onclick="gantt.undo()"> Undo</button>
+	<button class="btn-xs fa fa-repeat" onclick="gantt.redo()"> Redo</button>
+	<button class="btn-xs btn-danger" style="float:right" onclick="update()">Update</button>
 </div>
-
-<div id="gantt" style='width:100%; height:450px'></div>
+<div id="gantt" style="width:100%; height:450px"></div>
 
 <style>
 	.gantt-fullscreen{
@@ -98,9 +100,7 @@
 	.gantt_grid_data .gantt_cell.gantt_last_cell {border-right: none;}
 	.gantt_tree_icon.gantt_folder_open,
 	.gantt_tree_icon.gantt_file,
-	.gantt_tree_icon.gantt_folder_closed {
-		display: none;
-	}
+	.gantt_tree_icon.gantt_folder_closed {display: none;}
 	.gantt_task .gantt_task_scale .gantt_scale_cell,
 	.gantt_grid_scale .gantt_grid_head_cell {color:#5c5c5c;}
 	.gantt_row, .gantt_cell {border-color:#cecece;}
@@ -117,6 +117,9 @@
 <script>
 	function update() {
 		dp.sendData();
+var dates = gantt.getSubtaskDates(),
+dateToStr = function(date){return gantt.date.date_to_str("%Y-%m-%d")(date);};
+console.log(dateToStr(dates.start_date) + " - " + dateToStr(dates.end_date));
 	}
 
 	function setScale(val) {
@@ -161,31 +164,32 @@
 		}
 	}
 
-	gantt.config.row_height = 30;
-	gantt.config.task_height = 16;
-	gantt.config.keep_grid_width = false;
-	gantt.config.grid_resize = true;
-
+	//gantt.config.work_time = true;	// 월화수목금토일
 	gantt.config.xml_date = "%Y-%m-%d %H:%i:%s";
 	gantt.config.step = 1;
-	//gantt.config.work_time = true;	// 월화수목금토일
 	gantt.config.order_branch = true;
 	gantt.config.auto_scheduling = true;
 	gantt.config.auto_scheduling_strict = true;
 	gantt.config.drag_progress = false;
+	gantt.config.open_tree_initially = true;
 	setConfigScale("day");	// default day scale
 
 	gantt.config.columns = [
 		{name:"text",       label:"Task",  width:"*", tree:true },
 		{name:"start_date", label:"Start", width:80,  align:"center" },
 		{name:"end_date",   label:"End",   width:80,  align:"center" },
-		{name:"duration",   label:"Day",   width:48,  align:"center" },
+		{name:"duration",   label:"Day",   width:42,  align:"center" },
 		{name:"add",        label:"",      width:38 }
 	];
+	gantt.config.keep_grid_width = false;
+	gantt.config.grid_resize = true;
 	gantt.config.grid_width = 400;
 	gantt.config.grid_resize = true;
 	//gantt.config.min_grid_column_width = 70;
+	gantt.config.row_height = 28;
+	gantt.config.task_height = 16;
 
+	gantt.config.task_date = "%Y/%m/%d";
 	gantt.locale.labels["section_progress"] = "Progress";
 	gantt.config.lightbox.sections = [
 		{name: "description", type: "textarea", map_to: "text", height: 28, focus: true},
@@ -223,7 +227,6 @@
 		main_el.style.width = size.width + "px";
 		return main_el;
 	};
-
 	gantt.templates.grid_row_class = function(start, end, task) {
 		if (task.type == gantt.config.types.project) return "project-line";
 	};
@@ -269,7 +272,6 @@
 		function setTaskType(id) {
 			id = id.id ? id.id : id;
 			var task = gantt.getTask(id);
-			//var type = gantt.hasChild(task.id) ? gantt.config.types.project : gantt.config.types.task;
 			var type = gantt.hasChild(task.id) ? gantt.config.types.project : task.type;
 			if (type != task.type) {
 				task.type = type;
