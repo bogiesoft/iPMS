@@ -17,6 +17,7 @@
 					<li><a href="/projects">List Project</a></li>
 					<li><a href="/projects/0">Show Project</a></li>
 					<li><a href="{{ route('projects.create') }}">New Project</a></li>
+					<li><a href="">Add Files</a></li>
 				</ul>
 			</li>
 			<li class="dropdown">

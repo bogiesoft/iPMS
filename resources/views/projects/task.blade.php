@@ -6,6 +6,7 @@
 <script src="/js/dhtmlxgantt_auto_scheduling.js"></script>
 <script src="/js/dhtmlxgantt_marker.js"></script>
 <script src="/js/dhtmlxgantt_undo.js"></script>
+<script src="/js/dhtmlxgantt_critical_path.js"></script>
 <link rel="stylesheet" href="/css/dhtmlxgantt.css">
 <link rel="stylesheet" href="/css/font-awesome.min.css">
 @stop
@@ -18,7 +19,8 @@
 	<label class="radio-inline"><input type="radio" name="scale" onclick="setScale('day')" checked>Day</label>
 	<label class="radio-inline"><input type="radio" name="scale" onclick="setScale('month')">Month</label>
 	<label class="radio-inline"><input type="radio" name="scale" onclick="setScale('year')">Year</label>
-	<button class="btn-xs fa fa-undo" style="margin-left:220px" onclick="gantt.undo()"> Undo</button>
+	<label class="checkbox-inline" style="margin-left:80px"><input type="checkbox" onchange="criticalPath(this)">Critical Path</label>
+	<button class="btn-xs fa fa-undo" style="margin-left:40px" onclick="gantt.undo()"> Undo</button>
 	<button class="btn-xs fa fa-repeat" onclick="gantt.redo()"> Redo</button>
 	<button class="btn-xs btn-danger" style="float:right" onclick="update()">Update</button>
 </div>
@@ -110,6 +112,7 @@
 	.gantt_grid_scale .gantt_grid_head_cell.gantt_last_cell  {
 		border-right: none !important;
 	}
+	.critical_task {background:red; border-color: red}
 
 	.weekend {background: #f4f7f4 !important;}
 	.gantt_selected .weekend {background:#FFF3A1 !important;}
@@ -124,6 +127,11 @@ console.log(dateToStr(dates.start_date) + " - " + dateToStr(dates.end_date));
 
 	function setScale(val) {
 		setConfigScale(val);
+		gantt.render();
+	}
+
+	function criticalPath(cb) {
+		gantt.config.highlight_critical_path = cb.checked;
 		gantt.render();
 	}
 
@@ -209,8 +217,16 @@ console.log(dateToStr(dates.start_date) + " - " + dateToStr(dates.end_date));
 		{name: "time", type: "duration", map_to: "auto", time_format:["%Y", "%m", "%d"]}
 	];
 
+	// today mark
 	var today = new Date();
 	gantt.addMarker({start_date: today, css: "today", text: "Today"});
+
+	// critical path
+	gantt.config.highlight_critical_path = false; // default
+	gantt.templates.task_class = function(start, end, task) {
+		if (gantt.config.highlight_critical_path &&
+			gantt.isCriticalTask(task)) return "critical_task";
+	}
 
 	// classic look
 	gantt.config.type_renderers[gantt.config.types.project] = function(task) {
@@ -230,12 +246,12 @@ console.log(dateToStr(dates.start_date) + " - " + dateToStr(dates.end_date));
 	gantt.templates.grid_row_class = function(start, end, task) {
 		if (task.type == gantt.config.types.project) return "project-line";
 	};
-	gantt.templates.rightside_text = function(start, end, task)  {
+	gantt.templates.rightside_text = function(start, end, task) {
 		return (task.type == gantt.config.types.milestone) ? task.text : "";
 	};
 
 	(function () {	// Fullscreen Expand / Collapse
-		gantt.attachEvent("onTemplatesReady", function(){
+		gantt.attachEvent("onTemplatesReady", function() {
 			var toggle = document.createElement("i");
 			toggle.className = "fa fa-expand gantt-fullscreen";
 			gantt.toggleIcon = toggle;
