@@ -1,17 +1,23 @@
 @extends('layouts.master')
 
-@section('library')
-<script src="/js/dhtmlxgantt.js"></script>
-<script src="/js/dhtmlxgantt_fullscreen.js"></script>
-<script src="/js/dhtmlxgantt_auto_scheduling.js"></script>
-<script src="/js/dhtmlxgantt_marker.js"></script>
-<script src="/js/dhtmlxgantt_undo.js"></script>
-<link rel="stylesheet" href="/css/dhtmlxgantt.css">
-<link rel="stylesheet" href="/css/font-awesome.min.css">
-@stop
-
 @section('content')
-@include('layouts.menubar')
-<h1 class="page-header">Schedule</h1>
+@if (! Auth::check())
+	<div class="container">
+		<div>
+			<span style='font-size:64px'>iPMS </span>
+			<span style='font-size:14px; color:gray'>v0.0000001</span></br>
+			<span style='font-size:18px'>IDIS Project Management System</span>
+		</div><br/>
 
+		<div class="row" style="height:460px; background-image:url('images/project-management.jpg'); background-repeat:no-repeat">
+			<div class="pull-right" style="width:380px; opacity:0.95">
+				@include('auth.login')
+			</div>
+		</div>
+	</div>
+@endif
+
+@if ( Auth::check())
+	@include('layouts.menubar')
+@endif
 @stop

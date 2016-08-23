@@ -46,7 +46,7 @@ class CreateGanttTasksTable extends Migration
 			['id' => 70, 'text' => 'Task #2.1', 'start_date' => '2016-08-03 00:00:00', 'duration' => 8, 'parent' => 30],
 			['id' => 80, 'text' => 'Task #2.2', 'start_date' => '2016-08-06 00:00:00', 'duration' => 20, 'parent' => 30],
 			['id' => 90, 'text' => 'Task #2.3', 'start_date' => '2016-08-10 00:00:00', 'duration' => 14, 'parent' => 30],
-			['id' => 100, 'text' => 'Task #2.4', 'start_date' => '2016-08-10 00:00:00', 'duration' => 8, 'parent' => 30],
+			['id' => 100, 'text' => 'Task #2.4', 'start_date' => '2016-08-10 00:00:00', 'duration' => 28, 'parent' => 30],
 			['id' => 110, 'text' => 'Task #4.1', 'start_date' => '2016-10-03 00:00:00', 'duration' => 14, 'parent' => 50],
 			['id' => 120, 'text' => 'Task #4.2', 'start_date' => '2016-10-03 00:00:00', 'duration' => 16, 'parent' => 50],
 			['id' => 130, 'text' => 'Task #4.3', 'start_date' => '2016-10-03 00:00:00', 'duration' => 18, 'parent' => 50] ]);

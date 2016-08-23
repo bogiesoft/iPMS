@@ -48,7 +48,7 @@
 	scheduler.attachEvent("onClick", function(){return false;});
 
 	scheduler.config.lightbox.sections = [
-		{ name:"description", height:100, map_to:"text", type:"textarea", focus:true },
+		{ name:"description", height:30, map_to:"text", type:"textarea", focus:true },
 		{ name:"time", height:72, type:"calendar_time", map_to:"auto" }
 	];
 

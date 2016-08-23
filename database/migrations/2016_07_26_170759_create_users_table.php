@@ -18,13 +18,13 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('email');
             $table->string('fullname')->nullable();
-            $table->integer('level')->default(-1);
+            $table->integer('group')->default(-1);
             $table->rememberToken();
             $table->timestamps();
         });
 
 		DB::table('users')->insert(
-			['uid' => 'admin', 'password' => bcrypt('admin'), 'email' => 'ipms@idis.co.kr', 'fullname' => '관리자', 'level' => 9]);
+			['uid' => 'admin', 'password' => bcrypt('admin'), 'email' => 'ipms@idis.co.kr', 'fullname' => '관리자', 'group' => 0]);
 		DB::table('users')->insert(
 			['uid' => 'sjyun', 'password' => bcrypt('123456'), 'email' => 'sjyun@idis.co.kr', 'fullname' => '윤성진']);
     }

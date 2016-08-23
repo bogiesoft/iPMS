@@ -48,5 +48,3 @@ Route::resource('schedules', 'ScheduleController');
 
 Route::match(['get', 'post'], '/grid_data/{tbl}', "GridController@data");
 Route::match(['get', 'post'], '/gantt_data/{id}', "GanttController@data");
-//Route::match(['get'],  '/gantt_data/{id}', "GanttController@data");
-//Route::match(['post'], '/gantt_data/{id}', "GanttController@save");

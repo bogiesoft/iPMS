@@ -203,7 +203,7 @@ console.log(dateToStr(dates.start_date) + " - " + dateToStr(dates.end_date));
 		{name: "description", type: "textarea", map_to: "text", height: 28, focus: true},
 		{name: "type", type: "typeselect", map_to: "type"},
 		{name: "progress", type: "select", map_to: "progress", options: [
-			{key:"0.0", label: "Not started"},
+			{key:"0.0", label: "Not Started"},
 			{key:"0.1", label: "10%"},
 			{key:"0.2", label: "20%"},
 			{key:"0.3", label: "30%"},
@@ -217,18 +217,18 @@ console.log(dateToStr(dates.start_date) + " - " + dateToStr(dates.end_date));
 		{name: "time", type: "duration", map_to: "auto", time_format:["%Y", "%m", "%d"]}
 	];
 
-	// today mark
+	// Today mark
 	var today = new Date();
 	gantt.addMarker({start_date: today, css: "today", text: "Today"});
 
-	// critical path
+	// Critical path
 	gantt.config.highlight_critical_path = false; // default
 	gantt.templates.task_class = function(start, end, task) {
 		if (gantt.config.highlight_critical_path &&
 			gantt.isCriticalTask(task)) return "critical_task";
 	}
 
-	// classic look
+	// Classic look
 	gantt.config.type_renderers[gantt.config.types.project] = function(task) {
 		var main_el = document.createElement("div");
 		main_el.setAttribute(gantt.config.task_attribute, task.id);
