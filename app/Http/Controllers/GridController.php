@@ -20,7 +20,7 @@ class GridController extends Controller
 		case "projects":
 			$model = new Project();
 			//$connector->mix("ext2", "111");
-			$data  = "ext,title,product,plan_start,plan_end,start_date,end_date,version,status";
+			$data  = "ext,title,product,plan_start,plan_end,start_date,end_date,level,version,status";
 			break;
 		}
 

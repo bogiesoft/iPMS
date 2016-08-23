@@ -137,10 +137,10 @@ console.log(dateToStr(dates.start_date) + " - " + dateToStr(dates.end_date));
 			];
 			gantt.config.min_column_width = 22;
 			gantt.templates.scale_cell_class = function(date) {
-				if (date.getDay()==0 || date.getDay()==6) { return "weekend"; }
+				if (date.getDay()==0 || date.getDay()==6) return "weekend";
 			};
 			gantt.templates.task_cell_class = function(item, date) {
-				if (date.getDay()==0 || date.getDay()==6) { return "weekend"; }
+				if (date.getDay()==0 || date.getDay()==6) return "weekend";
 			};
 			break;
 		case "month":
@@ -189,7 +189,7 @@ console.log(dateToStr(dates.start_date) + " - " + dateToStr(dates.end_date));
 	gantt.config.row_height = 28;
 	gantt.config.task_height = 16;
 
-	gantt.config.task_date = "%Y/%m/%d";
+	gantt.config.task_date = "%Y.%m.%d";
 	gantt.locale.labels["section_progress"] = "Progress";
 	gantt.config.lightbox.sections = [
 		{name: "description", type: "textarea", map_to: "text", height: 28, focus: true},

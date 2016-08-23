@@ -18,13 +18,14 @@ class CreateProjectsTable extends Migration
 			$table->string('product');
 			$table->date('start_date');
 			$table->date('end_date');
-			$table->date('plan_start')->nullable();
-			$table->date('plan_end')->nullable();
+			$table->date('plan_start')->default('');
+			$table->date('plan_end')->default('');
+			$table->integer('level')->unsigned()->default(1);
 			$table->integer('version')->default(0);
 			$table->string('status')->default('Upcoming');
 			$table->integer('master_id')->unsigned()->default(0);
 			$table->integer('pm_id')->unsigned()->default(0);
-			$table->string('group')->nullable();
+			$table->string('group')->default('');
 			$table->longText('notes')->nullable();
 			$table->timestamps();
 

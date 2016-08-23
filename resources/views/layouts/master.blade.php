@@ -16,10 +16,6 @@
 	<script src="/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="/css/bootstrap.min.css">
 	<link rel="stylesheet" href="/css/ipms.css">
-<!--
-	<link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
--->
-
 	@yield('library')
 </head>
 <body>
