@@ -18,4 +18,9 @@ class HomeController extends Controller
 	{
 		return view('statistics');
 	}
+
+	public function manage_user()
+	{
+		return view('manage.user');
+	}
 }

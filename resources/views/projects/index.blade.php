@@ -1,7 +1,6 @@
 @extends('layouts.master')
 
 @section('library')
-<script src="/js/ipms.js"></script>
 <script src="/js/dhtmlx.js"></script>
 <link rel="stylesheet" href="/css/dhtmlx.css">
 @stop
@@ -24,9 +23,10 @@
 	prjGrid.setColSorting("na,str,str,date,date,date,date,int,int,str");
 	prjGrid.setColTypes("sub_row,ed,ed,ed,ed,ed,ed,coro,ed,ed");
 	prjGrid.setColAlign("left,left,left,left,left,left,left,left,cener,left");
-	prjGrid.setInitWidths("30,200,200,100,100,100,100,80,60,100");
+	prjGrid.setInitWidths("30,200,*,100,100,100,100,80,60,100");
+	prjGrid.enableAutoWidth(true);
 	prjGrid.enableAutoHeight(true, 250, 250);
-	prjGrid.enablePaging(true, 10, 1,"project_grid_info");
+	prjGrid.enablePaging(true, 10, 1, "project_grid_info");
 	prjGrid.setPagingSkin("toolbar");
 //	prjGrid.setEditable(false);
 	var level = prjGrid.getCombo(7);

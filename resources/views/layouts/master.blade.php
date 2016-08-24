@@ -14,6 +14,7 @@
 
 	<script src="/js/jquery-3.1.0.min.js"></script>
 	<script src="/js/bootstrap.min.js"></script>
+	<script src="/js/ipms.js"></script>
 	<link rel="stylesheet" href="/css/bootstrap.min.css">
 	<link rel="stylesheet" href="/css/ipms.css">
 	@yield('library')

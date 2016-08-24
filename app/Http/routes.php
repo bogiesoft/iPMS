@@ -19,6 +19,10 @@ Route::get('/statistics', [
 	'uses' => 'HomeController@statistics',
 	'as'   => 'statistics'
 ]);
+Route::get('/manage/user', [
+	'uses' => 'HomeController@manage_user',
+	'as'   => 'manage_user'
+]);
 
 Route::get('/auth/register', [
 	'uses' => 'AuthController@getRegister',

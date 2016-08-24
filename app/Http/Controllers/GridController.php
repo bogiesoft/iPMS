@@ -15,7 +15,7 @@ class GridController extends Controller
 		case "users":
 			//$model = new User();
 			$model = User::where('id', '>', 0)->get();
-			$data  = "uid,fullname,email";
+			$data  = "uid,fullname,email,group";
 			break;
 		case "projects":
 			$model = new Project();

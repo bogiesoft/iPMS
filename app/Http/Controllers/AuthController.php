@@ -34,8 +34,7 @@ class AuthController extends Controller
 			'fullname' => $request->input('fullname'),
 		]);
 
-		return redirect()
-			->route('index')
+		return redirect()->route('index')
 			->withInfo('Your account has been created and you can now sign in.');
 	}
 
@@ -47,9 +46,12 @@ class AuthController extends Controller
 		]);
 
 		$authStatus = Auth::attempt($request->only(['uid', 'password']), $request->has('remember'));
-		if (!$authStatus) {
-			return redirect()->back()
-				->with('info', 'Invalid User ID or Password.');
+		if (!$authStatus)
+			return redirect()->back()->with('error', 'User ID 와 Password가 일치하지 않습니다.');
+
+		if (Auth::user()->group == '-1') {
+			Auth::logout();
+			return redirect()->back()->with('error', '미승인 사용자입니다. 관리자에게 문의하십시오.');
 		}
 
 		return redirect()->route('projects.index');

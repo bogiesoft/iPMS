@@ -115,7 +115,8 @@ class DataItem {
         for ($i=0; $i < sizeof($this->config->data); $i++){
             $name=$this->config->data[$i]["name"];
             $db_name=$this->config->data[$i]["db_name"];
-            $str.=" ".$name."='".$this->xmlentities($this->data[$name])."'";
+			if (isset($this->data[$name]))	// fixed by sjyun
+				$str.=" ".$name."='".$this->xmlentities($this->data[$name])."'";
         }
         //output custom data
         if ($this->userdata !== false)
