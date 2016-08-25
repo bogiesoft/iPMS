@@ -4,6 +4,7 @@ namespace iPMS\Http\Controllers;
 
 use iPMS\User;
 use iPMS\Project;
+use iPMS\Schedule;
 use Dhtmlx\Connector\GridConnector;
 
 class GridController extends Controller
@@ -21,6 +22,10 @@ class GridController extends Controller
 			$model = new Project();
 			//$connector->mix("ext2", "111");
 			$data  = "ext,title,product,plan_start,plan_end,start_date,end_date,level,version,status";
+			break;
+		case "schedules":
+			$model = new Schedule();
+			$data  = "uid,start_date,end_date,text";
 			break;
 		}
 

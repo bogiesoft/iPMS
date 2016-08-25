@@ -15,14 +15,8 @@ Route::get('/', [
 	'uses' => 'HomeController@index',
 	'as'   => 'index'
 ]);
-Route::get('/statistics', [
-	'uses' => 'HomeController@statistics',
-	'as'   => 'statistics'
-]);
-Route::get('/manage/user', [
-	'uses' => 'HomeController@manage_user',
-	'as'   => 'manage_user'
-]);
+Route::get('/statistics', 'HomeController@statistics');
+Route::get('/manage/{item}', 'HomeController@manage');
 
 Route::get('/auth/register', [
 	'uses' => 'AuthController@getRegister',
@@ -42,7 +36,7 @@ Route::post('/auth/login', [
 	'uses' => 'AuthController@postLogin',
 	'middleware' => ['guest']
 ]);
-Route::get('/logout', [
+Route::get('/auth/logout', [
 	'uses' => 'AuthController@logOut',
 	'as'   => 'auth.logout'
 ]);
@@ -52,3 +46,5 @@ Route::resource('schedules', 'ScheduleController');
 
 Route::match(['get', 'post'], '/grid_data/{tbl}', "GridController@data");
 Route::match(['get', 'post'], '/gantt_data/{id}', "GanttController@data");
+
+Route::auth();

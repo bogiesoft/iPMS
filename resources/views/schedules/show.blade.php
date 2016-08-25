@@ -26,6 +26,9 @@
 	<div class="dhx_cal_header"></div>
 	<div class="dhx_cal_data"></div>
 </div>
+<div style="margin-top:10px">
+	<button class="btn-xs btn-danger" style="float:right" onclick="dp.sendData()">Update</button>
+</div>
 
 <style>
 .weekend .dhx_month_body {background: #f4f7f4 !important;}

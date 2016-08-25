@@ -5,7 +5,6 @@ namespace iPMS\Http\Controllers;
 use Illuminate\Http\Request;
 
 use iPMS\Http\Requests;
-use iPMS\Http\Controllers\Controller;
 
 class HomeController extends Controller
 {
@@ -19,8 +18,8 @@ class HomeController extends Controller
 		return view('statistics');
 	}
 
-	public function manage_user()
+	public function manage($item)
 	{
-		return view('manage.user');
+		return view('manage.'. $item);
 	}
 }

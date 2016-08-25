@@ -22,7 +22,7 @@
 	<label class="checkbox-inline" style="margin-left:80px"><input type="checkbox" onchange="criticalPath(this)">Critical Path</label>
 	<button class="btn-xs fa fa-undo" style="margin-left:40px" onclick="gantt.undo()"> Undo</button>
 	<button class="btn-xs fa fa-repeat" onclick="gantt.redo()"> Redo</button>
-	<button class="btn-xs btn-danger" style="float:right" onclick="update()">Update</button>
+	<button class="btn-xs btn-danger" style="float:right" onclick="dp.sendData()"><span class="glyphicon glyphicon-save"></span> Update</button>
 </div>
 <div id="gantt" style="width:100%; height:450px"></div>
 

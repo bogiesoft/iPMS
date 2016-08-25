@@ -10,14 +10,14 @@
 <h1 class="page-header">사용자 관리</h1>
 
 <div style="height:30px">
-	<button class="btn-xs " onclick="deleteRow()">Delete User</button>
-	<button class="btn-xs " onclick="resetPasswd()">Reset Password</button>
-	<button class="btn-xs btn-danger" style="float:right" onclick="dp.sendData()">Update</button>
+	<button class="btn-xs " onclick="removeRow()"><span class="glyphicon glyphicon-minus"></span> Remove</button>
+	<button class="btn-xs " onclick="resetPasswd()"><span class="glyphicon glyphicon-refresh"></span> Reset Password</button>
+	<button class="btn-xs btn-danger" style="float:right" onclick="dp.sendData()"><span class="glyphicon glyphicon-save"></span> Update</button>
 </div>
-<div id="user_grid" style="width:100%; height:100%"></div>
-<div id="user_grid_info"></div></br>
+<div id="grid" style="width:100%; height:100%"></div>
+<div id="grid_info"></div></br>
 <script>
-	function deleteRow() {
+	function removeRow() {
 		var row = userGrid.getSelectedRowId();
 		if (row > 1) userGrid.deleteSelectedRows();
 	}
@@ -25,7 +25,7 @@
 	function resetPasswd() {
 	}
 
-	var userGrid = new dhtmlXGridObject('user_grid');
+	var userGrid = new dhtmlXGridObject('grid');
 	userGrid.setImagePath("/images/");
 	userGrid.setHeader("User ID,Full Name,E-mail,Group");
 	userGrid.setColSorting("str,str,str,str");
@@ -33,7 +33,7 @@
 	userGrid.setInitWidths("150,150,*,150");
 	userGrid.enableAutoWidth(true);
 	userGrid.enableAutoHeight(true, 150);
-	userGrid.enablePaging(true, 10, 1, "user_grid_info");
+	userGrid.enablePaging(true, 10, 1, "grid_info");
 	userGrid.setPagingSkin("toolbar");
 
 	userGrid.attachEvent("onBeforeSelect", function onBeforeSelect(new_row, old_row, new_col) {
