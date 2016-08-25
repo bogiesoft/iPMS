@@ -10,11 +10,12 @@ use iPMS\GanttLink;
 
 use Dhtmlx\Connector\GridConnector;
 use Dhtmlx\Connector\GanttConnector;
+use Dhtmlx\Connector\SchedulerConnector;
 
 class DhtmlxController extends Controller
 {
 	public function grid($tbl) {
-		$connector = new GridConnector(null, "PHPLaravel");
+		$conn = new GridConnector(null, "PHPLaravel");
 
 		switch ($tbl) {
 		case "users":
@@ -24,7 +25,7 @@ class DhtmlxController extends Controller
 			break;
 		case "projects":
 			$model = new Project();
-			//$connector->mix("ext2", "111");
+			//$conn->mix("ext2", "111");
 			$data  = "ext,title,product,plan_start,plan_end,start_date,end_date,level,version,status";
 			break;
 		case "schedules":
@@ -33,8 +34,8 @@ class DhtmlxController extends Controller
 			break;
 		}
 
-		$connector->configure($model, "id", $data);
-		$connector->render();
+		$conn->configure($model, "id", $data);
+		$conn->render();
 	}
 
 	public function gantt($id) {
@@ -45,4 +46,9 @@ class DhtmlxController extends Controller
 			"start_date,duration,text,progress,sortorder,type,parent");
 	}
 
+	public function schedule($id) {
+		$conn = new SchedulerConnector(null, "PHPLaravel");
+		$conn->configure(new Schedule(), "id", "start_date,end_date,text,uid");
+		$conn->render();
+	}
 }

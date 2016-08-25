@@ -13,6 +13,11 @@ class HomeController extends Controller
 		return view('index');
 	}
 
+	public function calendar()
+	{
+		return view('calendar');
+	}
+
 	public function statistics()
 	{
 		return view('statistics');

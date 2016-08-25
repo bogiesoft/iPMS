@@ -32,7 +32,7 @@
 	userGrid.setColTypes("ed,ed,ed,coro,ed");
 	userGrid.setInitWidths("150,150,*,150");
 	userGrid.enableAutoWidth(true);
-	userGrid.enableAutoHeight(true, 150);
+	userGrid.enableAutoHeight(true);
 	userGrid.enablePaging(true, 10, 1, "grid_info");
 	userGrid.setPagingSkin("toolbar");
 
@@ -48,9 +48,9 @@
 
 	userGrid.enableAlterCss("grid_odd", "grid_even");
 	userGrid.enableRowsHover(true, "grid_hover");
-	userGrid.load("/grid/users");
+	userGrid.load("/grid_/users");
 
-	var dp = new dataProcessor("/grid/users");
+	var dp = new dataProcessor("/grid_/users");
 	dp.init(userGrid);
 	dp.setUpdateMode("off");
 </script>

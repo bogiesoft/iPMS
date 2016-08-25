@@ -32,7 +32,7 @@
 	schdGrid.setColTypes("coro,dhxCalendarA,dhxCalendarA,ed");
 	schdGrid.setInitWidths("150,200,200,*");
 	schdGrid.enableAutoWidth(true);
-	schdGrid.enableAutoHeight(true, 150);
+	schdGrid.enableAutoHeight(true);
 	schdGrid.enablePaging(true, 10, 1, "grid_info");
 	schdGrid.setPagingSkin("toolbar");
 	schdGrid.setDateFormat("%Y-%m-%d %H:%i");
@@ -50,9 +50,9 @@
 
 	schdGrid.enableAlterCss("grid_odd", "grid_even");
 	schdGrid.enableRowsHover(true, "grid_hover");
-	schdGrid.load("/grid/schedules");
+	schdGrid.load("/grid_/schedules");
 
-	var dp = new dataProcessor("/grid/schedules");
+	var dp = new dataProcessor("/grid_/schedules");
 	dp.init(schdGrid);
 	dp.setUpdateMode("off");
 </script>

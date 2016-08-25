@@ -15,6 +15,7 @@ Route::get('/', [
 	'uses' => 'HomeController@index',
 	'as'   => 'index'
 ]);
+Route::get('/calendar', 'HomeController@calendar');
 Route::get('/statistics', 'HomeController@statistics');
 Route::get('/manage/{item}', 'HomeController@manage');
 
@@ -42,9 +43,9 @@ Route::get('/auth/logout', [
 ]);
 
 Route::resource('projects', 'ProjectController');
-Route::resource('schedules', 'ScheduleController');
 
-Route::match(['get', 'post'], '/grid/{tbl}', "DhtmlxController@grid");
-Route::match(['get', 'post'], '/gantt/{id}', "DhtmlxController@gantt");
+Route::match(['get', 'post'], '/grid_/{tbl}', "DhtmlxController@grid");
+Route::match(['get', 'post'], '/gantt_/{id}', "DhtmlxController@gantt");
+Route::match(['get', 'post'], '/schedule_/{id}', "DhtmlxController@schedule");
 
 Route::auth();
