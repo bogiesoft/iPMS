@@ -48,9 +48,9 @@
 
 	userGrid.enableAlterCss("grid_odd", "grid_even");
 	userGrid.enableRowsHover(true, "grid_hover");
-	userGrid.load("/grid_data/users");
+	userGrid.load("/grid/users");
 
-	var dp = new dataProcessor("/grid_data/users");
+	var dp = new dataProcessor("/grid/users");
 	dp.init(userGrid);
 	dp.setUpdateMode("off");
 </script>

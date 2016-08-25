@@ -44,7 +44,7 @@ Route::get('/auth/logout', [
 Route::resource('projects', 'ProjectController');
 Route::resource('schedules', 'ScheduleController');
 
-Route::match(['get', 'post'], '/grid_data/{tbl}', "GridController@data");
-Route::match(['get', 'post'], '/gantt_data/{id}', "GanttController@data");
+Route::match(['get', 'post'], '/grid/{tbl}', "DhtmlxController@grid");
+Route::match(['get', 'post'], '/gantt/{id}', "DhtmlxController@gantt");
 
 Route::auth();

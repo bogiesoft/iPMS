@@ -36,9 +36,9 @@
 
 	prjGrid.enableAlterCss("grid_odd", "grid_even");
 	prjGrid.enableRowsHover(true, "grid_hover");
-	prjGrid.load("/grid_data/projects");
+	prjGrid.load("/grid/projects");
 
-	var dp = new dataProcessor("/grid_data/projects");
+	var dp = new dataProcessor("/grid/projects");
 	dp.init(prjGrid);
 	dp.setTransactionMode("POST", true);
 	//dp.setUpdateMode("off");
@@ -63,9 +63,9 @@
 
 	userGrid.enableAlterCss("grid_odd", "grid_even");
 	userGrid.enableRowsHover(true, "grid_hover");
-	userGrid.load("/grid_data/users");
+	userGrid.load("/grid/users");
 
-	var dp = new dataProcessor("/grid_data/users");
+	var dp = new dataProcessor("/grid/users");
 	dp.init(userGrid);
 //	dp.enableDataNames(true);
 	dp.setTransactionMode("POST", true); // set mode as send-all-by-post

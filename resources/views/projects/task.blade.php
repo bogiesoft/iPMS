@@ -311,8 +311,8 @@ console.log(dateToStr(dates.start_date) + " - " + dateToStr(dates.end_date));
 	})();
 
 	gantt.init("gantt");
-	gantt.load("/gantt_data/1", "xml");
-	var dp = new gantt.dataProcessor("/gantt_data/1");
+	gantt.load("/gantt/1", "xml");
+	var dp = new gantt.dataProcessor("/gantt/1");
 	dp.init(gantt);
 	dp.setUpdateMode("off");
 </script>

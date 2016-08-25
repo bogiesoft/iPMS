@@ -50,9 +50,9 @@
 
 	schdGrid.enableAlterCss("grid_odd", "grid_even");
 	schdGrid.enableRowsHover(true, "grid_hover");
-	schdGrid.load("/grid_data/schedules");
+	schdGrid.load("/grid/schedules");
 
-	var dp = new dataProcessor("/grid_data/schedules");
+	var dp = new dataProcessor("/grid/schedules");
 	dp.init(schdGrid);
 	dp.setUpdateMode("off");
 </script>
