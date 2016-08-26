@@ -10,7 +10,7 @@ class DataConfig {
     public $relation_id;//!< name or relation ID field
     public $text;//!< array of text fields
     public $data;//!< array of all known fields , fields which exists only in this collection will not be included in dataprocessor's operations
-
+	public $id_ext;	// added by sjyun
 
     /*! converts self to the string, for logging purposes
     **/
@@ -130,6 +130,7 @@ class DataConfig {
         $this->relation_id = $proto->relation_id;
         $this->text = $proto->text;
         $this->data = $proto->data;
+        $this->id_ext = $proto->id_ext;	// added by sjyun
     }
 
     /*! returns list of data fields (db_names)

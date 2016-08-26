@@ -148,7 +148,7 @@ class Connector {
         $this->configure($table,$id,$fields,$extra,$relation_id);
         return $this->render();
     }
-    public function configure($table,$id="",$fields=false,$extra=false,$relation_id=false){
+    public function configure($table,$id="",$fields=false,$extra=false,$relation_id=false,$id_ext=""){
         if ($fields === false){
             //auto-config
             $info = $this->sql->fields_list($table);
@@ -157,6 +157,7 @@ class Connector {
                 $id = $info["key"];
         }
         $this->config->init($id,$fields,$extra,$relation_id);
+		$this->config->id_ext = $id_ext; // added by sjyun
         if(is_string($table) && strpos(trim($table), " ")!==false)
             $this->request->parse_sql($table);
         else

@@ -64,9 +64,9 @@ class DataItem {
         if (array_key_exists($id,$this->data))
             return $this->data[$id];
         return false;
-		**/ // workaround???
+		**/ // workaround(???) by sjyun
 		if (isset($this->data[$id]))
-			return $this->data[$id];
+			return $this->config->id_ext . $this->data[$id];
 		return " ";
     }
     /*! change id of element
