@@ -7,7 +7,7 @@
 			</span></a>
 		</div>
 		<ul class="nav navbar-nav">
-			<li class="active"><a href="{{ route('projects.index') }}">
+			<li class="active"><a href="{{ route('dashboard') }}">
 				<span class="glyphicon glyphicon-home"></span><b> iPMS</b><span class="sr-only">(current)</span>
 			</a></li>
 			<li class="dropdown">

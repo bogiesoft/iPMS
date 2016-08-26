@@ -15,6 +15,10 @@ Route::get('/', [
 	'uses' => 'HomeController@index',
 	'as'   => 'index'
 ]);
+Route::get('/dashboard', [
+	'uses' => 'HomeController@dashboard',
+	'as'   => 'dashboard'
+]);
 Route::get('/calendar', 'HomeController@calendar');
 Route::get('/statistics', 'HomeController@statistics');
 Route::get('/manage/{item}', 'HomeController@manage');

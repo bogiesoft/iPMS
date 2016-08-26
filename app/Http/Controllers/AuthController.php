@@ -54,7 +54,7 @@ class AuthController extends Controller
 			return redirect()->back()->with('error', '미승인 사용자입니다. 관리자에게 문의하십시오.');
 		}
 
-		return redirect()->route('projects.index');
+		return redirect()->route('dashboard');
 	}
 
 	public function logOut()
