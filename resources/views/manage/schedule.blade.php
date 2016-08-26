@@ -40,7 +40,7 @@
 	//schdGrid.attachEvent("onBeforeSelect", function onBeforeSelect(new_row, old_row, new_col) {
 	//});
 	var combo = schdGrid.getCombo(0);
-	combo.put("0", "전 체");
+	combo.put("0", "전사휴일");
 <?php
 	use iPMS\User;
 	foreach (User::all() as $usr)
