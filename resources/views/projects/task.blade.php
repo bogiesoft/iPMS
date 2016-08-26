@@ -115,6 +115,7 @@
 	.critical_task {background:red; border-color: red}
 
 	.weekend {background: #f4f7f4 !important;}
+	.holyday {background: #fff0f0 !important;}
 	.gantt_selected .weekend {background:#FFF3A1 !important;}
 </style>
 <script>
@@ -145,9 +146,11 @@ console.log(dateToStr(dates.start_date) + " - " + dateToStr(dates.end_date));
 			];
 			gantt.config.min_column_width = 22;
 			gantt.templates.scale_cell_class = function(date) {
+				if (!gantt.isWorkTime(date)) return "holyday";
 				if (date.getDay()==0 || date.getDay()==6) return "weekend";
 			};
 			gantt.templates.task_cell_class = function(item, date) {
+				if (!gantt.isWorkTime(date)) return "holyday";
 				if (date.getDay()==0 || date.getDay()==6) return "weekend";
 			};
 			break;
@@ -172,7 +175,6 @@ console.log(dateToStr(dates.start_date) + " - " + dateToStr(dates.end_date));
 		}
 	}
 
-	//gantt.config.work_time = true;	// 월화수목금토일
 	gantt.config.xml_date = "%Y-%m-%d %H:%i:%s";
 	gantt.config.step = 1;
 	gantt.config.order_branch = true;
@@ -216,6 +218,27 @@ console.log(dateToStr(dates.start_date) + " - " + dateToStr(dates.end_date));
 			{key:"1.0", label: "Complete"} ]},
 		{name: "time", type: "duration", map_to: "auto", time_format:["%Y", "%m", "%d"]}
 	];
+
+	// Working day (월화수목금금금 or not)
+	gantt.config.work_time = true;
+	gantt.setWorkTime({day: 0});	// 일요일
+	gantt.setWorkTime({day: 6});	// 토요일
+	var holiday = [
+<?php
+		use iPMS\Schedule;
+		foreach (Schedule::all() as $schd)
+			if ($schd->uid == '0') {
+				$start = new DateTime($schd->start_date);
+				$end = new DateTime($schd->end_date);
+				$interval = new DateInterval('P1D');
+				$range = new DatePeriod($start, $interval, $end);
+				foreach ($range as $date)
+					echo "new Date('". $date->format("Y-m-d") ."'),\n";
+			}
+?>
+	];
+	for (var i = 0; i < holiday.length; i++)
+		gantt.setWorkTime({date: holiday[i], hours: false});
 
 	// Today mark
 	var today = new Date();
