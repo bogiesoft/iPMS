@@ -16,8 +16,10 @@ class CreateResourcesTable extends Migration
 			$table->increments('id')->unsigned();
 			$table->string('name');
 			$table->string('group');
-			$table->string('position');
-			$table->longText('notes')->nullable();
+			$table->integer('type')->default(0);
+            $table->integer('cost')->default(0);
+            $table->integer('unit')->default(0);
+			$table->text('notes')->nullable();
 			$table->timestamps();
 		});
     }

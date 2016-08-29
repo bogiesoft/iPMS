@@ -5,6 +5,7 @@ namespace iPMS\Http\Controllers;
 use iPMS\User;
 use iPMS\Project;
 use iPMS\Schedule;
+use iPMS\Resource;
 use iPMS\GanttTask;
 use iPMS\GanttLink;
 
@@ -31,6 +32,10 @@ class DhtmlxController extends Controller
 		case "schedules":
 			$model = new Schedule();
 			$data  = "uid,start_date,end_date,text";
+			break;
+		case "resources":
+			$model = new Resource();
+			$data  = "name,group,type,cost,unit,notes";
 			break;
 		}
 

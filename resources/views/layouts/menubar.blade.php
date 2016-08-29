@@ -30,6 +30,7 @@
 				<ul class="dropdown-menu">
 					<li><a href="/manage/user">User</a></li>
 					<li><a href="/manage/schedule">Schedule</a></li>
+					<li><a href="/manage/resource">Resource</a></li>
 				</ul>
 			</li>
 @endif

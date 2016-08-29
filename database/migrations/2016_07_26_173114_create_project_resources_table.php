@@ -16,13 +16,13 @@ class CreateProjectResourcesTable extends Migration
 			$table->increments('id')->unsigned();
 			$table->integer('project_id')->unsigned();
 			$table->integer('resource_id')->unsigned();
+            $table->float('usage')->default(1);
 			$table->timestamps();
 
 			$table->foreign('project_id')
 				->references('id')->on('projects')
 				->onUpdate('cascade')
 				->onDelete('cascade');
-
 			$table->foreign('resource_id')
 				->references('id')->on('resources')
 				->onUpdate('cascade')
