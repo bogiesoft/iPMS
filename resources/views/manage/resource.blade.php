@@ -9,7 +9,7 @@
 @include('layouts.menubar')
 <h1 class="page-header">자원 관리</h1>
 
-<div style="height:30px">
+<div style="margin:10px 0px">
 	<button class="btn-xs " style="width:78px" onclick="addRow()"><span class="glyphicon glyphicon-plus"></span> Add</button>
 	<button class="btn-xs " style="width:78px" onclick="removeRow()"><span class="glyphicon glyphicon-minus"></span> Remove</button>
 	<button class="btn-xs btn-danger" style="float:right" onclick="dp.sendData()"><span class="glyphicon glyphicon-save"></span> Update</button>

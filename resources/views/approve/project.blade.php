@@ -19,7 +19,7 @@
 	prjGrid.enableAutoHeight(true, 250, 250);
 	prjGrid.setEditable(false);
 @if (count($prj) > 5)
-	prjGrid.enablePaging(true, 10, 1, "project_grid_info");
+	prjGrid.enablePaging(true, 5, 1, "project_grid_info");
 	prjGrid.setPagingSkin("toolbar");
 @endif
 	var combo = prjGrid.getCombo(7);

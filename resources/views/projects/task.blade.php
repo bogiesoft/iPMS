@@ -15,7 +15,7 @@
 @include('layouts.menubar')
 <h1 class="page-header">Project Task</h1>
 
-<div style="height:30px">
+<div style="margin:10px 0px">
 	<label class="radio-inline"><input type="radio" name="scale" onclick="setScale('day')" checked>Day</label>
 	<label class="radio-inline"><input type="radio" name="scale" onclick="setScale('month')">Month</label>
 	<label class="radio-inline"><input type="radio" name="scale" onclick="setScale('year')">Year</label>

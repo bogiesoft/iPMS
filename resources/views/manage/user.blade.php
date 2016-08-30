@@ -9,7 +9,7 @@
 @include('layouts.menubar')
 <h1 class="page-header">사용자 관리</h1>
 
-<div style="height:30px">
+<div style="margin:10px 0px">
 	<button class="btn-xs " onclick="removeRow()"><span class="glyphicon glyphicon-minus"></span> Remove</button>
 	<button class="btn-xs " onclick="resetPasswd()"><span class="glyphicon glyphicon-refresh"></span> Reset Password</button>
 	<button class="btn-xs btn-danger" style="float:right" onclick="dp.sendData()"><span class="glyphicon glyphicon-save"></span> Update</button>
@@ -29,7 +29,7 @@
 	userGrid.setImagePath("/images/");
 	userGrid.setHeader("User ID,Full Name,E-mail,Group");
 	userGrid.setColSorting("str,str,str,str");
-	userGrid.setColTypes("ed,ed,ed,coro,ed");
+	userGrid.setColTypes("ed,ed,ed,coro");
 	userGrid.setInitWidths("150,150,*,150");
 	userGrid.enableAutoWidth(true);
 	userGrid.enableAutoHeight(true);
