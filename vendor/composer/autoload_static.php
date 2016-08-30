@@ -3031,6 +3031,7 @@ class ComposerStaticInit14cc0743a4b7fb36864230504e5c9526
         'iPMS\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
         'iPMS\\Providers\\EventServiceProvider' => __DIR__ . '/../..' . '/app/Providers/EventServiceProvider.php',
         'iPMS\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/app/Providers/RouteServiceProvider.php',
+        'iPMS\\Resource' => __DIR__ . '/../..' . '/app/Resource.php',
         'iPMS\\Schedule' => __DIR__ . '/../..' . '/app/Schedule.php',
         'iPMS\\User' => __DIR__ . '/../..' . '/app/User.php',
         'phpDocumentor\\Reflection\\DocBlock' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlock.php',

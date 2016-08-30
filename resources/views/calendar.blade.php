@@ -89,6 +89,7 @@
 	});
 
 	scheduler.attachEvent("onEventLoading", function(event) {
+		if (event.start_date == null || event.end_date == null) return false;
 		if (Number(event.uid) <= 0) event.readonly = true;
 		return true;
 	});

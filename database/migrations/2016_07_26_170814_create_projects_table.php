@@ -20,13 +20,14 @@ class CreateProjectsTable extends Migration
 			$table->date('end_date');
 			$table->date('plan_start')->default('');
 			$table->date('plan_end')->default('');
-			$table->integer('level')->unsigned()->default(1);
+			$table->integer('level')->default(1);
 			$table->integer('version')->default(0);
-			$table->string('status')->default('Upcoming');
+			$table->integer('status')->default(0);
 			$table->integer('master_id')->unsigned()->default(0);
 			$table->integer('pm_id')->unsigned()->default(0);
 			$table->string('group')->default('');
 			$table->longText('notes')->nullable();
+			$table->integer('approved')->default(0);
 			$table->timestamps();
 
 			$table->foreign('master_id')
@@ -41,17 +42,20 @@ class CreateProjectsTable extends Migration
 
 		DB::table('projects')->insert([
 			['title' => 'PM1', 'product' => '',
-			'start_date' => '', 'end_date' => '',
-			'status' => 'Template', 'notes' => "Proto / ES / ES DQA / PP / PP DQA"],
+			'start_date' => '2000-01-01', 'end_date' => '2000-12-31',
+			'level' => 1, 'status' => -1, 'notes' => "Proto / ES / ES DQA / PP / PP DQA"],
 			['title' => 'PM2', 'product' => '',
-			'start_date' => '', 'end_date' => '',
-			'status' => 'Template', 'notes' => "ES / ES DQA / PP / PP DQA"],
+			'start_date' => '2000-01-01', 'end_date' => '2000-12-31',
+			'level' => 2, 'status' => -1, 'notes' => "ES / ES DQA / PP / PP DQA"],
 			['title' => 'PM3', 'product' => '',
-			'start_date' => '', 'end_date' => '',
-			'status' => 'Template', 'notes' => "ES / ES DQA / PP"],
+			'start_date' => '2000-01-01', 'end_date' => '2000-12-31',
+			'level' => 3, 'status' => -1, 'notes' => "ES / ES DQA / PP"]
+		]);
+		DB::table('projects')->insert([
 			['title' => 'Test Project', 'product' => 'DR-1234',
 			'start_date' => '2016-08-01', 'end_date' => '2016-12-30',
-			'status' => 'Upcoming', 'notes' => "이거슨 TEST 프로젝트다."],
+			'plan_start' => '2016-08-01', 'plan_end' => '2016-12-30',
+			'level' => 3, 'notes' => "이거슨 TEST 프로젝트다."],
 		]);
     }
 

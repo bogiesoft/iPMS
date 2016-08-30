@@ -2769,6 +2769,7 @@ return array(
     'iPMS\\Providers\\AuthServiceProvider' => $baseDir . '/app/Providers/AuthServiceProvider.php',
     'iPMS\\Providers\\EventServiceProvider' => $baseDir . '/app/Providers/EventServiceProvider.php',
     'iPMS\\Providers\\RouteServiceProvider' => $baseDir . '/app/Providers/RouteServiceProvider.php',
+    'iPMS\\Resource' => $baseDir . '/app/Resource.php',
     'iPMS\\Schedule' => $baseDir . '/app/Schedule.php',
     'iPMS\\User' => $baseDir . '/app/User.php',
     'phpDocumentor\\Reflection\\DocBlock' => $vendorDir . '/phpdocumentor/reflection-docblock/src/DocBlock.php',

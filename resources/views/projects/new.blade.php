@@ -28,7 +28,7 @@
 			</div>
 
 			<div class="form-group{{ $errors->has('plan_start') ? ' has-error' : '' }}">
-				<label for="plan_start" class="control-label col-sm-3">(Plan) Start Date</label>
+				<label for="plan_start" class="control-label col-sm-3">Plan Start Date</label>
 				<div class="col-sm-9">
 					<input type="date" name="plan_start" class="form-control" id="plan_start">
 				</div>
@@ -38,7 +38,7 @@
 			</div>
 
 			<div class="form-group{{ $errors->has('plan_end') ? ' has-error' : '' }}">
-				<label for="plan_end" class="control-label col-sm-3">(Plan) End Date</label>
+				<label for="plan_end" class="control-label col-sm-3">Plan End Date</label>
 				<div class="col-sm-9">
 					<input type="date" name="plan_end" class="form-control" id="plan_end">
 				</div>
@@ -54,8 +54,9 @@
 						<option value=1 <?php if(old('level')==1) echo 'selected'; ?>>PM1</option>
 						<option value=2 <?php if(old('level')==2) echo 'selected'; ?>>PM2</option>
 						<option value=3 <?php if(old('level')==3) echo 'selected'; ?>>PM3</option>
+						<option value=4 <?php if(old('level')==4) echo 'selected'; ?>>설계변경</option>
 						<option value=10 <?php if(old('level')==10) echo 'selected'; ?>>상품도입</option>
-						<option value=99 <?php if(old('level')==99) echo 'selected'; ?>>기타</option>
+						<option value=99 <?php if(old('level')==99) echo 'selected'; ?>>기 타</option>
 					</select>
 				</div>
 			</div>
@@ -63,20 +64,15 @@
 			<div class="form-group{{ $errors->has('version') ? ' has-error' : '' }}">
 				<label for="version" class="control-label col-sm-3">Version</label>
 				<div class="col-sm-9">
-					<input type="number" name="version" class="form-control" id="version" min="0" value="{{ old('version') ?: 0 }}">
+					<input type="number" name="version" class="form-control" id="version" min="0" value="{{ old('version') ?: 0 }}" readonly>
 				</div>
 			</div>
 
 			<div class="form-group{{ $errors->has('status') ? ' has-error' : '' }}">
 				<label for="status" class="control-label col-sm-3">Status</label>
 				<div class="col-sm-9">
-					<select class="form-control" name="status" id="status">
-						<option value="Upcoming">계 획</option>
-						<option value="Planning">기획중</option>
-						<option value="Active">진행중</option>
-						<option value="Completed">완 료</option>
-						<option value="Canceled">취 소</option>
-						<option value="Deleted">삭 제</option>
+					<select class="form-control" name="status" id="status" onFocus="this.initialSelect = this.selectedIndex;" onChange="this.selectedIndex = this.initialSelect;" readonly>
+						<option value=0>계획/검토</option>
 					</select>
 				</div>
 				@if ($errors->has('status'))

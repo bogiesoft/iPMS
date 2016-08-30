@@ -20,8 +20,8 @@
 	var prjGrid = new dhtmlXGridObject('project_grid');
 	prjGrid.setImagePath("/images/");
 	prjGrid.setHeader("&nbsp;,Title,Product,Plan Start,Plan End,Start,End,Level,Version,Status");
-	prjGrid.setColSorting("na,str,str,date,date,date,date,int,int,str");
-	prjGrid.setColTypes("sub_row,ed,ed,ed,ed,ed,ed,coro,ed,ed");
+	prjGrid.setColSorting("na,str,str,date,date,date,date,int,int,int");
+	prjGrid.setColTypes("sub_row,ed,ed,ed,ed,ed,ed,coro,ed,coro");
 	prjGrid.setColAlign("left,left,left,left,left,left,left,left,cener,left");
 	prjGrid.setInitWidths("30,200,*,100,100,100,100,80,60,100");
 	prjGrid.enableAutoWidth(true);
@@ -29,9 +29,12 @@
 	prjGrid.enablePaging(true, 10, 1, "project_grid_info");
 	prjGrid.setPagingSkin("toolbar");
 //	prjGrid.setEditable(false);
-	var level = prjGrid.getCombo(7);
+	var combo = prjGrid.getCombo(7);
 	for (var idx in PROJECT_LEVEL)
-		level.put(idx, PROJECT_LEVEL[idx]);
+		combo.put(idx, PROJECT_LEVEL[idx]);
+	combo = prjGrid.getCombo(9);
+	for (var idx in PROJECT_STATUS)
+		combo.put(idx, PROJECT_STATUS[idx]);
 	prjGrid.init();
 
 	prjGrid.enableAlterCss("grid_odd", "grid_even");
