@@ -12,6 +12,8 @@
 
 @section('content')
 @include('layouts.menubar')
+
+@minify('html')
 <h1 class="page-header">Project Calendar</h1>
 
 <div id="scheduler" class="dhx_cal_container" style="width:100%; height:100%">
@@ -31,8 +33,8 @@
 <div style="margin-top:10px">
 	<button class="btn-xs btn-danger" style="float:right" onclick="dp.sendData()"><span class="glyphicon glyphicon-save"></span> Update</button>
 </div>
-
-<style>
+@endminify
+@minify('css')<style>
 	.weekend .dhx_month_body {background: #f4f7f4 !important;}
 	.weekend .dhx_month_head {color:red; background: #f4f7f4 !important;}
 	.dhx_cal_event.event_holiday div,
@@ -41,8 +43,8 @@
 	.dhx_cal_event.event_project div,
 	.dhx_cal_event_line.event_project {background:blue !important}
 	.dhx_cal_event_clear.event_project {color:blue !important}
-</style>
-<script>
+@endminify</style>
+@minify('js')<script>
 	scheduler.config.xml_date = "%Y-%m-%d %H:%i";
 	scheduler.config.api_date = "%Y-%m-%d %H:%i";
 	scheduler.config.default_date = "%Y.%m.%d";
@@ -104,5 +106,5 @@
 	var dp = new dataProcessor("/schedule_/1");
 	dp.init(scheduler);
 	dp.setUpdateMode("off");
-</script>
+@endminify</script>
 @stop

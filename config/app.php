@@ -158,6 +158,7 @@ return [
         iPMS\Providers\EventServiceProvider::class,
         iPMS\Providers\RouteServiceProvider::class,
 
+		Radic\BladeExtensions\BladeExtensionsServiceProvider::class,
 		Eusonlito\LaravelPacker\PackerServiceProvider::class,
     ],
 

@@ -1,3 +1,4 @@
+@minify('html')
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,10 +15,9 @@
 					"/css/ipms.css"], "master.css") !!}
 	@yield('library')
 </head>
-<body>
-	<div class="container-fluid">
-		@include('layouts.alerts')
-		@yield('content')
-	</div>
-</body>
-</html>
+@endminify
+
+<body><div class="container-fluid">
+	@include('layouts.alerts')
+	@yield('content')
+</div></body></html>

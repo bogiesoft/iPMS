@@ -1,6 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
+@minify('html')
 @if (! Auth::check())
 	<div class="container">
 		<div>
@@ -17,7 +18,9 @@
 	</div>
 @endif
 
-@if ( Auth::check())
-	@include('layouts.menubar')
+@if (Auth::check())
+	{{ Auth::logout() }}
+	location.reload();
 @endif
+@endminify
 @stop

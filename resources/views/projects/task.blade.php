@@ -12,6 +12,8 @@
 
 @section('content')
 @include('layouts.menubar')
+
+@minify('html')
 <h1 class="page-header">Project Task</h1>
 
 <div style="margin:10px 0px">
@@ -24,8 +26,8 @@
 	<button class="btn-xs btn-danger" style="float:right" onclick="dp.sendData()"><span class="glyphicon glyphicon-save"></span> Update</button>
 </div>
 <div id="gantt" style="width:100%; height:450px"></div>
-
-<style>
+@endminify
+@minify('css')<style>
 	.gantt-fullscreen{
 		position: absolute;
 		bottom: 20px;
@@ -116,8 +118,8 @@
 	.weekend {background: #f4f7f4 !important;}
 	.holyday {background: #fff0f0 !important;}
 	.gantt_selected .weekend {background:#FFF3A1 !important;}
-</style>
-<script>
+@endminify</style>
+@minify('js')<script>
 	function update() {
 		dp.sendData();
 var dates = gantt.getSubtaskDates(),
@@ -337,5 +339,5 @@ console.log(dateToStr(dates.start_date) + " - " + dateToStr(dates.end_date));
 	var dp = new gantt.dataProcessor("/gantt_/1");
 	dp.init(gantt);
 	dp.setUpdateMode("off");
-</script>
+@endminify</script>
 @stop

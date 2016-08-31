@@ -1,3 +1,4 @@
+@minify('html')
 <?php
 	use iPMS\Project;
 	$prj = Project::where('approved', 0)->count();
@@ -7,7 +8,9 @@
 @if ($prj)
 <div id="project_grid" style="width:100%; height:240;"></div>
 <div id="project_grid_info"></div></br>
-<script>
+@endminify
+
+@minify('js')<script>
 	var prjGrid = new dhtmlXGridObject('project_grid');
 	prjGrid.setImagePath("/images/");
 	prjGrid.setHeader("&nbsp;,Title,Product,Plan Start,Plan End,Start,End,Level,Version,Status");
@@ -38,5 +41,5 @@
 	dp.init(prjGrid);
 	dp.setTransactionMode("POST", true);
 	//dp.setUpdateMode("off");
-</script>
+@endminify</script>
 @endif

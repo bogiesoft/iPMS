@@ -1,3 +1,4 @@
+@minify('html')
 <nav class="navbar navbar-inverse navbar-fixed-top" id="menubar">
 	<div class="container-fluid">
 		<div class="navbar-header">
@@ -41,3 +42,4 @@
 	</div>
 </nav>
 <br/>&nbsp
+@endminify

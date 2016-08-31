@@ -1,3 +1,4 @@
+@minify('html')
 <?php
 	use iPMS\User;
 	$usr = User::where('group', -1)->count();
@@ -7,7 +8,9 @@
 @if ($usr)
 <div id="user_grid" style="width:100%; height:100%"></div>
 <div id="user_grid_info"></div>
-<script>
+@endminify
+
+@minify('js')<script>
 	var userGrid = new dhtmlXGridObject('user_grid');
 	userGrid.setImagePath("/images/");
 	userGrid.setHeader("User ID,Full Name,E-mail,Group");
@@ -51,5 +54,5 @@
 	var dp = new dataProcessor("/grid_/users");
 	dp.init(userGrid);
 	dp.setUpdateMode("off");
-</script>
+@endminify</script>
 @endif
