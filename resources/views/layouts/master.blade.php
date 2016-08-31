@@ -6,17 +6,12 @@
 	<meta name="viewport" content="width=device-width">
 	<meta name="description" content="IDIS Project Management System">
 
-	<!-- Typekit Fonts -->
-<!--
-	<script src="//use.typekit.net/udt8boc.js"></script>
-	<script>try{Typekit.load();}catch(e){}</script>
--->
-
-	<script src="/js/jquery-3.1.0.min.js"></script>
-	<script src="/js/bootstrap.min.js"></script>
-	<script src="/js/ipms.js"></script>
-	<link rel="stylesheet" href="/css/bootstrap.min.css">
-	<link rel="stylesheet" href="/css/ipms.css">
+	{!! Packer::js(["/js/jquery-3.1.0.min.js",
+					"/js/bootstrap.min.js",
+					"/js/ipms.js"], "master.js") !!}
+	{!! Packer::css(["/css/bootstrap.min.css",
+					"/css/font-awesome.min.css",
+					"/css/ipms.css"], "master.css") !!}
 	@yield('library')
 </head>
 <body>

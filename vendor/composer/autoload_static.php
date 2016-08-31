@@ -16,6 +16,7 @@ class ComposerStaticInit14cc0743a4b7fb36864230504e5c9526
         '5255c38a0faeba867671b61dfda6d864' => __DIR__ . '/..' . '/paragonie/random_compat/lib/random.php',
         'f0906e6318348a765ffb6eb24e0d0938' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/helpers.php',
         '58571171fd5812e6e447dce228f52f4d' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/helpers.php',
+        '75d8f9a6b0c485f32bf49e14dbe518c5' => __DIR__ . '/..' . '/eusonlito/laravel-packer/src/Eusonlito/LaravelPacker/Exceptions.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -70,11 +71,16 @@ class ComposerStaticInit14cc0743a4b7fb36864230504e5c9526
         ),
         'I' => 
         array (
+            'Imagecow\\' => 9,
             'Illuminate\\' => 11,
         ),
         'F' => 
         array (
             'Faker\\' => 6,
+        ),
+        'E' => 
+        array (
+            'Eusonlito\\LaravelPacker\\' => 24,
         ),
         'D' => 
         array (
@@ -191,6 +197,10 @@ class ComposerStaticInit14cc0743a4b7fb36864230504e5c9526
         array (
             0 => __DIR__ . '/..' . '/league/flysystem/src',
         ),
+        'Imagecow\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/imagecow/imagecow/src',
+        ),
         'Illuminate\\' => 
         array (
             0 => __DIR__ . '/..' . '/laravel/framework/src/Illuminate',
@@ -198,6 +208,10 @@ class ComposerStaticInit14cc0743a4b7fb36864230504e5c9526
         'Faker\\' => 
         array (
             0 => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker',
+        ),
+        'Eusonlito\\LaravelPacker\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/eusonlito/laravel-packer/src/Eusonlito/LaravelPacker',
         ),
         'Dotenv\\' => 
         array (
@@ -268,6 +282,7 @@ class ComposerStaticInit14cc0743a4b7fb36864230504e5c9526
     );
 
     public static $classMap = array (
+        'CSSmin' => __DIR__ . '/..' . '/eusonlito/laravel-packer/src/Eusonlito/LaravelPacker/Processors/CSSmin.php',
         'Carbon\\Carbon' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Carbon.php',
         'Carbon\\CarbonInterval' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/CarbonInterval.php',
         'ClassPreloader\\ClassList' => __DIR__ . '/..' . '/classpreloader/classpreloader/src/ClassList.php',
@@ -434,6 +449,19 @@ class ComposerStaticInit14cc0743a4b7fb36864230504e5c9526
         'Dotenv\\Exception\\ValidationException' => __DIR__ . '/..' . '/vlucas/phpdotenv/src/Exception/ValidationException.php',
         'Dotenv\\Loader' => __DIR__ . '/..' . '/vlucas/phpdotenv/src/Loader.php',
         'Dotenv\\Validator' => __DIR__ . '/..' . '/vlucas/phpdotenv/src/Validator.php',
+        'Eusonlito\\LaravelPacker\\Exceptions\\DirNotExist' => __DIR__ . '/..' . '/eusonlito/laravel-packer/src/Eusonlito/LaravelPacker/Exceptions.php',
+        'Eusonlito\\LaravelPacker\\Exceptions\\DirNotWritable' => __DIR__ . '/..' . '/eusonlito/laravel-packer/src/Eusonlito/LaravelPacker/Exceptions.php',
+        'Eusonlito\\LaravelPacker\\Exceptions\\FileNotExist' => __DIR__ . '/..' . '/eusonlito/laravel-packer/src/Eusonlito/LaravelPacker/Exceptions.php',
+        'Eusonlito\\LaravelPacker\\Exceptions\\FileNotWritable' => __DIR__ . '/..' . '/eusonlito/laravel-packer/src/Eusonlito/LaravelPacker/Exceptions.php',
+        'Eusonlito\\LaravelPacker\\Exceptions\\InvalidArgument' => __DIR__ . '/..' . '/eusonlito/laravel-packer/src/Eusonlito/LaravelPacker/Exceptions.php',
+        'Eusonlito\\LaravelPacker\\Facade' => __DIR__ . '/..' . '/eusonlito/laravel-packer/src/Eusonlito/LaravelPacker/Facade.php',
+        'Eusonlito\\LaravelPacker\\Packer' => __DIR__ . '/..' . '/eusonlito/laravel-packer/src/Eusonlito/LaravelPacker/Packer.php',
+        'Eusonlito\\LaravelPacker\\PackerServiceProvider' => __DIR__ . '/..' . '/eusonlito/laravel-packer/src/Eusonlito/LaravelPacker/PackerServiceProvider.php',
+        'Eusonlito\\LaravelPacker\\Providers\\CSS' => __DIR__ . '/..' . '/eusonlito/laravel-packer/src/Eusonlito/LaravelPacker/Providers/CSS.php',
+        'Eusonlito\\LaravelPacker\\Providers\\IMG' => __DIR__ . '/..' . '/eusonlito/laravel-packer/src/Eusonlito/LaravelPacker/Providers/IMG.php',
+        'Eusonlito\\LaravelPacker\\Providers\\JS' => __DIR__ . '/..' . '/eusonlito/laravel-packer/src/Eusonlito/LaravelPacker/Providers/JS.php',
+        'Eusonlito\\LaravelPacker\\Providers\\ProviderBase' => __DIR__ . '/..' . '/eusonlito/laravel-packer/src/Eusonlito/LaravelPacker/Providers/ProviderBase.php',
+        'Eusonlito\\LaravelPacker\\Providers\\ProviderInterface' => __DIR__ . '/..' . '/eusonlito/laravel-packer/src/Eusonlito/LaravelPacker/Providers/ProviderInterface.php',
         'Faker\\Calculator\\Iban' => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker/Calculator/Iban.php',
         'Faker\\Calculator\\Luhn' => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker/Calculator/Luhn.php',
         'Faker\\DefaultGenerator' => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker/DefaultGenerator.php',
@@ -1462,6 +1490,23 @@ class ComposerStaticInit14cc0743a4b7fb36864230504e5c9526
         'Illuminate\\View\\View' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/View/View.php',
         'Illuminate\\View\\ViewFinderInterface' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/View/ViewFinderInterface.php',
         'Illuminate\\View\\ViewServiceProvider' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/View/ViewServiceProvider.php',
+        'Imagecow\\Crops\\Balanced' => __DIR__ . '/..' . '/imagecow/imagecow/src/Crops/Balanced.php',
+        'Imagecow\\Crops\\CropInterface' => __DIR__ . '/..' . '/imagecow/imagecow/src/Crops/CropInterface.php',
+        'Imagecow\\Crops\\Entropy' => __DIR__ . '/..' . '/imagecow/imagecow/src/Crops/Entropy.php',
+        'Imagecow\\Image' => __DIR__ . '/..' . '/imagecow/imagecow/src/Image.php',
+        'Imagecow\\ImageException' => __DIR__ . '/..' . '/imagecow/imagecow/src/ImageException.php',
+        'Imagecow\\Libs\\AbstractLib' => __DIR__ . '/..' . '/imagecow/imagecow/src/Libs/AbstractLib.php',
+        'Imagecow\\Libs\\Gd' => __DIR__ . '/..' . '/imagecow/imagecow/src/Libs/Gd.php',
+        'Imagecow\\Libs\\Imagick' => __DIR__ . '/..' . '/imagecow/imagecow/src/Libs/Imagick.php',
+        'Imagecow\\Libs\\LibInterface' => __DIR__ . '/..' . '/imagecow/imagecow/src/Libs/LibInterface.php',
+        'Imagecow\\Utils\\Color' => __DIR__ . '/..' . '/imagecow/imagecow/src/Utils/Color.php',
+        'Imagecow\\Utils\\Dimmensions' => __DIR__ . '/..' . '/imagecow/imagecow/src/Utils/Dimmensions.php',
+        'Imagecow\\Utils\\IconExtractor' => __DIR__ . '/..' . '/imagecow/imagecow/src/Utils/IconExtractor.php',
+        'Imagecow\\Utils\\SvgExtractor' => __DIR__ . '/..' . '/imagecow/imagecow/src/Utils/SvgExtractor.php',
+        'JSMin' => __DIR__ . '/..' . '/eusonlito/laravel-packer/src/Eusonlito/LaravelPacker/Processors/JSMin.php',
+        'JSMin_UnterminatedCommentException' => __DIR__ . '/..' . '/eusonlito/laravel-packer/src/Eusonlito/LaravelPacker/Processors/JSMin.php',
+        'JSMin_UnterminatedRegExpException' => __DIR__ . '/..' . '/eusonlito/laravel-packer/src/Eusonlito/LaravelPacker/Processors/JSMin.php',
+        'JSMin_UnterminatedStringException' => __DIR__ . '/..' . '/eusonlito/laravel-packer/src/Eusonlito/LaravelPacker/Processors/JSMin.php',
         'JakubOnderka\\PhpConsoleColor\\ConsoleColor' => __DIR__ . '/..' . '/jakub-onderka/php-console-color/src/JakubOnderka/PhpConsoleColor/ConsoleColor.php',
         'JakubOnderka\\PhpConsoleColor\\InvalidStyleException' => __DIR__ . '/..' . '/jakub-onderka/php-console-color/src/JakubOnderka/PhpConsoleColor/InvalidStyleException.php',
         'JakubOnderka\\PhpConsoleHighlighter\\Highlighter' => __DIR__ . '/..' . '/jakub-onderka/php-console-highlighter/src/JakubOnderka/PhpConsoleHighlighter/Highlighter.php',

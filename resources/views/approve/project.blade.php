@@ -1,10 +1,10 @@
 <?php
 	use iPMS\Project;
-	$prj = Project::where('approved', 0)->get();
+	$prj = Project::where('approved', 0)->count();
 ?>
 
-<h3>미승인 Project ({{ count($prj) }})</h3>
-@if (count($prj))
+<h3>미승인 Project ({{ $prj }})</h3>
+@if ($prj)
 <div id="project_grid" style="width:100%; height:240;"></div>
 <div id="project_grid_info"></div></br>
 <script>
@@ -18,7 +18,7 @@
 	prjGrid.enableAutoWidth(true);
 	prjGrid.enableAutoHeight(true, 250, 250);
 	prjGrid.setEditable(false);
-@if (count($prj) > 5)
+@if ($prj > 5)
 	prjGrid.enablePaging(true, 5, 1, "project_grid_info");
 	prjGrid.setPagingSkin("toolbar");
 @endif

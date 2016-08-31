@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('library')
-<script src="/js/dhtmlx.js"></script>
+{!! Packer::js("/js/dhtmlx.js", "dhx.js") !!}
 <link rel="stylesheet" href="/css/dhtmlx.css">
 @stop
 @section('content')

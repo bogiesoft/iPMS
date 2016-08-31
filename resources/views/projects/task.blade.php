@@ -1,14 +1,13 @@
 @extends('layouts.master')
 
 @section('library')
-<script src="/js/dhtmlxgantt.js"></script>
-<script src="/js/dhtmlxgantt_fullscreen.js"></script>
-<script src="/js/dhtmlxgantt_auto_scheduling.js"></script>
-<script src="/js/dhtmlxgantt_marker.js"></script>
-<script src="/js/dhtmlxgantt_undo.js"></script>
-<script src="/js/dhtmlxgantt_critical_path.js"></script>
+{!! Packer::js(["/js/dhtmlxgantt.js",
+				"/js/dhtmlxgantt_fullscreen.js",
+				"/js/dhtmlxgantt_auto_scheduling.js",
+				"/js/dhtmlxgantt_marker.js",
+				"/js/dhtmlxgantt_undo.js",
+				"/js/dhtmlxgantt_critical_path.js"], "dhtmlxgantt.js") !!}
 <link rel="stylesheet" href="/css/dhtmlxgantt.css">
-<link rel="stylesheet" href="/css/font-awesome.min.css">
 @stop
 
 @section('content')

@@ -7,7 +7,8 @@
     "require": {
         "php": ">=5.5.9",
         "laravel/framework": "5.2.*",
-        "dhtmlx/connector-php": "^3.0"
+        "dhtmlx/connector-php": "^3.0",
+		"eusonlito/laravel-packer": "master-dev"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

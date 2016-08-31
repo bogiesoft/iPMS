@@ -1,10 +1,10 @@
 <?php
 	use iPMS\User;
-	$usr = User::where('group', -1)->get();
+	$usr = User::where('group', -1)->count();
 ?>
 
-<h3>미승인 사용자 ({{ count($usr) }})</h3>
-@if (count($usr))
+<h3>미승인 사용자 ({{ $usr }})</h3>
+@if ($usr)
 <div id="user_grid" style="width:100%; height:100%"></div>
 <div id="user_grid_info"></div>
 <script>
@@ -16,7 +16,7 @@
 	userGrid.setInitWidths("150,150,*,150");
 	userGrid.enableAutoWidth(true);
 	userGrid.enableAutoHeight(true);
-@if (count($usr) > 5)
+@if ($usr > 5)
 	userGrid.enablePaging(true, 5, 1, "user_grid_info");
 	userGrid.setPagingSkin("toolbar");
 @endif

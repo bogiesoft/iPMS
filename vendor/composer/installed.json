@@ -3296,5 +3296,103 @@
             "framework",
             "laravel"
         ]
+    },
+    {
+        "name": "imagecow/imagecow",
+        "version": "v2.1.3",
+        "version_normalized": "2.1.3.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/oscarotero/imagecow.git",
+            "reference": "b99dd22a888e151e4a1f2b0dadd567b995f87647"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/oscarotero/imagecow/zipball/b99dd22a888e151e4a1f2b0dadd567b995f87647",
+            "reference": "b99dd22a888e151e4a1f2b0dadd567b995f87647",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.5"
+        },
+        "time": "2016-05-13 15:52:21",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Imagecow\\": "src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Oscar Otero",
+                "email": "oom@oscarotero.com",
+                "homepage": "http://oscarotero.com",
+                "role": "Developer"
+            }
+        ],
+        "description": "PHP library to manipulate and generate responsive images",
+        "homepage": "https://github.com/oscarotero/imagecow/",
+        "keywords": [
+            "image"
+        ]
+    },
+    {
+        "name": "eusonlito/laravel-packer",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/eusonlito/laravel-Packer.git",
+            "reference": "8cc7c1f0ab19945c2369100b859cfdd6c4e6a1e1"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/eusonlito/laravel-Packer/zipball/8cc7c1f0ab19945c2369100b859cfdd6c4e6a1e1",
+            "reference": "8cc7c1f0ab19945c2369100b859cfdd6c4e6a1e1",
+            "shasum": ""
+        },
+        "require": {
+            "imagecow/imagecow": "2.1.*",
+            "php": ">=5.5"
+        },
+        "require-dev": {
+            "mikey179/vfsstream": "*",
+            "phpunit/phpunit": "*"
+        },
+        "time": "2016-05-13 12:34:05",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Eusonlito\\LaravelPacker\\": "src/Eusonlito/LaravelPacker/"
+            },
+            "classmap": [
+                "src/Eusonlito/LaravelPacker/Processors/"
+            ],
+            "files": [
+                "src/Eusonlito/LaravelPacker/Exceptions.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Lito",
+                "email": "lito@eordes.com"
+            }
+        ],
+        "description": "A package for pack css and javascript files",
+        "keywords": [
+            "laravel",
+            "minify",
+            "packer"
+        ]
     }
 ]

@@ -158,6 +158,7 @@ return [
         iPMS\Providers\EventServiceProvider::class,
         iPMS\Providers\RouteServiceProvider::class,
 
+		Eusonlito\LaravelPacker\PackerServiceProvider::class,
     ],
 
     /*
@@ -204,6 +205,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
+		'Packer' => 'Eusonlito\LaravelPacker\Facade',
     ],
 
 ];

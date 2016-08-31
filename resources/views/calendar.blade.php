@@ -1,12 +1,12 @@
 @extends('layouts.master')
 
 @section('library')
-<script src="/js/dhtmlxscheduler.js"></script>
-<script src="/js/dhtmlxscheduler_year_view.js"></script>
-<script src="/js/dhtmlxscheduler_container_autoresize.js"></script>
-<script src="/js/dhtmlxscheduler_minical.js"></script>
-<script src="/js/dhtmlxscheduler_readonly.js"></script>
-<script src="/js/dhtmlxscheduler_multisource.js"></script>
+{!! Packer::js(["/js/dhtmlxscheduler.js",
+				"/js/dhtmlxscheduler_year_view.js",
+				"/js/dhtmlxscheduler_container_autoresize.js",
+				"/js/dhtmlxscheduler_minical.js",
+				"/js/dhtmlxscheduler_readonly.js",
+				"/js/dhtmlxscheduler_multisource.js"], "dhtmlxscheduler.js") !!}
 <link rel="stylesheet" href="/css/dhtmlxscheduler.css">
 @stop
 
