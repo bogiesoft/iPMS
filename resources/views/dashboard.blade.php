@@ -13,10 +13,14 @@
 ?>
 	<h3>To Do</h3>
 	<div class="well well-sm" style="line-height:1.8em">
-		<a href="/approve/project"><b>미승인 Project</b></a>&nbsp
-		<span class="label label-danger">{{ $prj }}</span></br>
+@if ($usr)
 		<a href="/approve/user"><b>미승인 사용자</b></a>&nbsp
-		<span class="label label-danger">{{ $usr }}</span>
+		<span class="label label-primary">{{ $usr }}</span></br>
+@endif
+@if ($prj)
+		<a href="/approve/project"><b>미승인 Project</b></a>&nbsp
+		<span class="label label-primary">{{ $prj }}</span>
+@endif
 	</div></br>
 	@endminify
 @stop

@@ -7,15 +7,14 @@
 
 @section('content')
 @include('layouts.menubar')
-	@minify('html')
-	<?php
-		use iPMS\User;
-		$usr = User::where('group', -1)->count();
-	?>
-
 	<h1 class="page-header">미승인 사용자</h1>
 
-	@if ($usr)
+<?php
+	use iPMS\User;
+	$usr = User::where('group', -1)->count();
+?>
+@if ($usr)
+	@minify('html')
 	<div id="user_grid" style="width:100%; height:100%"></div>
 	<div id="user_grid_info"></div>
 	@endminify
@@ -65,5 +64,5 @@
 		dp.init(userGrid);
 		dp.setUpdateMode("off");
 	@endminify</script>
-	@endif
+@endif
 @stop

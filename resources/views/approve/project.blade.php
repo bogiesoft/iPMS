@@ -7,15 +7,14 @@
 
 @section('content')
 @include('layouts.menubar')
-	@minify('html')
-	<?php
-		use iPMS\Project;
-		$prj = Project::where('approved', 0)->count();
-	?>
-
 	<h1 class="page-header">미승인 Project</h1>
 
-	@if ($prj)
+<?php
+	use iPMS\Project;
+	$prj = Project::where('approved', 0)->count();
+?>
+@if ($prj)
+	@minify('html')
 	<div id="project_grid" style="width:100%; height:240;"></div>
 	<div id="project_grid_info"></div></br>
 	@endminify
@@ -52,5 +51,5 @@
 		dp.setTransactionMode("POST", true);
 		//dp.setUpdateMode("off");
 	@endminify</script>
-	@endif
+@endif
 @stop
