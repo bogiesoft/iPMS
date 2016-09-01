@@ -1,12 +1,12 @@
 @minify('html')
 @if ( session()->has('info'))
-	<div class="alert alert-info" role-"alert">
+	<div class="alert alert-info" role-"alert"><b>
 		{{ session()->get('info') }}
-	</div>
+	</b></div>
 @endif
 @if ( session()->has('error'))
-	<div class="alert alert-danger" role-"alert">
+	<div class="alert alert-danger" role-"alert"><b>
 		{{ session()->get('error') }}
-	</div>
+	</b></div>
 @endif
 @endminify

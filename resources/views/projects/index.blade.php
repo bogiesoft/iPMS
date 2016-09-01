@@ -7,16 +7,18 @@
 
 @section('content')
 @include('layouts.menubar')
-<h1 class="page-header">Project Status</h1>
+
+@minify('html')
+<h1 class="page-header">Project List</h1>
 
 @if( $project->isEmpty() )
 <h3>There are currently no Projects</h3>
 @else
 
-<h3>새로 등록한 Project</h3>
 <div id="project_grid" style="width:100%; height:240;"></div>
 <div id="project_grid_info"></div></br>
-<script>
+@endminify
+@minify('js')<script>
 	var prjGrid = new dhtmlXGridObject('project_grid');
 	prjGrid.setImagePath("/images/");
 	prjGrid.setHeader("&nbsp;,Title,Product,Plan Start,Plan End,Start,End,Level,Version,Status");
@@ -45,36 +47,6 @@
 	dp.init(prjGrid);
 	dp.setTransactionMode("POST", true);
 	//dp.setUpdateMode("off");
-</script>
+@endminify</script>
 @endif
-
-<h3>새로 등록한 사용자</h3>
-<div id="user_grid" style="width:100%; height:240;"></div></br>
-<script>
-	var userGrid = new dhtmlXGridObject('user_grid');
-//	userGrid.setColumnIds("uid,fullname,email");
-	userGrid.setImagePath("/images/");
-//	userGrid.setStyle("background:#ffffff; color:black; font-weight:bold;");
-	userGrid.setHeader("User ID,Full Name,E-mail");
-	userGrid.setColSorting("str,str,str");
-//	userGrid.setInitWidths("200,250,250");
-//	userGrid.setColAlign("left,left,left");
-//	userGrid.enableAutoWidth(true);
-	userGrid.enableAutoHeight(true, 150);
-//	userGrid.setEditable(false);
-	userGrid.init();
-
-	userGrid.enableAlterCss("grid_odd", "grid_even");
-	userGrid.enableRowsHover(true, "grid_hover");
-	userGrid.load("/grid_/users");
-
-	var dp = new dataProcessor("/grid_/users");
-	dp.init(userGrid);
-//	dp.enableDataNames(true);
-	dp.setTransactionMode("POST", true); // set mode as send-all-by-post
-</script>
-
-{{--
-<a class="btn btn-info" href="{{ route('projects.create') }}">New Project</a>
---}}
 @stop

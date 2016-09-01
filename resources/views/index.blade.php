@@ -11,7 +11,7 @@
 		</div><br/>
 
 		<div class="row" style="height:460px; background-image:url('images/project-management.jpg'); background-repeat:no-repeat">
-			<div class="pull-right" style="width:380px; opacity:0.95">
+			<div class="pull-right" style="width:320px; opacity:0.95">
 				@include('auth.login')
 			</div>
 		</div>

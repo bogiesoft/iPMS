@@ -22,6 +22,7 @@ Route::get('/dashboard', [
 Route::get('/calendar', 'HomeController@calendar');
 Route::get('/statistics', 'HomeController@statistics');
 Route::get('/manage/{item}', 'HomeController@manage');
+Route::get('/approve/{item}', 'HomeController@approve');
 
 Route::get('/auth/register', [
 	'uses' => 'AuthController@getRegister',

@@ -32,4 +32,9 @@ class HomeController extends Controller
 	{
 		return view('manage.'. $item);
 	}
+
+	public function approve($item)
+	{
+		return view('approve.'. $item);
+	}
 }
