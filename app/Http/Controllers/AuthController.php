@@ -35,7 +35,7 @@ class AuthController extends Controller
 		]);
 
 		return redirect()->route('index')
-			->withInfo('Your account has been created and you can now sign in.');
+			->withInfo('계정이 생성 되었습니다. 관리자 승인 후 사용할 수 있습니다.');
 	}
 
 	public function postLogin(Request $request)

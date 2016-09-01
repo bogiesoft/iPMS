@@ -7,61 +7,56 @@
 
 @section('content')
 @include('layouts.menubar')
-	<h1 class="page-header">미승인 사용자</h1>
-
 <?php
 	use iPMS\User;
 	$usr = User::where('group', -1)->count();
 ?>
 @if ($usr)
 	@minify('html')
-	<div id="user_grid" style="width:100%; height:100%"></div>
-	<div id="user_grid_info"></div>
+	<h1 class="page-header">사용자 승인</h1>
+
+	<div style="margin:10px 0">
+		<button class="btn-xs btn-danger" style="float:right" onclick="dp.sendData()"><span class="glyphicon glyphicon-save"></span> Update</button><br/>
+	</div>
+	<div id="grid" style="width:100%; height:100%"></div>
+	<div id="grid_info"></div>
 	@endminify
 
 	@minify('js')<script>
-		var userGrid = new dhtmlXGridObject('user_grid');
-		userGrid.setImagePath("/images/");
-		userGrid.setHeader("User ID,Full Name,E-mail,Group");
-		userGrid.setColSorting("str,str,str,str");
-		userGrid.setColTypes("ed,ed,ed,coro,ed");
-		userGrid.setInitWidths("150,150,*,150");
-		userGrid.enableAutoWidth(true);
-		userGrid.enableAutoHeight(true);
-	@if ($usr > 5)
-		userGrid.enablePaging(true, 5, 1, "user_grid_info");
-		userGrid.setPagingSkin("toolbar");
-	@endif
+		var usrGrid = new dhtmlXGridObject('grid');
+		usrGrid.setImagePath("/images/");
+		usrGrid.setHeader("User ID,Full Name,E-mail,Group");
+		usrGrid.setColSorting("str,str,str,str");
+		usrGrid.setColTypes("ed,ed,ed,coro,ed");
+		usrGrid.setInitWidths("150,150,*,150");
+		usrGrid.enableAutoWidth(true);
+		usrGrid.enableAutoHeight(true);
+		usrGrid.enablePaging(true, 10, 1, "grid_info");
+		usrGrid.setPagingSkin("toolbar");
 
-		var dataReady = false;
-		userGrid.attachEvent("onDataReady", function onDataReady() {
-			userGrid.filterBy(3, "-1");
-			dataReady = true;
+		usrGrid.attachEvent("onDataReady", function onDataReady() {
+			usrGrid.filterBy(3, "-1");
 		});
-		userGrid.attachEvent("onBeforeSelect", function onBeforeSelect(new_row, old_row, new_col) {
+		usrGrid.attachEvent("onBeforeSelect", function onBeforeSelect(new_row, old_row, new_col) {
 			if (3 == new_col) return true;
 			return false;
 		});
-		userGrid.attachEvent("onCellChanged", function onCellChanged(rid, cid, val) {
+		usrGrid.attachEvent("onCellChanged", function onCellChanged(rid, cid, val) {
 			if (cid == 3 && val == "-1")
-				userGrid.setCellTextStyle(rid, cid, "color:red; font-weight:bold");
-			if (dataReady != true || val == "-1") return;
-			dataReady = false;
-			dp.sendData();
-			location.reload();
+				usrGrid.setCellTextStyle(rid, cid, "color:red; font-weight:bold");
 		});
 
-		var combo = userGrid.getCombo(3);
+		var combo = usrGrid.getCombo(3);
 		for (var idx in USER_GROUP)
 			combo.put(idx, USER_GROUP[idx]);
-		userGrid.init();
+		usrGrid.init();
 
-		userGrid.enableAlterCss("grid_odd", "grid_even");
-		userGrid.enableRowsHover(true, "grid_hover");
-		userGrid.load("/grid_/users");
+		usrGrid.enableAlterCss("grid_odd", "grid_even");
+		usrGrid.enableRowsHover(true, "grid_hover");
+		usrGrid.load("/grid_/users");
 
 		var dp = new dataProcessor("/grid_/users");
-		dp.init(userGrid);
+		dp.init(usrGrid);
 		dp.setUpdateMode("off");
 	@endminify</script>
 @endif

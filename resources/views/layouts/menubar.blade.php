@@ -41,5 +41,5 @@
 		</ul>
 	</div>
 </nav>
-<br/>&nbsp
+<br/>&nbsp;
 @endminify

@@ -7,14 +7,17 @@
 
 @section('content')
 @include('layouts.menubar')
-	<h1 class="page-header">미승인 Project</h1>
-
 <?php
 	use iPMS\Project;
 	$prj = Project::where('approved', 0)->count();
 ?>
 @if ($prj)
 	@minify('html')
+	<h1 class="page-header">Project 승인</h1>
+
+	<div style="margin:10px 0">
+		<button class="btn-xs btn-danger" style="float:right" onclick="dp.sendData()"><span class="glyphicon glyphicon-save"></span> Update</button><br/>
+	</div>
 	<div id="project_grid" style="width:100%; height:240;"></div>
 	<div id="project_grid_info"></div></br>
 	@endminify
@@ -30,10 +33,9 @@
 		prjGrid.enableAutoWidth(true);
 		prjGrid.enableAutoHeight(true, 250, 250);
 		prjGrid.setEditable(false);
-	@if ($prj > 5)
 		prjGrid.enablePaging(true, 5, 1, "project_grid_info");
 		prjGrid.setPagingSkin("toolbar");
-	@endif
+
 		var combo = prjGrid.getCombo(7);
 		for (var idx in PROJECT_LEVEL)
 			combo.put(idx, PROJECT_LEVEL[idx]);
@@ -49,7 +51,7 @@
 		var dp = new dataProcessor("/grid_/projects");
 		dp.init(prjGrid);
 		dp.setTransactionMode("POST", true);
-		//dp.setUpdateMode("off");
+		dp.setUpdateMode("off");
 	@endminify</script>
 @endif
 @stop
