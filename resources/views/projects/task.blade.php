@@ -70,7 +70,7 @@
 		height: 0px;
 	}
 	.project-left {
-		left:0px;
+		left: 0px;
 		border-width: 0px 0px  8px 7px;
 		border-top-color: transparent;
 		border-right-color: transparent !important;
@@ -114,6 +114,17 @@
 		border-right: none !important;
 	}
 	.critical_task {background:red; border-color: red}
+	.slack {
+		position: absolute;
+		border-radius: 0;
+		opacity: 0.7;
+		border: none;
+		border-right: 1px solid #b6b6b6;
+		margin-top: 4px;
+		background: #b6b6b6;
+		background: repeating-linear-gradient(
+			45deg, #ffffff, #ffffff 5px, #b6b6b6 5px, #b6b6b6 10px);
+	}
 
 	.weekend {background: #f4f7f4 !important;}
 	.holyday {background: #fff0f0 !important;}
@@ -133,7 +144,8 @@ console.log(dateToStr(dates.start_date) + " - " + dateToStr(dates.end_date));
 	}
 
 	function criticalPath(cb) {
-		gantt.config.highlight_critical_path = cb.checked;
+		gantt.config.highlight_critical_path =
+		gantt.config.show_slack = cb.checked;
 		gantt.render();
 	}
 
@@ -332,6 +344,98 @@ console.log(dateToStr(dates.start_date) + " - " + dateToStr(dates.end_date));
 			if (delTaskParent != gantt.config.root_id)
 				gantt.batchUpdate(checkParents(delTaskParent));
 		});
+	})();
+
+	(function() {	// Show slack
+		gantt.config.show_slack = false;
+		gantt.addTaskLayer(function addSlack(task) {
+			if (!task.slack || !gantt.config.show_slack) return null;
+
+			var state = gantt.getState().drag_mode;
+			if (state == 'resize' || state == 'move') return null;
+
+			var slackStart = new Date(task.end_date);
+			var slackEnd = gantt.calculateEndDate(slackStart, task.slack);
+			var sizes = gantt.getTaskPosition(task, slackStart, slackEnd);
+			var el = document.createElement('div');
+			el.className = 'slack';
+			el.style.left = sizes.left + 'px';
+			el.style.top = sizes.top + 2 +'px';
+			el.style.width = sizes.width + 'px';
+			el.style.height= sizes.height  + 'px';
+			return el;
+		});
+
+		function calculateTaskSlack(taskId ){
+			if (!gantt.isTaskExists(taskId)) return 0;
+			var slack;
+			var task = gantt.getTask(taskId);
+			if (task.$source && task.$source.length)
+				slack = calculateRelationSlack(task);
+			else
+				slack = calculateHierarchySlack(task);
+			return slack;
+		}
+
+		function calculateRelationSlack(task) {
+			var minSlack = 0, slack, links = task.$source;
+			for (var i = 0; i < links.length; i++){
+				slack = calculateLinkSlack(links[i]);
+				if(minSlack > slack || i === 0)	minSlack = slack;
+			}
+			return minSlack;
+		}
+
+		function calculateLinkSlack(linkId){
+			var link = gantt.getLink(linkId);
+			var slack = 0;
+			if (gantt.isTaskExists(link.source) && gantt.isTaskExists(link.target))
+				slack = gantt.getSlack(gantt.getTask(link.source), gantt.getTask(link.target));
+			return slack;
+		}
+
+		function calculateHierarchySlack(task){
+			var slack = 0;
+			if (gantt.isTaskExists(task.parent)) {
+				var parent = gantt.getTask(task.parent);
+				var from = gantt.getSubtaskDates(task.id).end_date || task.end_date;
+				var to = gantt.getSubtaskDates(parent.id).end_date || parent.end_date;
+				slack = Math.max(gantt.calculateDuration(from, to), 0);
+			}
+			return slack;
+		}
+
+		function updateSlack(){
+			var changedTasks = {}, changed = false;
+			gantt.eachTask(function(task){
+				var newSlack = calculateTaskSlack(task.id);
+				if (newSlack != task.slack) {
+					task.slack = calculateTaskSlack(task.id);
+					changedTasks[task.id] = true;
+					changed = true;
+				}
+			});
+
+			if (changed) {
+				gantt.batchUpdate(function() {
+					for (var i in changedTasks)
+						if (changedTasks[i] === true) gantt.updateTask(i);
+				});
+			}
+		}
+
+		gantt.attachEvent("onParse", function() {
+			gantt.eachTask(function(task) {
+				task.slack = calculateTaskSlack(task.id);
+			});
+		});
+
+		// bulk update all tasks slack when anything changes
+		gantt.attachEvent("onAfterTaskAdd", updateSlack);
+		gantt.attachEvent("onAfterTaskDelete", updateSlack);
+		gantt.attachEvent("onAfterLinkAdd", updateSlack);
+		gantt.attachEvent("onAfterLinkDelete", updateSlack);
+		gantt.attachEvent("onAfterTaskUpdate", updateSlack);
 	})();
 
 	gantt.init("gantt");
