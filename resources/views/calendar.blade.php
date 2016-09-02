@@ -92,6 +92,27 @@
 
 	scheduler.attachEvent("onEventLoading", function(event) {
 		if (event.start_date == null || event.end_date == null) return false;
+		if (event.uid == "-1") {
+			var sdate = new Date(event.start_date);
+			sdate.setDate(sdate.getDate() + 1);
+			scheduler.addEvent({
+				start_date: event.start_date,
+				end_date: sdate,
+				text: "START: " + event.text,
+				uid: "-1",
+				readonly: true
+			});
+			var edate = new Date(event.end_date);
+			edate.setDate(edate.getDate() - 1);
+			scheduler.addEvent({
+				start_date: edate,
+				end_date: event.end_date,
+				text: "END: " + event.text,
+				uid: "-1",
+				readonly: true
+			});
+			return false;
+		}
 		if (Number(event.uid) <= 0) event.readonly = true;
 		return true;
 	});

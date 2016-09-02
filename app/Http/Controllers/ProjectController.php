@@ -25,25 +25,28 @@ class ProjectController extends Controller
         $this->validate($request, [
             'title' => 'required|min:3',
             'product' => 'required|min:3',
-            'start_date' => 'required|date',
-            'end_date' => 'required|date',
-            'version' => 'required',
+            'plan_start' => 'required|date',
+            'plan_end' => 'required|date',
 			'status' => 'required',
+			'prj_group' => 'required',
 /**
             'master_id' => 'required',
             'pm_id' => 'required',
-            'status' => 'required',
-            'group' => 'required',
 **/
         ]);
+
+		$request_prj_group = 0;
+		foreach ($request->input('prj_group') as $arr)
+			$request_prj_group |= $arr;
 
         Project::create([
         	'title' => $request->input('title'),
         	'product' => $request->input('product'),
-        	'start_date' => $request->input('start_date'),
-        	'end_date' => $request->input('end_date'),
-        	'version' => $request->input('version'),
+        	'plan_start' => $request->input('plan_start'),
+        	'plan_end' => $request->input('plan_end'),
+        	'version' => 0,
         	'status' => $request->input('status'),
+        	'prj_group' => $request_prj_group,
         	'notes' => $request->input('notes'),
         ]);
 

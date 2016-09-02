@@ -124,6 +124,10 @@
 		background: #b6b6b6;
 		background: repeating-linear-gradient(
 			45deg, #ffffff, #ffffff 5px, #b6b6b6 5px, #b6b6b6 10px);
+		background: -webkit-repeating-linear-gradient(
+			45deg, #ffffff, #ffffff 5px, #b6b6b6 5px, #b6b6b6 10px);
+		background: -moz-repeating-linear-gradient(
+			45deg, #ffffff, #ffffff 5px, #b6b6b6 5px, #b6b6b6 10px);
 	}
 
 	.weekend {background: #f4f7f4 !important;}
