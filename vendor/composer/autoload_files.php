@@ -19,4 +19,5 @@ return array(
     'f0906e6318348a765ffb6eb24e0d0938' => $vendorDir . '/laravel/framework/src/Illuminate/Foundation/helpers.php',
     '58571171fd5812e6e447dce228f52f4d' => $vendorDir . '/laravel/framework/src/Illuminate/Support/helpers.php',
     '75d8f9a6b0c485f32bf49e14dbe518c5' => $vendorDir . '/eusonlito/laravel-packer/src/Eusonlito/LaravelPacker/Exceptions.php',
+    'e617b14322a074392076a2f38eaf6115' => $baseDir . '/app/Helper.php',
 );

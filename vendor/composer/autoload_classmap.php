@@ -2915,6 +2915,7 @@ return array(
     'iPMS\\Resource' => $baseDir . '/app/Resource.php',
     'iPMS\\Schedule' => $baseDir . '/app/Schedule.php',
     'iPMS\\User' => $baseDir . '/app/User.php',
+    'iPMS\\iPMS' => $baseDir . '/app/Helper.php',
     'phpDocumentor\\Reflection\\DocBlock' => $vendorDir . '/phpdocumentor/reflection-docblock/src/DocBlock.php',
     'phpDocumentor\\Reflection\\DocBlockFactory' => $vendorDir . '/phpdocumentor/reflection-docblock/src/DocBlockFactory.php',
     'phpDocumentor\\Reflection\\DocBlockFactoryInterface' => $vendorDir . '/phpdocumentor/reflection-docblock/src/DocBlockFactoryInterface.php',

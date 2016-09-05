@@ -2,10 +2,11 @@ var USER_GROUP = {
 	"-1" : "미승인",
 	"0"  : "Administrator",
 	"1"  : "Manager",
-	"10" : "PMO",
-	"11" : "PM",
-	"12" : "PL",
-	"99" : "Guest"
+	"9"  : "PMO",
+	"10" : "PM",
+	"11" : "PL",
+	"12" : "PE",
+	"20" : "Guest"
 };
 
 var PROJECT_LEVEL = {
@@ -14,7 +15,7 @@ var PROJECT_LEVEL = {
 	"3"  : "PM3",
 	"4"  : "설계변경",
 	"10" : "상품도입",
-	"99" : "기타"
+	"20" : "기타"
 };
 
 var PROJECT_STATUS = {
@@ -56,3 +57,8 @@ var USAGE = {
 	"0.2" : " 20%",
 	"0.1" : " 10%"
 };
+
+$(document).ready(function() {
+	console.log("document.ready");
+	$('[data-toggle="tooltip"]').tooltip();
+});

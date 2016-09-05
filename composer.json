@@ -10,7 +10,7 @@
 		"radic/blade-extensions": "~6.2",
         "matthiasmullie/minify": "^1.3",
         "dhtmlx/connector-php": "^3.0",
-		"eusonlito/laravel-packer": "master-dev",
+		"eusonlito/laravel-packer": "master-dev"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
@@ -23,6 +23,9 @@
         "classmap": [
             "database"
         ],
+		"files": [
+			"app/Helper.php"
+		],
         "psr-4": {
             "iPMS\\": "app/"
         }

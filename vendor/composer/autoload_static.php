@@ -20,6 +20,7 @@ class ComposerStaticInit14cc0743a4b7fb36864230504e5c9526
         'f0906e6318348a765ffb6eb24e0d0938' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/helpers.php',
         '58571171fd5812e6e447dce228f52f4d' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/helpers.php',
         '75d8f9a6b0c485f32bf49e14dbe518c5' => __DIR__ . '/..' . '/eusonlito/laravel-packer/src/Eusonlito/LaravelPacker/Exceptions.php',
+        'e617b14322a074392076a2f38eaf6115' => __DIR__ . '/../..' . '/app/Helper.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -3249,6 +3250,7 @@ class ComposerStaticInit14cc0743a4b7fb36864230504e5c9526
         'iPMS\\Resource' => __DIR__ . '/../..' . '/app/Resource.php',
         'iPMS\\Schedule' => __DIR__ . '/../..' . '/app/Schedule.php',
         'iPMS\\User' => __DIR__ . '/../..' . '/app/User.php',
+        'iPMS\\iPMS' => __DIR__ . '/../..' . '/app/Helper.php',
         'phpDocumentor\\Reflection\\DocBlock' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlock.php',
         'phpDocumentor\\Reflection\\DocBlockFactory' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlockFactory.php',
         'phpDocumentor\\Reflection\\DocBlockFactoryInterface' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlockFactoryInterface.php',

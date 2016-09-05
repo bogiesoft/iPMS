@@ -1,8 +1,9 @@
 @extends('layouts.master')
 
 @section('content')
+@minify('html')
 <h1 class="page-header">
-	<a href={{ route('index') }}>iPMS</a> <span class="small">Register</span>
+	<a href={{ route('index') }}>iPMS</a> <span class="small">User Register</span>
 </h1><br/>
 
 <div class="row">
@@ -53,4 +54,5 @@
 		</form>
 	</div>
 </div>
+@endminify
 @stop

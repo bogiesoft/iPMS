@@ -15,11 +15,11 @@
 	<div class="well well-sm" style="line-height:1.8em">
 @if ($usr && (Auth::user()->group == 0))
 		<a href="/approve/user"><b>미승인 사용자</b></a> &nbsp
-		<span class="label label-primary" style="font-size:.9em">{{ $usr }}</h4></span></br>
+		<span class="label label-warning" style="font-size:.9em">{{ $usr }}</h4></span></br>
 @endif
 @if ($prj)
 		<a href="/approve/project"><b>미승인 Project</b></a> &nbsp
-		<span class="label label-primary" style="font-size:.9em">{{ $prj }}</span>
+		<span class="label label-warning" style="font-size:.9em">{{ $prj }}</span>
 @endif
 	</div></br>
 	@endminify
