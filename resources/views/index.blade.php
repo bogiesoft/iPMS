@@ -20,7 +20,7 @@
 
 @if (Auth::check())
 	{{ Auth::logout() }}
-	location.reload();
+	<script>location.reload();</script>script>
 @endif
 @endminify
 @stop

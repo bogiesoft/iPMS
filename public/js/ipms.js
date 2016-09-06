@@ -59,6 +59,5 @@ var USAGE = {
 };
 
 $(document).ready(function() {
-	console.log("document.ready");
 	$('[data-toggle="tooltip"]').tooltip();
 });

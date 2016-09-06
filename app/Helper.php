@@ -4,19 +4,19 @@ namespace iPMS;
 use Auth;
 
 class iPMS {
-	public static $PROJECT_GROUP1 = [
+	private static $PROJECT_GROUP1 = [
 		0x0001 => "Camera",
 		0x0002 => "Recoder",
 		0x0004 => "Solution",
 		0x0008 => "Product",
 	];
-	public static $PROJECT_GROUP2 = [
+	private static $PROJECT_GROUP2 = [
 		0x1000 => "개발1실",
 		0x2000 => "개발2실",
 	];
-	public static $PROJECT_GROUP;
+	private static $PROJECT_GROUP = null;
 
-	public static $DEVELOP_GROUP = [
+	private static $DEVELOP_GROUP = [
 		0x0001 => "연구1팀",
 		0x0002 => "연구2팀",
 		0x0004 => "연구3팀",
@@ -30,7 +30,7 @@ class iPMS {
 		0x0400 => "연구기술팀",
 	];
 
-	public static $USER_GROUP = [
+	private static $USER_GROUP = [
 		-1 => "미승인",
 		0  => "Administrator",
 		1  => "Manager",
@@ -41,7 +41,7 @@ class iPMS {
 		20 => "Guest",
 	];
 
-	public static $PROJECT_LEVEL = [
+	private static $PROJECT_LEVEL = [
 		1  => "PM1",
 		2  => "PM2",
 		3  => "PM3",
@@ -50,7 +50,7 @@ class iPMS {
 		20 => "기타",
 	];
 
-	public static $PROJECT_STATUS = [
+	private static $PROJECT_STATUS = [
 		-1 => "Template",
 		1  => "검토중",
 		2  => "경영계획",
@@ -62,27 +62,14 @@ class iPMS {
 		99 => "삭제",
 	];
 
-/////////////////////////////////////////////////////////////////////
-
-	private static $PROJECT_WORKFLOW = [
-		// from => user, approver, to
-		0  => [[1, 9, 10], [],      [1]],
-		1  => [[9, 10],    [1],     [2, 3, 21]],
-		2  => [[10],       [1],     [3, 21]],
-		3  => [[10],       [1],     [10, 21]],
-		10 => [[10],       [1],     [11, 21]],
-		11 => [[10],       [1],     [11, 20, 21]],
-	];
-
-	public static function isProjectUser($state)
-	{
-		$usr = self::$PROJECT_WORKFLOW[$state][0];
-		if (count($usr) == 0) return true;
-
-		for ($i = 0; $i < count($usr); $i++)
-			if (Auth::user()->group == $usr[$i]) return true;
-		return false;
+	public static function ProjectGroup($idx) {
+		if (self::$PROJECT_GROUP == null)
+			self::$PROJECT_GROUP = array_merge($this->PROJECT_GROUP1,
+											   $this->PROJECT_GROUP2);
+		return self::$PROJECT_GROUP[$idx];
 	}
+	public static function DevelopGroup($idx) { return self::$DEVELOP_GROUP[$idx]; }
+	public static function UserGroup($idx) { return self::$USER_GROUP[$idx]; }
 
 	public static function checkboxProjectGroup($old=false)
 	{
@@ -105,8 +92,25 @@ class iPMS {
 		}
 	}
 
-	function __construct() {
-		$PROJECT_GROUP = array_merge($this->PROJECT_GROUP1,
-									$this->PROJECT_GROUP2);
+/////////////////////////////////////////////////////////////////////
+
+	private static $PROJECT_WORKFLOW = [
+		// from => user, approver, to
+		0  => [[1, 9, 10], [],      [1]],
+		1  => [[9, 10],    [1],     [2, 3, 21]],
+		2  => [[10],       [1],     [3, 21]],
+		3  => [[10],       [1],     [10, 21]],
+		10 => [[10],       [1],     [11, 21]],
+		11 => [[10],       [1],     [11, 20, 21]],
+	];
+
+	public static function isProjectUser($state)
+	{
+		$usr = self::$PROJECT_WORKFLOW[$state][0];
+		if (count($usr) == 0) return true;
+
+		for ($i = 0; $i < count($usr); $i++)
+			if (Auth::user()->group == $usr[$i]) return true;
+		return false;
 	}
 }

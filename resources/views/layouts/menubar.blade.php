@@ -1,9 +1,10 @@
 @minify('html')
+@if (Auth::check())
 <nav class="navbar navbar-inverse navbar-fixed-top" id="menubar">
 	<div class="container-fluid">
-		<div class="navbar-header">
+		<div class="navbar-header"> {{ Auth::user()->group }}
 			<a class="navbar-brand" data-toggle="tooltip" data-placement="bottom"
-				title={{ iPMS\iPMS::$USER_GROUP[Auth::user()->group] }}><span>
+				title={{ iPMS\iPMS::UserGroup(Auth::user()->group) }}><span>
 				<img src="{{ Auth::user()->getAvatarUrl() }}" height="24" width="24" style="border-radius:25px;" />
 				{{ Auth::user()->fullname }}
 			</span></a>
@@ -45,4 +46,9 @@
 	</div>
 </nav>
 <br/>&nbsp;
+
+@else
+	{{ Auth::logout() }}
+	<script>location.assign("/");</script>
+@endif
 @endminify
