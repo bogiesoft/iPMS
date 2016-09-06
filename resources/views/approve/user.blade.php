@@ -8,9 +8,7 @@
 @section('content')
 	@include('layouts.menubar')
 
-<?php
-	$usr = iPMS\User::where('group', -1)->count();
-?>
+	@php($usr = iPMS\User::where('group', -1)->count())
 	@if ($usr)
 		<h1 class="page-header">사용자 승인</h1>
 

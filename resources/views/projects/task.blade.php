@@ -245,9 +245,8 @@ console.log(dateToStr(dates.start_date) + " - " + dateToStr(dates.end_date));
 	gantt.setWorkTime({day: 0});	// 일요일
 	gantt.setWorkTime({day: 6});	// 토요일
 	var holiday = [
-<?php
-		use iPMS\Schedule;
-		foreach (Schedule::all() as $schd)
+@php
+		foreach (iPMS\Schedule::all() as $schd)
 			if ($schd->uid == '0') {
 				$start = new DateTime($schd->start_date);
 				$end = new DateTime($schd->end_date);
@@ -256,7 +255,7 @@ console.log(dateToStr(dates.start_date) + " - " + dateToStr(dates.end_date));
 				foreach ($range as $date)
 					echo "new Date('". $date->format("Y-m-d") ."'),\n";
 			}
-?>
+@endphp
 	];
 	for (var i = 0; i < holiday.length; i++)
 		gantt.setWorkTime({date: holiday[i], hours: false});

@@ -8,9 +8,7 @@
 @section('content')
 	@include('layouts.menubar')
 
-<?php
-	$prj = iPMS\Project::where('approved', 0)->count();
-?>
+	@php($prj = iPMS\Project::where('approved', 0)->count())
 	@if ($prj)
 		<h1 class="page-header">Project 승인</h1>
 

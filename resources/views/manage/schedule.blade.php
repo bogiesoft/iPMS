@@ -44,11 +44,10 @@
 	//});
 	var combo = schdGrid.getCombo(0);
 	combo.put("0", "전사휴일");
-<?php
-	use iPMS\User;
-	foreach (User::all() as $usr)
+@php
+	foreach (iPMS\User::all() as $usr)
 		echo "combo.put('". $usr->id ."','". $usr->fullname ."');\n";
-?>
+@endphp
 	schdGrid.init();
 
 	schdGrid.enableAlterCss("grid_odd", "grid_even");
