@@ -21,13 +21,13 @@ class CreateProjectsTable extends Migration
 			$table->date('plan_start')->default('');
 			$table->date('plan_end')->default('');
 			$table->integer('level')->default(1);
-			$table->integer('version')->default(1);
-			$table->integer('status')->default(1);
+			$table->integer('version')->default(0);
+			$table->integer('status')->default(0);
 			$table->integer('prev_id')->unsigned()->default(0);
 			$table->integer('master_id')->unsigned()->default(0);
 			$table->integer('pm_id')->unsigned()->default(0);
-			$table->integer('prj_group')->default(0);
-			$table->integer('dev_group')->default(0);
+			$table->string('prj_group')->default('');
+			$table->string('dev_group')->default('');
 			$table->integer('budget')->default(0);
 			$table->integer('approved')->default(0);
 			$table->longText('notes')->nullable();

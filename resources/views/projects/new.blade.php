@@ -61,15 +61,15 @@
 			<div class="form-group{{ $errors->has('version') ? ' has-error' : '' }}">
 				<label for="version" class="control-label col-sm-3">Version</label>
 				<div class="col-sm-9">
-					<input type="number" name="version" class="form-control" id="version" value="1" readonly>
+					<input type="number" name="version" class="form-control" id="version" value="0" readonly>
 				</div>
 			</div>
 
 			<div class="form-group{{ $errors->has('status') ? ' has-error' : '' }}">
 				<label for="status" class="control-label col-sm-3">Status</label>
 				<div class="col-sm-9">
-					<select class="form-control" name="status" id="status" onFocus="this.initialSelect = this.selectedIndex;" onChange="this.selectedIndex = this.initialSelect;" readonly>
-						<option value=1>검토중</option>
+					<select class="form-control" name="status" onFocus="this.initialSelect = this.selectedIndex;" onChange="this.selectedIndex = this.initialSelect;" readonly>
+						<option value=1>신규검토</option>
 					</select>
 				</div>
 				@if ($errors->has('status'))

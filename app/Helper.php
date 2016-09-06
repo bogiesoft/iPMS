@@ -5,29 +5,29 @@ use Auth;
 
 class iPMS {
 	private static $PROJECT_GROUP1 = [
-		0x0001 => "Camera",
-		0x0002 => "Recoder",
-		0x0004 => "Solution",
-		0x0008 => "Product",
+		"Camera",
+		"Recoder",
+		"Solution",
+		"Product",
 	];
 	private static $PROJECT_GROUP2 = [
-		0x1000 => "개발1실",
-		0x2000 => "개발2실",
+		"개발1실",
+		"개발2실",
 	];
 	private static $PROJECT_GROUP = null;
 
 	private static $DEVELOP_GROUP = [
-		0x0001 => "연구1팀",
-		0x0002 => "연구2팀",
-		0x0004 => "연구3팀",
-		0x0008 => "연구4팀",
-		0x0010 => "연구5팀",
-		0x0020 => "연구6팀",
-		0x0040 => "연구7팀",
-		0x0080 => "연구8팀",
-		0x0100 => "기구팀",
-		0x0200 => "디자인팀",
-		0x0400 => "연구기술팀",
+		"연구1팀",
+		"연구2팀",
+		"연구3팀",
+		"연구4팀",
+		"연구5팀",
+		"연구6팀",
+		"연구7팀",
+		"연구8팀",
+		"기구팀",
+		"디자인팀",
+		"연구기술팀",
 	];
 
 	private static $USER_GROUP = [
@@ -52,7 +52,7 @@ class iPMS {
 
 	private static $PROJECT_STATUS = [
 		-1 => "Template",
-		1  => "검토중",
+		1  => "신규검토",
 		2  => "경영계획",
 		3  => "상품승인",
 		10 => "개발계획",
@@ -62,15 +62,18 @@ class iPMS {
 		99 => "삭제",
 	];
 
-	public static function ProjectGroup($idx) {
+	public static function ProjectGroup($idx=null) {
 		if (self::$PROJECT_GROUP == null)
 			self::$PROJECT_GROUP = array_merge($this->PROJECT_GROUP1,
 											   $this->PROJECT_GROUP2);
-		return self::$PROJECT_GROUP[$idx];
+		return ($idx == null) ? self::$PROJECT_GROUP : self::$PROJECT_GROUP[$idx];
 	}
-	public static function DevelopGroup($idx) { return self::$DEVELOP_GROUP[$idx]; }
-	public static function UserGroup($idx) { return self::$USER_GROUP[$idx]; }
+	public static function DevelopGroup($idx=null)
+	{ return ($idx == null) ? self::$DEVELOP_GROUP : self::$DEVELOP_GROUP[$idx]; }
+	public static function UserGroup($idx=null)
+	{ return ($idx == null) ? self::$USER_GROUP : self::$USER_GROUP[$idx]; }
 
+/**
 	public static function checkboxProjectGroup($old=false)
 	{
 		$old_val = 0;
@@ -91,26 +94,23 @@ class iPMS {
 			echo 'value="'. $key .'">'. $val .'</label>';
 		}
 	}
+**/
 
-	public static function selectProjectGroup($old=false)
+	public static function selectProjectGroup($old=[])
 	{
-		$old_val = 0;
-		if ($old)
-			foreach ($old as $arr) $old_val |= $arr;
-
 		echo "<select class='selectpicker' multiple data-width='100%' name='prj_group[]'>";
 		echo "<optgroup label='Product Type'>";
-		foreach (self::$PROJECT_GROUP1 as $key => $val) {
+		foreach (self::$PROJECT_GROUP1 as $val) {
 			echo "<option ";
-			if ($key & $old_val) echo "selected ";
-			echo "value='". $key ."''>". $val ."</option>";
+			if ($old && in_array($val, $old)) echo "selected ";
+			echo ">". $val ."</option>";
 		}
 		echo "</optgroup>";
 		echo "<optgroup label='Development Group'>";
-		foreach (self::$PROJECT_GROUP2 as $key => $val) {
+		foreach (self::$PROJECT_GROUP2 as $val) {
 			echo "<option ";
-			if ($key & $old_val) echo "selected ";
-			echo "value='". $key ."''>". $val ."</option>";
+			if ($old && in_array($val, $old)) echo "selected ";
+			echo ">". $val ."</option>";
 		}
 		echo "</optgroup>";
 		echo "</select>";
