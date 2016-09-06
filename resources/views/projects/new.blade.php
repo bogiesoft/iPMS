@@ -51,7 +51,7 @@
 			<div class="form-group{{ $errors->has('prj_group') ? ' has-error' : '' }}">
 				<label for="prj_group" class="control-label col-sm-3">Project Group</label>
 				<div class="col-sm-9">
-					{{ iPMS\iPMS::checkboxProjectGroup(old('prj_group')) }}
+					{{ iPMS\iPMS::selectProjectGroup(old('prj_group')) }}
 				@if ($errors->has('prj_group'))
 					<span class="help-block">This field is required.</span>
 				@endif

@@ -92,6 +92,30 @@ class iPMS {
 		}
 	}
 
+	public static function selectProjectGroup($old=false)
+	{
+		$old_val = 0;
+		if ($old)
+			foreach ($old as $arr) $old_val |= $arr;
+
+		echo "<select class='selectpicker' multiple data-width='100%' name='prj_group[]'>";
+		echo "<optgroup label='Product Type'>";
+		foreach (self::$PROJECT_GROUP1 as $key => $val) {
+			echo "<option ";
+			if ($key & $old_val) echo "selected ";
+			echo "value='". $key ."''>". $val ."</option>";
+		}
+		echo "</optgroup>";
+		echo "<optgroup label='Development Group'>";
+		foreach (self::$PROJECT_GROUP2 as $key => $val) {
+			echo "<option ";
+			if ($key & $old_val) echo "selected ";
+			echo "value='". $key ."''>". $val ."</option>";
+		}
+		echo "</optgroup>";
+		echo "</select>";
+	}
+
 /////////////////////////////////////////////////////////////////////
 
 	private static $PROJECT_WORKFLOW = [

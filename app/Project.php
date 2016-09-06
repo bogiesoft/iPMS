@@ -16,6 +16,6 @@ class Project extends Model
 	{
 		return "<br/>".
 			$this->version ." - ". $this->status ."<br/>".
-			$this->notes ."<br/>";
+			$this->notes ."<br/><br/>";
 	}
 }
