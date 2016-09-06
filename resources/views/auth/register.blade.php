@@ -1,13 +1,11 @@
 @extends('layouts.master')
 
 @section('content')
-@minify('html')
-<h1 class="page-header">
-	<a href={{ route('index') }}>iPMS</a> <span class="small">User Register</span>
-</h1><br/>
+	<h1 class="page-header">
+		<a href={{ route('index') }}>iPMS</a> <span class="small">User Register</span>
+	</h1><br/>
 
-<div class="row">
-	<div class="col-lg-6">
+	<div class="row"><div class="col-lg-6">
 		<form class="form-horizontal" role="form" method="post" action="{{ route('auth.register') }}">
 			<div class="form-group{{ $errors->has('uid') ? ' has-error' : '' }}">
 				<label for="uid" class="control-label col-sm-3">User ID</label>
@@ -52,7 +50,5 @@
 			</div>
 			<input type="hidden" name="_token" value="{{ csrf_token() }}">
 		</form>
-	</div>
-</div>
-@endminify
-@stop
+	</div></div>
+@endsection

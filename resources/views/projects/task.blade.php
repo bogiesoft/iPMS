@@ -1,33 +1,34 @@
 @extends('layouts.master')
 
 @section('library')
-{!! Packer::js(["/js/dhtmlxgantt.js",
-				"/js/dhtmlxgantt_fullscreen.js",
-				"/js/dhtmlxgantt_auto_scheduling.js",
-				"/js/dhtmlxgantt_marker.js",
-				"/js/dhtmlxgantt_undo.js",
-				"/js/dhtmlxgantt_critical_path.js"], "dhtmlxgantt.js") !!}
-<link rel="stylesheet" href="/css/dhtmlxgantt.css">
-@stop
+	{!! Packer::js(["/js/dhtmlxgantt.js",
+					"/js/dhtmlxgantt_fullscreen.js",
+					"/js/dhtmlxgantt_auto_scheduling.js",
+					"/js/dhtmlxgantt_marker.js",
+					"/js/dhtmlxgantt_undo.js",
+					"/js/dhtmlxgantt_critical_path.js"], "dhtmlxgantt.js") !!}
+	<link rel="stylesheet" href="/css/dhtmlxgantt.css">
+@endsection
 
 @section('content')
-@include('layouts.menubar')
+	@include('layouts.menubar')
 
-@minify('html')
-<h1 class="page-header">Project Task</h1>
+	<h1 class="page-header">Project Task</h1>
 
-<div style="margin:10px 0px">
-	<label class="radio-inline"><input type="radio" name="scale" onclick="setScale('day')" checked>Day</label>
-	<label class="radio-inline"><input type="radio" name="scale" onclick="setScale('month')">Month</label>
-	<label class="radio-inline"><input type="radio" name="scale" onclick="setScale('year')">Year</label>
-	<label class="checkbox-inline" style="margin-left:80px"><input type="checkbox" onchange="criticalPath(this)">Critical Path</label>
-	<button class="btn-xs fa fa-undo" style="margin-left:40px" onclick="gantt.undo()"> Undo</button>
-	<button class="btn-xs fa fa-repeat" onclick="gantt.redo()"> Redo</button>
-	<button class="btn-xs btn-danger" style="float:right" onclick="dp.sendData()"><span class="glyphicon glyphicon-save"></span> Update</button>
-</div>
-<div id="gantt" style="width:100%; height:450px"></div>
-@endminify
-@minify('css')<style>
+	<div style="margin:10px 0px">
+		<label class="radio-inline"><input type="radio" name="scale" onclick="setScale('day')" checked>Day</label>
+		<label class="radio-inline"><input type="radio" name="scale" onclick="setScale('month')">Month</label>
+		<label class="radio-inline"><input type="radio" name="scale" onclick="setScale('year')">Year</label>
+		<label class="checkbox-inline" style="margin-left:80px"><input type="checkbox" onchange="criticalPath(this)">Critical Path</label>
+		<button class="btn-xs fa fa-undo" style="margin-left:40px" onclick="gantt.undo()"> Undo</button>
+		<button class="btn-xs fa fa-repeat" onclick="gantt.redo()"> Redo</button>
+		<button class="btn-xs btn-danger" style="float:right" onclick="dp.sendData()"><span class="glyphicon glyphicon-save"></span> Update</button>
+	</div>
+	<div id="gantt" style="width:100%; height:450px"></div>
+@endsection
+
+@section('css')
+<style>
 	.gantt-fullscreen{
 		position: absolute;
 		bottom: 20px;
@@ -133,8 +134,11 @@
 	.weekend {background: #f4f7f4 !important;}
 	.holyday {background: #fff0f0 !important;}
 	.gantt_selected .weekend {background:#FFF3A1 !important;}
-@endminify</style>
-@minify('js')<script>
+</style>
+@endsection
+
+@section('js')
+<script>
 	function update() {
 		dp.sendData();
 var dates = gantt.getSubtaskDates(),
@@ -447,5 +451,5 @@ console.log(dateToStr(dates.start_date) + " - " + dateToStr(dates.end_date));
 	var dp = new gantt.dataProcessor("/gantt_/1");
 	dp.init(gantt);
 	dp.setUpdateMode("off");
-@endminify</script>
-@stop
+</script>
+@endsection

@@ -1,5 +1,3 @@
-@minify('html')
-@if (Auth::check())
 <nav class="navbar navbar-inverse navbar-fixed-top" id="menubar">
 	<div class="container-fluid">
 		<div class="navbar-header"> {{ Auth::user()->group }}
@@ -46,9 +44,3 @@
 	</div>
 </nav>
 <br/>&nbsp;
-
-@else
-	{{ Auth::logout() }}
-	<script>location.assign("/");</script>
-@endif
-@endminify

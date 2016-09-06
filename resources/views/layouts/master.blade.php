@@ -19,7 +19,21 @@
 </head>
 @endminify
 
-<body><div class="container-fluid">
-	@include('layouts.alerts')
-	@yield('content')
-</div></body></html>
+@if (Auth::check())
+	@minify('html')
+		<body>
+			<div class="container-fluid"> @yield('content') </div>
+		</body></html>
+	@endminify
+
+	@minify('css')
+		@yield('css')
+	@endminify
+
+	@minify('js')
+		@yield('js')
+	@endminify
+
+@else
+	{{ Auth::logout() }} <script>location.assign("/");</script>
+@endif

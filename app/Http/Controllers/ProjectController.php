@@ -29,15 +29,7 @@ class ProjectController extends Controller
             'plan_end' => 'required|date',
 			'status' => 'required',
 			'prj_group' => 'required',
-/**
-            'master_id' => 'required',
-            'pm_id' => 'required',
-**/
         ]);
-
-		$request_prj_group = 0;
-		foreach ($request->input('prj_group') as $arr)
-			$request_prj_group |= $arr;
 
         Project::create([
         	'title' => $request->input('title'),
@@ -46,7 +38,7 @@ class ProjectController extends Controller
         	'plan_end' => $request->input('plan_end'),
         	'version' => 0,
         	'status' => $request->input('status'),
-        	'prj_group' => $request_prj_group,
+        	'prj_group' => implode(',', $request->input('prj_group')),
         	'notes' => $request->input('notes'),
         ]);
 

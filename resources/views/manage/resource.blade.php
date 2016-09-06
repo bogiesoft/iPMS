@@ -1,21 +1,24 @@
 @extends('layouts.master')
 
 @section('library')
-{!! Packer::js("/js/dhtmlx.js", "dhtmlx.js") !!}
-<link rel="stylesheet" href="/css/dhtmlx.css">
-@stop
+	{!! Packer::js("/js/dhtmlx.js", "dhtmlx.js") !!}
+	<link rel="stylesheet" href="/css/dhtmlx.css">
+@endsection
 
 @section('content')
-@include('layouts.menubar')
-<h1 class="page-header">자원 관리</h1>
+	@include('layouts.menubar')
+	<h1 class="page-header">자원 관리</h1>
 
-<div style="margin:10px 0">
-	<button class="btn-xs" style="width:78px" onclick="addRow()"><span class="glyphicon glyphicon-plus"></span> Add</button>
-	<button class="btn-xs" style="width:78px" onclick="removeRow()"><span class="glyphicon glyphicon-minus"></span> Remove</button>
-	<button class="btn-xs btn-danger" style="float:right" onclick="dp.sendData()"><span class="glyphicon glyphicon-save"></span> Update</button>
-</div>
-<div id="grid" style="width:100%; height:100%"></div>
-<div id="grid_info"></div></br>
+	<div style="margin:10px 0">
+		<button class="btn-xs" style="width:78px" onclick="addRow()"><span class="glyphicon glyphicon-plus"></span> Add</button>
+		<button class="btn-xs" style="width:78px" onclick="removeRow()"><span class="glyphicon glyphicon-minus"></span> Remove</button>
+		<button class="btn-xs btn-danger" style="float:right" onclick="dp.sendData()"><span class="glyphicon glyphicon-save"></span> Update</button>
+	</div>
+	<div id="grid" style="width:100%; height:100%"></div>
+	<div id="grid_info"></div></br>
+@endsection
+
+@section('js')
 <script>
 	function addRow() {
 		resGrid.addRow(resGrid.uid(), ["", "", "0", "0", "0", ""]);
@@ -59,4 +62,4 @@
 	dp.init(resGrid);
 	dp.setUpdateMode("off");
 </script>
-@stop
+@endsection

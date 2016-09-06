@@ -1,4 +1,3 @@
-@minify('html')
 @if ( session()->has('info'))
 	<div class="alert alert-info" role-"alert"><b>
 		{{ session()->get('info') }}
@@ -9,4 +8,3 @@
 		{{ session()->get('error') }}
 	</b></div>
 @endif
-@endminify

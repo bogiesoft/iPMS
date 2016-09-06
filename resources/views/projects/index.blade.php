@@ -1,24 +1,25 @@
 @extends('layouts.master')
 
 @section('library')
-{!! Packer::js("/js/dhtmlx.js", "dhtmlx.js") !!}
-<link rel="stylesheet" href="/css/dhtmlx.css">
-@stop
+	{!! Packer::js("/js/dhtmlx.js", "dhtmlx.js") !!}
+	<link rel="stylesheet" href="/css/dhtmlx.css">
+@endsection
 
 @section('content')
-@include('layouts.menubar')
+	@include('layouts.menubar')
 
-@minify('html')
-<h1 class="page-header">Project List</h1>
+	<h1 class="page-header">Project List</h1>
+	@if( $project->isEmpty() )
+		<h3>There are currently no Projects</h3>
 
-@if( $project->isEmpty() )
-<h3>There are currently no Projects</h3>
-@else
+	@else
+		<div id="project_grid" style="width:100%; height:240;"></div>
+		<div id="project_grid_info"></div></br>
+	@endif
+@endsection
 
-<div id="project_grid" style="width:100%; height:240;"></div>
-<div id="project_grid_info"></div></br>
-@endminify
-@minify('js')<script>
+@section('js')
+<script>
 	var prjGrid = new dhtmlXGridObject('project_grid');
 	prjGrid.setImagePath("/images/");
 	prjGrid.setHeader("&nbsp;,Title,Product,Plan Start,Plan End,Start,End,Level,Version,Status");
@@ -47,6 +48,5 @@
 	dp.init(prjGrid);
 	dp.setTransactionMode("POST", true);
 	//dp.setUpdateMode("off");
-@endminify</script>
-@endif
-@stop
+</script>
+@endsection

@@ -1,40 +1,41 @@
 @extends('layouts.master')
 
 @section('library')
-{!! Packer::js(["/js/dhtmlxscheduler.js",
-				"/js/dhtmlxscheduler_year_view.js",
-				"/js/dhtmlxscheduler_container_autoresize.js",
-				"/js/dhtmlxscheduler_minical.js",
-				"/js/dhtmlxscheduler_readonly.js",
-				"/js/dhtmlxscheduler_multisource.js"], "dhtmlxscheduler.js") !!}
-<link rel="stylesheet" href="/css/dhtmlxscheduler.css">
-@stop
+	{!! Packer::js(["/js/dhtmlxscheduler.js",
+					"/js/dhtmlxscheduler_year_view.js",
+					"/js/dhtmlxscheduler_container_autoresize.js",
+					"/js/dhtmlxscheduler_minical.js",
+					"/js/dhtmlxscheduler_readonly.js",
+					"/js/dhtmlxscheduler_multisource.js"], "dhtmlxscheduler.js") !!}
+	<link rel="stylesheet" href="/css/dhtmlxscheduler.css">
+@endsection
 
 @section('content')
-@include('layouts.menubar')
+	@include('layouts.menubar')
 
-@minify('html')
-<h1 class="page-header">Project Calendar</h1>
+	<h1 class="page-header">Project Calendar</h1>
 
-<div id="scheduler" class="dhx_cal_container" style="width:100%; height:100%">
-	<div class="dhx_cal_navline">
-		<div class="dhx_cal_prev_button">&nbsp;</div>
-		<div class="dhx_cal_next_button">&nbsp;</div>
-		<div class="dhx_cal_today_button"></div>
-		<div class="dhx_cal_date"></div>
-		<div class="dhx_cal_tab" name="day_tab"></div>
-		<div class="dhx_cal_tab" name="week_tab"></div>
-		<div class="dhx_cal_tab" name="month_tab""></div>
-		<div class="dhx_cal_tab" name="year_tab""></div>
+	<div id="scheduler" class="dhx_cal_container" style="width:100%; height:100%">
+		<div class="dhx_cal_navline">
+			<div class="dhx_cal_prev_button">&nbsp;</div>
+			<div class="dhx_cal_next_button">&nbsp;</div>
+			<div class="dhx_cal_today_button"></div>
+			<div class="dhx_cal_date"></div>
+			<div class="dhx_cal_tab" name="day_tab"></div>
+			<div class="dhx_cal_tab" name="week_tab"></div>
+			<div class="dhx_cal_tab" name="month_tab""></div>
+			<div class="dhx_cal_tab" name="year_tab""></div>
+		</div>
+		<div class="dhx_cal_header"></div>
+		<div class="dhx_cal_data"></div>
 	</div>
-	<div class="dhx_cal_header"></div>
-	<div class="dhx_cal_data"></div>
-</div>
-<div style="margin-top:10px">
-	<button class="btn-xs btn-danger" style="float:right" onclick="dp.sendData()"><span class="glyphicon glyphicon-save"></span> Update</button>
-</div>
-@endminify
-@minify('css')<style>
+	<div style="margin-top:10px">
+		<button class="btn-xs btn-danger" style="float:right" onclick="dp.sendData()"><span class="glyphicon glyphicon-save"></span> Update</button>
+	</div>
+@endsection
+
+@section('css')
+<style>
 	.weekend .dhx_month_body {background: #f4f7f4 !important;}
 	.weekend .dhx_month_head {color:red; background: #f4f7f4 !important;}
 	.dhx_cal_event.event_holiday div,
@@ -43,8 +44,11 @@
 	.dhx_cal_event.event_project div,
 	.dhx_cal_event_line.event_project {background:blue !important}
 	.dhx_cal_event_clear.event_project {color:blue !important}
-@endminify</style>
-@minify('js')<script>
+</style>
+@endsection
+
+@section('js')
+<script>
 	scheduler.config.xml_date = "%Y-%m-%d %H:%i";
 	scheduler.config.api_date = "%Y-%m-%d %H:%i";
 	scheduler.config.default_date = "%Y.%m.%d";
@@ -127,5 +131,5 @@
 	var dp = new dataProcessor("/schedule_/1");
 	dp.init(scheduler);
 	dp.setUpdateMode("off");
-@endminify</script>
-@stop
+</script>
+@endsection
