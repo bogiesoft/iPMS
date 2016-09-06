@@ -9,8 +9,10 @@
 
 	{!! Packer::js(["/js/jquery-3.1.0.min.js",
 					"/js/bootstrap.min.js",
+					"/js/bootstrap-select.min.js",
 					"/js/ipms.js"], "master.js") !!}
 	{!! Packer::css(["/css/bootstrap.min.css",
+					"/css/bootstrap-select.min.css",
 					"/css/font-awesome.min.css",
 					"/css/ipms.css"], "master.css") !!}
 	@yield('library')
