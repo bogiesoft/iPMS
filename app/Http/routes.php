@@ -13,7 +13,8 @@
 
 Route::get('/', [
 	'uses' => 'HomeController@index',
-	'as'   => 'index'
+	'as'   => 'index',
+	'middleware' => ['guest']
 ]);
 Route::get('/dashboard', [
 	'uses' => 'HomeController@dashboard',

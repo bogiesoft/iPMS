@@ -10,12 +10,12 @@ class AuthController extends Controller
 {
 	public function getRegister()
 	{
-		return view('auth.register');
+		return view('auth.register')->with('useGuest', true);
 	}
 
 	public function getLogin()
 	{
-		return view('auth.login');
+		return redirect()->route('index');
 	}
 
 	public function postRegister(Request $request)

@@ -1,5 +1,5 @@
-@if (! Auth::check())
-	{{ Auth::logout() }} <script>location.assign("/");</script>
+@if (!isset($useGuest) && !Auth::check())
+	{{ Auth::logout() }} <script>//location.assign("/");</script>
 @endif
 
 @minify('html')
