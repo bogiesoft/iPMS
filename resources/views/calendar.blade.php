@@ -11,10 +11,10 @@
 @endsection
 
 @section('content')
+@if (Auth::check())
 	@include('layouts.menubar')
 
 	<h1 class="page-header">Project Calendar</h1>
-
 	<div id="scheduler" class="dhx_cal_container" style="width:100%; height:100%">
 		<div class="dhx_cal_navline">
 			<div class="dhx_cal_prev_button">&nbsp;</div>
@@ -32,6 +32,7 @@
 	<div style="margin-top:10px">
 		<button class="btn-xs btn-danger" style="float:right" onclick="dp.sendData()"><span class="glyphicon glyphicon-save"></span> Update</button>
 	</div>
+@endif
 @endsection
 
 @section('css')
@@ -81,8 +82,9 @@
 
 	scheduler.filter_month = scheduler.filter_week =
 	scheduler.filter_day = scheduler.filter_year = function(id, event) {
-		if ({{ Auth::user()->group }} == 0 ||
-			Number(event.uid) <= 0 || event.uid == {{ Auth::user()->id }}) return true;
+		if ({{ iPMS\iPMS::AuthUser("group") }} == 0 ||
+			Number(event.uid) <= 0 ||
+			event.uid == {{ iPMS\iPMS::AuthUser("id") }}) return true;
 		return false;
 	}
 	scheduler.attachEvent("onEventSave", function(id, event, is_new) {
@@ -90,7 +92,7 @@
 			alert ("스케쥴 내용이 비어 있습니다.")
 			return false;
 		}
-		if (is_new) event.uid = {{ Auth::user()->id }};
+		if (is_new) event.uid = {{ iPMS\iPMS::AuthUser("id") }};
 		return true;
 	});
 

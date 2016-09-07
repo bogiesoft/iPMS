@@ -1,10 +1,10 @@
 <nav class="navbar navbar-inverse navbar-fixed-top" id="menubar">
 	<div class="container-fluid">
-		<div class="navbar-header"> {{ Auth::user()->group }}
+		<div class="navbar-header"> {{ iPMS\iPMS::AuthUser("group") }}
 			<a class="navbar-brand" data-toggle="tooltip" data-placement="bottom"
-				title={{ iPMS\iPMS::UserGroup(Auth::user()->group) }}><span>
-				<img src="{{ Auth::user()->getAvatarUrl() }}" height="24" width="24" style="border-radius:25px;" />
-				{{ Auth::user()->fullname }}
+				title={{ iPMS\iPMS::UserGroup(iPMS\iPMS::AuthUser("group")) }}><span>
+				<img src="{{ iPMS\iPMS::AuthUser("getAvatarUrl()") }}" height="24" width="24" style="border-radius:25px;" />
+				{{ iPMS\iPMS::AuthUser("fullname") }}
 			</span></a>
 		</div>
 		<ul class="nav navbar-nav">
@@ -27,7 +27,7 @@
 			<li><a href="/statistics">
 				<span class="glyphicon glyphicon-equalizer"></span> Statistics</a></li>
 
-@if (Auth::user()->group == 0)
+@if (iPMS\iPMS::AuthUser("group") == 0)
 			<li class="dropdown">
 				<a class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-calendar"></span> Manage <span class="caret"></span></a>
 				<ul class="dropdown-menu">

@@ -66,12 +66,12 @@ class iPMS {
 		if (self::$PROJECT_GROUP == null)
 			self::$PROJECT_GROUP = array_merge($this->PROJECT_GROUP1,
 											   $this->PROJECT_GROUP2);
-		return ($idx == null) ? self::$PROJECT_GROUP : self::$PROJECT_GROUP[$idx];
+		return $idx ? self::$PROJECT_GROUP[$idx] : null;
 	}
 	public static function DevelopGroup($idx=null)
-	{ return ($idx == null) ? self::$DEVELOP_GROUP : self::$DEVELOP_GROUP[$idx]; }
+	{ return $idx ? self::$DEVELOP_GROUP[$idx] : null; }
 	public static function UserGroup($idx=null)
-	{ return ($idx == null) ? self::$USER_GROUP : self::$USER_GROUP[$idx]; }
+	{ return $idx ? self::$USER_GROUP[$idx] : null; }
 
 /**
 	public static function checkboxProjectGroup($old=false)
@@ -130,11 +130,22 @@ class iPMS {
 
 	public static function isProjectUser($state)
 	{
+		if (! Auth::user()) return false;
+
 		$usr = self::$PROJECT_WORKFLOW[$state][0];
 		if (count($usr) == 0) return true;
 
 		for ($i = 0; $i < count($usr); $i++)
 			if (Auth::user()->group == $usr[$i]) return true;
 		return false;
+	}
+
+/////////////////////////////////////////////////////////////////////
+
+	public static function AuthUser($attr)
+	{
+		$ret = null;
+		if (Auth::user()) eval("\$ret = Auth::user()->". $attr .";");
+		return $ret;
 	}
 }
