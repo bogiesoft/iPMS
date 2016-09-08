@@ -1561,6 +1561,7 @@ class ComposerStaticInit14cc0743a4b7fb36864230504e5c9526
         'Imagecow\\Crops\\Balanced' => __DIR__ . '/..' . '/imagecow/imagecow/src/Crops/Balanced.php',
         'Imagecow\\Crops\\CropInterface' => __DIR__ . '/..' . '/imagecow/imagecow/src/Crops/CropInterface.php',
         'Imagecow\\Crops\\Entropy' => __DIR__ . '/..' . '/imagecow/imagecow/src/Crops/Entropy.php',
+        'Imagecow\\Crops\\Face' => __DIR__ . '/..' . '/imagecow/imagecow/src/Crops/Face.php',
         'Imagecow\\Image' => __DIR__ . '/..' . '/imagecow/imagecow/src/Image.php',
         'Imagecow\\ImageException' => __DIR__ . '/..' . '/imagecow/imagecow/src/ImageException.php',
         'Imagecow\\Libs\\AbstractLib' => __DIR__ . '/..' . '/imagecow/imagecow/src/Libs/AbstractLib.php',

@@ -11,6 +11,7 @@ class Image
 
     const CROP_ENTROPY = 'Entropy';
     const CROP_BALANCED = 'Balanced';
+    const CROP_FACE = 'Face';
 
     protected $image;
     protected $filename;
@@ -295,7 +296,7 @@ class Image
         list($width, $height) = Dimmensions::getResizeDimmensions($imageWidth, $imageHeight, $width, $height, $cover);
         list($width, $height) = $this->calculateClientSize($width, $height);
 
-        if ($width >= $imageWidth) {
+        if ($width >= $imageWidth && !$cover) {
             return $this;
         }
 
@@ -324,8 +325,11 @@ class Image
 
         list($width, $height) = $this->calculateClientSize($width, $height);
 
-        if (($x === self::CROP_BALANCED) || ($x === self::CROP_ENTROPY)) {
-            list($x, $y) = $this->image->getCropOffsets($width, $height, $x);
+        switch ($x) {
+            case self::CROP_BALANCED:
+            case self::CROP_ENTROPY:
+            case self::CROP_FACE:
+                list($x, $y) = $this->image->getCropOffsets($width, $height, $x);
         }
 
         $x = Dimmensions::getPositionValue('x', $x, $width, $imageWidth);
@@ -421,7 +425,7 @@ class Image
      * Add opacity to image from 0 (transparent) to 100 (opaque).
      *
      * @param int $opacity Opacity value
-     * 
+     *
      * @return self
      */
     public function opacity($opacity)
@@ -483,6 +487,10 @@ class Image
 
                         case 'CROP_BALANCED':
                             $operation['params'][2] = self::CROP_BALANCED;
+                            break;
+
+                        case 'CROP_FACE':
+                            $operation['params'][2] = self::CROP_FACE;
                             break;
                     }
 

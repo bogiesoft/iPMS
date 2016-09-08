@@ -306,7 +306,7 @@ Now, in the server side:
 use Imagecow\Image;
 
 $file = __DIR__.'/'.$_GET['file'];
-$transform = isset($_GET['transform']) ? null;
+$transform = isset($_GET['transform']) ? $_GET['transform'] : null;
 
 //Create the image instance
 $image = Image::fromFile($file);
@@ -360,9 +360,8 @@ $image->resize(200)->format('jpg')->save('image.jpg');
 ### Maintainers:
 
 * @oscarotero (creator)
-* @eusonlito (contributor)
-* @AndreasHeiberg (contributor)
-* @kevbaldwyn (contributor)
+* @eusonlito (collaborator)
+* [and more...](https://github.com/oscarotero/imagecow/graphs/contributors)
 
 ### Thanks to
 

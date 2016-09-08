@@ -1226,6 +1226,7 @@ return array(
     'Imagecow\\Crops\\Balanced' => $vendorDir . '/imagecow/imagecow/src/Crops/Balanced.php',
     'Imagecow\\Crops\\CropInterface' => $vendorDir . '/imagecow/imagecow/src/Crops/CropInterface.php',
     'Imagecow\\Crops\\Entropy' => $vendorDir . '/imagecow/imagecow/src/Crops/Entropy.php',
+    'Imagecow\\Crops\\Face' => $vendorDir . '/imagecow/imagecow/src/Crops/Face.php',
     'Imagecow\\Image' => $vendorDir . '/imagecow/imagecow/src/Image.php',
     'Imagecow\\ImageException' => $vendorDir . '/imagecow/imagecow/src/ImageException.php',
     'Imagecow\\Libs\\AbstractLib' => $vendorDir . '/imagecow/imagecow/src/Libs/AbstractLib.php',
