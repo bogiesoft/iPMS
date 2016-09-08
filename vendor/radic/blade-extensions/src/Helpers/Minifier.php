@@ -79,7 +79,7 @@ class Minifier
     protected function shouldMinify($value)
     {
         if (preg_match('/skipmin/', $value)
-            || preg_match('/<(pre|textarea)/', $value)
+//          || preg_match('/<(pre|textarea)/', $value)
             || preg_match('/<script[^\??>]*>[^<\/script>]/', $value)
             || preg_match('/value=("|\')(.*)([ ]{2,})(.*)("|\')/', $value)
         ) {

@@ -78,9 +78,7 @@
 			<div class="form-group{{ $errors->has('notes') ? ' has-error' : '' }}">
 				<label for="notes" class="control-label col-sm-3">Notes</label>
 				<div class="col-sm-9">
-					<textarea name="notes" class="form-control" id="notes" rows="8">
-					{{ old('notes') ?: '' }}
-					</textarea>
+					<textarea name="notes" class="form-control" id="notes" rows="8">{{ old('notes') ?: '' }}</textarea>
 				</div>
 			</div>
 
