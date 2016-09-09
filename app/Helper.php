@@ -4,19 +4,19 @@ namespace iPMS;
 use Auth;
 
 class iPMS {
-	private static $PROJECT_GROUP1 = [
+	public static $PROJECT_GROUP1 = [
 		"Camera",
 		"Recoder",
 		"Solution",
 		"Product",
 	];
-	private static $PROJECT_GROUP2 = [
+	public static $PROJECT_GROUP2 = [
 		"개발1실",
 		"개발2실",
 	];
-	private static $PROJECT_GROUP = null;
+	public static $PROJECT_GROUP = null;
 
-	private static $DEVELOP_GROUP = [
+	public static $DEVELOP_GROUP = [
 		"연구1팀",
 		"연구2팀",
 		"연구3팀",
@@ -30,7 +30,7 @@ class iPMS {
 		"연구기술팀",
 	];
 
-	private static $USER_GROUP = [
+	public static $USER_GROUP = [
 		-1 => "미승인",
 		0  => "Administrator",
 		1  => "Manager",
@@ -41,7 +41,7 @@ class iPMS {
 		20 => "Guest",
 	];
 
-	private static $PROJECT_LEVEL = [
+	public static $PROJECT_LEVEL = [
 		1  => "PM1",
 		2  => "PM2",
 		3  => "PM3",
@@ -50,7 +50,7 @@ class iPMS {
 		20 => "기타",
 	];
 
-	private static $PROJECT_STATUS = [
+	public static $PROJECT_STATUS = [
 		-1 => "Template",
 		1  => "신규검토",
 		2  => "경영계획",
@@ -138,6 +138,28 @@ class iPMS {
 		for ($i = 0; $i < count($usr); $i++)
 			if (Auth::user()->group == $usr[$i]) return true;
 		return false;
+	}
+
+	public static function countProjectGroup()
+	{
+		foreach (self::$PROJECT_GROUP1 as $arr) {
+			echo "&nbsp; &nbsp; &nbsp; &nbsp". $arr
+			." <span class='label label-primary'>".
+			0
+			."</span>";
+		}
+	}
+
+	public static function dataProjectDelay()
+	{
+		echo "[";
+		foreach (self::$PROJECT_GROUP1 as $arr) {
+			$d1 = 23;
+			$d2 = 30;
+			echo '{day1:"'. $d1 .'", day2:"'. $d2 .'", day:"'.
+				  ($d1+$d2) .'", group:"'. $arr .'"},';
+		}
+		echo "]";
 	}
 
 /////////////////////////////////////////////////////////////////////
