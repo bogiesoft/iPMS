@@ -62,6 +62,21 @@ class iPMS {
 		99 => "삭제",
 	];
 
+	public static $RESOURCE_TYPE = [
+		0 => "작업",
+		1 => "재료",
+		2 => "투자",
+	];
+
+	public static $RESOURCE_UNIT = [
+		0 => "",
+		1 => "/시간",
+		2 => "/일",
+		3 => "/주",
+		4 => "/월",
+		5 => "/년",
+	];
+
 	public static function ProjectGroup($idx=null) {
 		if (self::$PROJECT_GROUP == null)
 			self::$PROJECT_GROUP = array_merge($this->PROJECT_GROUP1,

@@ -46,12 +46,9 @@
 	});
 
 	var combo = resGrid.getCombo(2);
-	for (var idx in RESOURCE_TYPE)
-		combo.put(idx, RESOURCE_TYPE[idx]);
+	{{ iPMS::printForEach("RESOURCE_TYPE", "combo.put('\$key', '\$val')") }}
 	combo = resGrid.getCombo(4);
-	for (var idx in RESOURCE_UNIT)
-		combo.put(idx, RESOURCE_UNIT[idx]);
-
+	{{ iPMS::printForEach("RESOURCE_UNIT", "combo.put('\$key', '\$val')") }}
 	resGrid.init();
 
 	resGrid.enableAlterCss("grid_odd", "grid_even");

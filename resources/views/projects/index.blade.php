@@ -39,7 +39,8 @@
 	prjGrid.enableAutoHeight(true, 250, 250);
 	prjGrid.enablePaging(true, 10, 1, "project_grid_info");
 	prjGrid.setPagingSkin("toolbar");
-//	prjGrid.setEditable(false);
+	prjGrid.setEditable(false);
+
 	var combo = prjGrid.getCombo(7);
 	{{ iPMS::printForEach("PROJECT_LEVEL", "combo.put('\$key', '\$val')") }}
 	combo = prjGrid.getCombo(9);

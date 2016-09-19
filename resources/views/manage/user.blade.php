@@ -45,8 +45,7 @@
 	});
 
 	var combo = usrGrid.getCombo(3);
-	for (var idx in USER_GROUP)
-		combo.put(idx, USER_GROUP[idx]);
+	{{ iPMS::printForEach("USER_GROUP", "combo.put('\$key', '\$val')") }}
 	usrGrid.init();
 
 	usrGrid.enableAlterCss("grid_odd", "grid_even");

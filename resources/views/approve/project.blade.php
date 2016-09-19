@@ -36,11 +36,9 @@
 	prjGrid.setPagingSkin("toolbar");
 
 	var combo = prjGrid.getCombo(7);
-	for (var idx in PROJECT_LEVEL)
-		combo.put(idx, PROJECT_LEVEL[idx]);
+	{{ iPMS::printForEach("PROJECT_LEVEL", "combo.put('\$key', '\$val')") }}
 	combo = prjGrid.getCombo(9);
-	for (var idx in PROJECT_STATUS)
-		combo.put(idx, PROJECT_STATUS[idx]);
+	{{ iPMS::printForEach("PROJECT_STATUS", "combo.put('\$key', '\$val')") }}
 	prjGrid.init();
 
 	prjGrid.enableAlterCss("grid_odd", "grid_even");
