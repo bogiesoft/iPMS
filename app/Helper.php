@@ -52,9 +52,9 @@ class iPMS {
 
 	public static $PROJECT_STATUS = [
 		-1 => "Template",
-		1  => "신규검토",
-		2  => "경영계획",
-		3  => "상품승인",
+		0  => "신규검토",
+		1  => "경영계획",
+		2  => "상품승인",
 		10 => "개발계획",
 		11 => "개발중",
 		20 => "완료",
@@ -72,6 +72,15 @@ class iPMS {
 	{ return $idx ? self::$DEVELOP_GROUP[$idx] : null; }
 	public static function UserGroup($idx=null)
 	{ return $idx ? self::$USER_GROUP[$idx] : null; }
+
+	public static function printForEach($varname, $str)
+	{
+		eval("\$var = self::\$". $varname .";");
+		foreach ($var as $key => $val) {
+			eval("\$cmd = \"$str\";");
+			echo $cmd .";";
+		}
+	}
 
 /**
 	public static function checkboxProjectGroup($old=false)

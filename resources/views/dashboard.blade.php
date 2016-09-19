@@ -13,7 +13,7 @@
 	<div class="well well-sm" style="line-height:1.8em">
 	@php($usr = iPMS\User::where('group', -1)->count())
 	@php($prj = iPMS\Project::where('approved', 0)->count())
-	@if ($usr && (iPMS\iPMS::AuthUser("group") == 0))
+	@if ($usr && (iPMS::AuthUser("group") == 0))
 		<a href="/approve/user"><b>미승인 사용자</b></a> &nbsp
 		<span class="label label-warning" style="font-size:.9em">{{ $usr }}</span></br>
 	@endif
@@ -26,7 +26,7 @@
 	<h3>Key Indicator</h3>
 	<div class="well well-sm" style="line-height:1.8em">
 		<b>진행중 Project</b><br/>
-		{{ iPMS\iPMS::countProjectGroup() }}
+		{{ iPMS::countProjectGroup() }}
 	</div>
 	<div id="delayChart" style="width:100%;height:300px;border:1px solid #c0c0c0"></div>
 @endsection
@@ -77,6 +77,6 @@
 		color:"#eed236",
 		label:"#day2#"
 	});
-	delayChart.parse({{ iPMS\iPMS::dataProjectDelay() }}, "json");
+	delayChart.parse({{ iPMS::dataProjectDelay() }}, "json");
 </script>
 @endsection

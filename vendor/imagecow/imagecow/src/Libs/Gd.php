@@ -195,6 +195,7 @@ class Gd extends AbstractLib implements LibInterface
 
                 imagecopy($image, $this->image, 0, 0, 0, 0, $width, $height);
 
+                imagedestroy($this->image);
                 $this->image = $image;
                 $this->type = IMAGETYPE_JPEG;
                 break;
@@ -217,10 +218,13 @@ class Gd extends AbstractLib implements LibInterface
      */
     public function resize($width, $height)
     {
-        if (($image = imagescale($this->image, $width, $height)) === false) {
+        $mode = ($this->getWidth() < $width) ? IMG_BILINEAR_FIXED : IMG_BICUBIC;
+
+        if (($image = imagescale($this->image, $width, $height, $mode)) === false) {
             throw new ImageException('Error resizing the image');
         }
 
+        imagedestroy($this->image);
         $this->image = $image;
     }
 
@@ -252,6 +256,7 @@ class Gd extends AbstractLib implements LibInterface
             throw new ImageException('Error cropping the image');
         }
 
+        imagedestroy($this->image);
         $this->image = $image;
     }
 
@@ -266,6 +271,7 @@ class Gd extends AbstractLib implements LibInterface
             throw new ImageException('Error rotating the image');
         }
 
+        imagedestroy($this->image);
         $this->image = $image;
     }
 

@@ -8,7 +8,15 @@
 @section('content')
 	@include('layouts.menubar')
 
-	<h1 class="page-header">Project List</h1>
+	<h1 class="page-header">Project List
+		<div style="width:15%; float:right">
+			<select class="form-control" name="show-group">
+				<option value=0>Template</option>
+				<option value=2016>2016</option>
+			</select>
+		</div>
+	</h1>
+
 	@if( $project->isEmpty() )
 		<h3>There are currently no Projects</h3>
 
@@ -33,11 +41,9 @@
 	prjGrid.setPagingSkin("toolbar");
 //	prjGrid.setEditable(false);
 	var combo = prjGrid.getCombo(7);
-	for (var idx in PROJECT_LEVEL)
-		combo.put(idx, PROJECT_LEVEL[idx]);
+	{{ iPMS::printForEach("PROJECT_LEVEL", "combo.put('\$key', '\$val')") }}
 	combo = prjGrid.getCombo(9);
-	for (var idx in PROJECT_STATUS)
-		combo.put(idx, PROJECT_STATUS[idx]);
+	{{ iPMS::printForEach("PROJECT_STATUS", "combo.put('\$key', '\$val')") }}
 	prjGrid.init();
 
 	prjGrid.enableAlterCss("grid_odd", "grid_even");
