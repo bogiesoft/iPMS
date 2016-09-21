@@ -12,11 +12,10 @@
 				<span class="glyphicon glyphicon-home"></span><b> iPMS</b><span class="sr-only">(current)</span>
 			</a></li>
 			<li class="dropdown">
-				<a class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-list-alt"></span> Projects <span class="caret"></span></a>
+				<a class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-list-alt"></span> Project <span class="caret"></span></a>
 				<ul class="dropdown-menu">
 					<li><a href="/projects">List Project</a></li>
-					<li><a href="/projects/0">Show Project</a></li>
-@if (iPMS::isProjectUser(0))
+@if (iPMS::isWorkFlowwUser(0))
 					<li><a href="{{ route('projects.create') }}">New Project</a></li>
 @endif
 					<li><a href="">Add Files</a></li>

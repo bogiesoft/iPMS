@@ -34,6 +34,8 @@ class ProjectController extends Controller
         Project::create([
         	'title' => $request->input('title'),
         	'product' => $request->input('product'),
+        	'start_date' => $request->input('plan_start'),
+        	'end_date' => $request->input('plan_end'),
         	'plan_start' => $request->input('plan_start'),
         	'plan_end' => $request->input('plan_end'),
         	'version' => 0,
@@ -48,7 +50,18 @@ class ProjectController extends Controller
 
 	public function show($id)
 	{
-		return view('projects.task');
+		$args = explode("-", $id, 2);
+		$project = Project::findOrFail($args[1]);
+
+		switch ($args[0]) {
+		case "tsk":
+			return view('projects.task')->withProject($project);
+		case "cal":
+			return view('projects.calendar')->withProject($project);
+		case "res":
+		default:
+			break;
+		}
 	}
 
 	public function update(Request $request, $id)
@@ -73,10 +86,5 @@ class ProjectController extends Controller
 	public function destroy($id)
 	{
 		//
-	}
-
-	public function summary()
-	{
-		return view('projects.summary');
 	}
 }

@@ -26,7 +26,6 @@ class DhtmlxController extends Controller
 			break;
 		case "projects":
 			$model = new Project();
-			//$conn->mix("ext2", "111");
 			$data  = "ext,title,product,plan_start,plan_end,start_date,end_date,level,version,status";
 			break;
 		case "schedules":

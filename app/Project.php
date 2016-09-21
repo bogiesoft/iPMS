@@ -14,8 +14,20 @@ class Project extends Model
 
 	public function getExtAttribute()
 	{
-		return "<br/>".
-			$this->version ." - ". $this->status ."<br/>".
-			$this->notes ."<br/><br/>";
+		return
+			"<br/><font size='2'>".
+			$this->attrStr("Project Level", iPMS::ProjectLevel($this->level)).
+			$this->attrStr("Project Manager", $this->pm_id).
+			$this->attrStr("Project Group", $this->prj_group).
+			$this->attrStr("Develop Group", $this->dev_group).
+			$this->attrStr("Budget", $this->budget).
+			$this->attrStr("Note", $this->notes).
+			"</font><br/>";
+	}
+
+	private function attrStr($title, $val)
+	{
+		return "<div class='row'><div class='col-sm-2 text-right'><b>".
+			$title ."</b></div>". $val ."</div>";
 	}
 }

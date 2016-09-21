@@ -24,7 +24,7 @@
 		<div class="container">
 			<div>
 				<span style='font-size:64px'>iPMS </span>
-				<span style='font-size:14px; color:gray'>v0.0000001</span></br>
+				<span style='font-size:14px; color:gray'>v0.0000001</span><br/>
 				<span style='font-size:18px'>IDIS Project Management System</span>
 			</div><br/>
 

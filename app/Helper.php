@@ -83,6 +83,8 @@ class iPMS {
 											   $this->PROJECT_GROUP2);
 		return $idx ? self::$PROJECT_GROUP[$idx] : null;
 	}
+	public static function ProjectLevel($idx=null)
+	{ return $idx ? self::$PROJECT_LEVEL[$idx] : null; }
 	public static function DevelopGroup($idx=null)
 	{ return $idx ? self::$DEVELOP_GROUP[$idx] : null; }
 	public static function UserGroup($idx=null)
@@ -152,7 +154,7 @@ class iPMS {
 		11 => [[10],       [1],     [11, 20, 21]],
 	];
 
-	public static function isProjectUser($state)
+	public static function isWorkFlowwUser($state)
 	{
 		if (! Auth::user()) return false;
 
@@ -167,7 +169,7 @@ class iPMS {
 	public static function countProjectGroup()
 	{
 		foreach (self::$PROJECT_GROUP1 as $arr) {
-			echo "&nbsp; &nbsp; &nbsp; &nbsp". $arr
+			echo "&nbsp; &nbsp; &nbsp; &nbsp;". $arr
 			." <span class='label label-primary'>".
 			0
 			."</span>";

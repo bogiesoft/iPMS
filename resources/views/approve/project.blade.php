@@ -16,7 +16,7 @@
 			<button class="btn-xs btn-danger" style="float:right" onclick="dp.sendData()"><span class="glyphicon glyphicon-save"></span> Update</button><br/>
 		</div>
 		<div id="project_grid" style="width:100%; height:240;"></div>
-		<div id="project_grid_info"></div></br>
+		<div id="project_grid_info"></div><br/>
 	@endif
 @endsection
 
@@ -30,7 +30,7 @@
 	prjGrid.setColAlign("left,left,left,left,left,left,left,left,cener,left");
 	prjGrid.setInitWidths("30,200,*,100,100,100,100,80,60,100");
 	prjGrid.enableAutoWidth(true);
-	prjGrid.enableAutoHeight(true, 250, 250);
+	prjGrid.enableAutoHeight(true, 450);
 	prjGrid.setEditable(false);
 	prjGrid.enablePaging(true, 5, 1, "project_grid_info");
 	prjGrid.setPagingSkin("toolbar");

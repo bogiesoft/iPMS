@@ -3,7 +3,7 @@
 @section('content')
 	@include('layouts.menubar')
 
-	<h1 class="page-header">New Project</h1>
+	<h1 class="page-header">Project | New</h1>
 	<div class="col-lg-7">
 		<form class="form-horizontal" role="form" method="post" action="{{ route('projects.store') }}">
 			<div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
@@ -67,7 +67,7 @@
 				<label for="status" class="control-label col-sm-3">Status</label>
 				<div class="col-sm-9">
 					<select class="form-control" name="status" onFocus="this.initialSelect = this.selectedIndex;" onChange="this.selectedIndex = this.initialSelect;" readonly>
-						<option value=1>신규검토</option>
+						<option value=0>신규검토</option>
 					</select>
 				</div>
 				@if ($errors->has('status'))

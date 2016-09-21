@@ -13,7 +13,10 @@
 @section('content')
 	@include('layouts.menubar')
 
-	<h1 class="page-header">Project Task</h1>
+	<h1 class="page-header">Project <font color="gray">|</font> Task
+		<span style="font-size:20px">{{ $project->title }}</span>
+		<a style="float:right" href="{{ URL::previous() }}"><span class="fa fa-chevron-left"></a>
+	</h1>
 
 	<div style="margin:10px 0px">
 		<label class="radio-inline"><input type="radio" name="scale" onclick="setScale('day')" checked>Day</label>
