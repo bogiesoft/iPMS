@@ -33,6 +33,7 @@ return array(
     'Sebwite\\Contracts\\' => array($vendorDir . '/sebwite/contracts/src'),
     'Radic\\BladeExtensions\\' => array($vendorDir . '/radic/blade-extensions/src'),
     'Psy\\' => array($vendorDir . '/psy/psysh/src/Psy'),
+    'Psr\\Log\\' => array($vendorDir . '/psr/log/Psr/Log'),
     'PhpParser\\' => array($vendorDir . '/nikic/php-parser/lib/PhpParser'),
     'Patchwork\\' => array($vendorDir . '/patchwork/utf8/src/Patchwork'),
     'Monolog\\' => array($vendorDir . '/monolog/monolog/src/Monolog'),

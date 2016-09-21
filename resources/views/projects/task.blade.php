@@ -13,9 +13,9 @@
 @section('content')
 	@include('layouts.menubar')
 
-	<h1 class="page-header">Project <font color="gray">|</font> Task
-		<span style="font-size:20px">{{ $project->title }}</span>
-		<a style="float:right" href="{{ URL::previous() }}"><span class="fa fa-chevron-left"></a>
+	<h1 class="page-header">{{ $project->title }}
+		<font size="5" color="gray"> | Task</font>
+		<a style="float:right" href="{{ URL::previous() }}"><span class="fa fa-chevron-left"></span></a>
 	</h1>
 
 	<div style="margin:10px 0px">

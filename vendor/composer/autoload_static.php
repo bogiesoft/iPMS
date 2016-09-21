@@ -74,6 +74,7 @@ class ComposerStaticInit14cc0743a4b7fb36864230504e5c9526
         'P' => 
         array (
             'Psy\\' => 4,
+            'Psr\\Log\\' => 8,
             'PhpParser\\' => 10,
             'Patchwork\\' => 10,
         ),
@@ -228,6 +229,10 @@ class ComposerStaticInit14cc0743a4b7fb36864230504e5c9526
         array (
             0 => __DIR__ . '/..' . '/psy/psysh/src/Psy',
         ),
+        'Psr\\Log\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/log/Psr/Log',
+        ),
         'PhpParser\\' => 
         array (
             0 => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser',
@@ -293,10 +298,6 @@ class ComposerStaticInit14cc0743a4b7fb36864230504e5c9526
     public static $prefixesPsr0 = array (
         'P' => 
         array (
-            'Psr\\Log\\' => 
-            array (
-                0 => __DIR__ . '/..' . '/psr/log',
-            ),
             'Prophecy\\' => 
             array (
                 0 => __DIR__ . '/..' . '/phpspec/prophecy/src',

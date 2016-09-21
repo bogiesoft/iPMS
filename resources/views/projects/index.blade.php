@@ -8,7 +8,8 @@
 @section('content')
 	@include('layouts.menubar')
 
-	<h1 class="page-header">Project <font color="gray">|</font> List
+	<h1 class="page-header">Projects
+		<font size="5" color="gray"> | List</font>
 		<div style="width:15%; float:right"><b>
 			<select class="form-control" name="show-group">
 				<option value=-1>All</option>
