@@ -196,4 +196,11 @@ class iPMS {
 		if (Auth::user()) eval("\$ret = Auth::user()->". $attr .";");
 		return $ret;
 	}
+
+/////////////////////////////////////////////////////////////////////
+
+	public static function CSSHeightCalc($str)
+	{
+		return "height:calc($str);height:-webkit-calc($str);height:-moz-calc($str);";
+	}
 }

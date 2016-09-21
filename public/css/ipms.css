@@ -1,4 +1,8 @@
-/* grid view */
+html, body {
+	height: 100%;
+	min-height: 100%;
+}
+
 .grid_odd   {background:#fcfcfc;}
 .grid_even  {background:#ffffff;}
 .grid_hover {background:#fffff8;}

@@ -22,7 +22,9 @@
 		@yield('library')
 	</head>
 	<body>
-		<div class="container-fluid"> @yield('content') </div>
+		<div class="container-fluid" style="height:100%">
+			@yield('content')
+		</div>
 @endminify
 
 @minify('css')
