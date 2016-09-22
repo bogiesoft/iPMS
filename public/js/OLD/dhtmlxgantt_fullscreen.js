@@ -1,7 +1,7 @@
 /*
 @license
 
-dhtmlxGantt v.4.1.0 dhtmlx.com
+dhtmlxGantt v.4.0.0 dhtmlx.com
 This software can be used only as part of dhtmlx.com site.
 You are not allowed to use it on any other site
 
