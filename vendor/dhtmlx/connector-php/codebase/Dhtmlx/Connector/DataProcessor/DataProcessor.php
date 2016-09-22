@@ -54,6 +54,7 @@ class DataProcessor {
         foreach ($_POST as $key => $value) {
             $details=explode("_",$key,2);
             if (sizeof($details)==1) continue;
+			if ($details[1][0] == '_') continue;	// added by sjyun
 
             $name=$this->name_data($details[1]);
             $data[$details[0]][$name]=ConnectorSecurity::filter($value);

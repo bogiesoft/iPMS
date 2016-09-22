@@ -359,13 +359,13 @@ console.log(dateToStr(dates.start_date) + " - " + dateToStr(dates.end_date));
 	(function() {	// Show slack
 		gantt.config.show_slack = false;
 		gantt.addTaskLayer(function addSlack(task) {
-			if (!task.slack || !gantt.config.show_slack) return null;
+			if (!task._slack || !gantt.config.show_slack) return null;
 
 			var state = gantt.getState().drag_mode;
 			if (state == 'resize' || state == 'move') return null;
 
 			var slackStart = new Date(task.end_date);
-			var slackEnd = gantt.calculateEndDate(slackStart, task.slack);
+			var slackEnd = gantt.calculateEndDate(slackStart, task._slack);
 			var sizes = gantt.getTaskPosition(task, slackStart, slackEnd);
 			var el = document.createElement('div');
 			el.className = 'slack';
@@ -419,8 +419,8 @@ console.log(dateToStr(dates.start_date) + " - " + dateToStr(dates.end_date));
 			var changedTasks = {}, changed = false;
 			gantt.eachTask(function(task){
 				var newSlack = calculateTaskSlack(task.id);
-				if (newSlack != task.slack) {
-					task.slack = calculateTaskSlack(task.id);
+				if (newSlack != task._slack) {
+					task._slack = calculateTaskSlack(task.id);
 					changedTasks[task.id] = true;
 					changed = true;
 				}
@@ -436,7 +436,7 @@ console.log(dateToStr(dates.start_date) + " - " + dateToStr(dates.end_date));
 
 		gantt.attachEvent("onParse", function() {
 			gantt.eachTask(function(task) {
-				task.slack = calculateTaskSlack(task.id);
+				task._slack = calculateTaskSlack(task.id);
 			});
 		});
 
