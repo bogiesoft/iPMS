@@ -14,8 +14,8 @@
 @if (Auth::check())
 	@include('layouts.menubar')
 
-	<h1 class="page-header">{{ $project->title }}
-		<font size="5" color="gray"> | Calendar</font>
+	<h1 class="page-header">Calendar
+		<font size="5" color="gray"> | {{ $project->title }}</font>
 		<a style="float:right" href="{{ URL::previous() }}"><span class="fa fa-chevron-left"></span></a>
 	</h1>
 

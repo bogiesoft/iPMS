@@ -13,8 +13,8 @@
 @section('content')
 	@include('layouts.menubar')
 
-	<h1 class="page-header">{{ $project->title }}
-		<font size="5" color="gray"> | Task</font>
+	<h1 class="page-header">Task
+		<font size="5" color="gray"> | {{ $project->title }}</font>
 		<a style="float:right" href="{{ URL::previous() }}"><span class="fa fa-chevron-left"></span></a>
 	</h1>
 
@@ -27,7 +27,7 @@
 		<button class="btn-xs fa fa-repeat" onclick="gantt.redo()"> Redo</button>
 		<button class="btn-xs btn-danger" style="float:right" onclick="dp.sendData()"><span class="glyphicon glyphicon-save"></span> Update</button>
 	</div>
-	<div id="gantt" style="width:100%; height:450px"></div>
+	<div id="gantt" style="width:100%; {{ iPMS::CSSHeightCalc("100% - 190px") }}"></div>
 @endsection
 
 @section('css')

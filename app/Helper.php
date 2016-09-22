@@ -2,6 +2,8 @@
 
 namespace iPMS;
 use Auth;
+use iPMS\Project;
+use iPMS\GanttTask;
 
 class iPMS {
 	public static $PROJECT_GROUP1 = [
@@ -188,6 +190,20 @@ class iPMS {
 		echo "]";
 	}
 
+	public static function showDelayProjectTask()
+	{
+		$delay = GanttTask::where('progress', '<', 1)
+					->where('end_date', '<', date('Y-m-d H:i:s'))->get();
+
+		echo date('Y-m-d H:i:s') ."<br/>";
+		echo "<div>&nbsp; &nbsp; &nbsp; &nbsp;".
+			"<a data-toggle='collapse' href='#collapse1'>".
+			"Project ABCD</a></div>".
+			"<div id='collapse1' class='panel-collapse collapse col-sm-offset-1'>";
+		foreach ($delay as $task)
+			echo $task->end_date .":". $task->text ." (". $task->progress*100 ."%)<br/>";
+		echo "</div>";
+	}
 /////////////////////////////////////////////////////////////////////
 
 	public static function AuthUser($attr)

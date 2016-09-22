@@ -29,6 +29,12 @@
 		{{ iPMS::countProjectGroup() }}
 	</div>
 	<div id="delayChart" style="width:100%;height:300px;border:1px solid #c0c0c0"></div>
+
+	<h3>Warning</h3>
+	<div class="well well-sm" style="background:#fff0e8; line-height:1.8em">
+		<b>지연 Project</b><br/>
+		{{ iPMS::showDelayProjectTask() }}
+	</div>
 @endsection
 
 @section('css')
