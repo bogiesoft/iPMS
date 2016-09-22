@@ -44,10 +44,9 @@ class DhtmlxController extends Controller
 
 	public function gantt($id) {
 		$conn = new GanttConnector(null, "PHPLaravel");
-		$conn->enable_order("sortorder");
 		$conn->render_links(new GanttLink(), "id", "source,target,type");
 		$conn->render_table(new GanttTask(), "id",
-			"start_date,duration,text,progress,sortorder,type,parent");
+			"start_date,duration,text,progress,type,parent");
 	}
 
 	public function schedule($id) {

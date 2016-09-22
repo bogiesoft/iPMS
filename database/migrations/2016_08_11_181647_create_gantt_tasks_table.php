@@ -20,7 +20,6 @@ class CreateGanttTasksTable extends Migration
 			$table->integer('duration')->default(0);
 			$table->float('progress')->default(0);
 			$table->string('type')->default('task');
-			$table->integer('sortorder')->default(0);
 			$table->integer('parent')->unsigned();
 
 			$table->foreign('parent')
