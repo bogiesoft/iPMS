@@ -449,7 +449,7 @@ console.log(dateToStr(dates.start_date) + " - " + dateToStr(dates.end_date));
 	})();
 
 	gantt.init("gantt");
-	gantt.load("/gantt_/1", "xml");
+	gantt.load("/gantt_/" + {{ $project->id }}, "xml");
 	var dp = new gantt.dataProcessor("/gantt_/1");
 	dp.init(gantt);
 	dp.setUpdateMode("off");

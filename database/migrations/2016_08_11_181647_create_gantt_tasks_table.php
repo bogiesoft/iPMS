@@ -5,14 +5,15 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateGanttTasksTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-    public function up()
-    {
-		Schema::create('gantt_tasks', function(Blueprint $table) {
+	private $tables = [
+		'gantt_tasks00000001',
+		'gantt_tasks00000002',
+		'gantt_tasks00000003',
+	];
+
+	private function createTable($name)
+	{
+		Schema::create($name, function(Blueprint $table) {
 			$table->increments('id')->unsigned();
 			$table->string('text');
 			$table->datetime('start_date')->default('');
@@ -27,6 +28,11 @@ class CreateGanttTasksTable extends Migration
 				->onUpdate('cascade')
 				->onDelete('cascade');
 		});
+	}
+
+    public function up()
+    {
+		$this->createTable('gantt_tasks');
 
 		DB::table('gantt_tasks')->insert(
 			['id' => 10, 'text' => 'Project #1', 'start_date' => '', 'type' => 'project', 'parent' => 0]);
@@ -51,13 +57,15 @@ class CreateGanttTasksTable extends Migration
 			['id' => 130, 'text' => 'Task #4.3', 'start_date' => '2016-10-03 00:00:00', 'duration' => 18, 'parent' => 50] ]);
 		DB::table('gantt_tasks')->insert(
 			['id' => 140, 'text' => 'Mielstone #6', 'start_date' => '2016-08-29 00:00:00', 'type' => 'milestone', 'parent' => 10]);
+
+		DB::beginTransaction();
+		foreach ($this->tables as $name) {
+			$this->createTable($name);
+			DB::statement('insert into '. $name .' select * from gantt_tasks');
+		}
+		DB::commit();
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
 		Schema::drop('gantt_tasks');

@@ -42,14 +42,14 @@ class DhtmlxController extends Controller
 		$conn->render();
 	}
 
-	public function gantt($id) {
+	public function gantt($pid) {
 		$conn = new GanttConnector(null, "PHPLaravel");
-		$conn->render_links(new GanttLink(), "id", "source,target,type");
-		$conn->render_table(new GanttTask(), "id",
+		$conn->render_links(new GanttLink($pid), "id", "source,target,type");
+		$conn->render_table(new GanttTask($pid), "id",
 			"start_date,duration,text,progress,type,parent");
 	}
 
-	public function schedule($id) {
+	public function schedule($pid) {
 		$conn = new SchedulerConnector(null, "PHPLaravel");
 		if ($id == "prj") {
 			$conn->mix("uid", "-1");
