@@ -51,7 +51,7 @@ class DhtmlxController extends Controller
 
 	public function schedule($pid) {
 		$conn = new SchedulerConnector(null, "PHPLaravel");
-		if ($id == "prj") {
+		if ($pid == "prj") {
 			$conn->mix("uid", "-1");
 			$conn->configure(new Project(), "id", "start_date,end_date,title", false, false, "p");
 		}
