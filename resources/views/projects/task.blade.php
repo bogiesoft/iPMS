@@ -450,7 +450,7 @@ console.log(dateToStr(dates.start_date) + " - " + dateToStr(dates.end_date));
 
 	gantt.init("gantt");
 	gantt.load("/gantt_/" + {{ $project->id }}, "xml");
-	var dp = new gantt.dataProcessor("/gantt_/1");
+	var dp = new gantt.dataProcessor("/gantt_/" + {{ $project->id }});
 	dp.init(gantt);
 	dp.setUpdateMode("off");
 </script>
