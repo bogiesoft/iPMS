@@ -192,16 +192,30 @@ class iPMS {
 
 	public static function showDelayProjectTask()
 	{
+		$today = date('Y-m-d H:i:s');
 		$delay = GanttTask::where('progress', '<', 1)
-					->where('end_date', '<', date('Y-m-d H:i:s'))->get();
+					->where('end_date', '<', $today)->get();
 
 		echo "<div>&nbsp; &nbsp; &nbsp; &nbsp;".
 			"<a data-toggle='collapse' href='#collapse1'>".
 			"Project ABCD</a></div>".
-			"<div id='collapse1' class='panel-collapse collapse col-sm-offset-1'>";
-		foreach ($delay as $task)
-			echo $task->text ." (". $task->progress*100 ."%)<br/>";
-		echo "</div>";
+			"<div id='collapse1' class='panel-collapse collapse col-sm-offset-1'>".
+			"<table class='table table-striped'>".
+			"<thead><tr>".
+			"<th>Task</th><th>Progress</th><th>Start Date</th><th>End Date</th>".
+			"<th>Delay</th></tr></thead><tbody>";
+		foreach ($delay as $task) {
+			$t1 = strtotime($today);
+			$t2 = strtotime($task->end_date);
+			$delay = intval(($t1 - $t2) / (24*3600));
+
+			echo "<tr><td>". $task->text . "</td>".
+				"<td>". $task->progress*100 . " %</td>".
+				"<td>". $task->start_date . "</td>".
+				"<td>". $task->end_date . "</td>".
+				"<td>".  $delay ." days</td>";
+		}
+		echo "</tbody></table></div>";
 	}
 /////////////////////////////////////////////////////////////////////
 
