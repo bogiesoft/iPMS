@@ -48,13 +48,13 @@ class CreateProjectsTable extends Migration
 		});
 
 		DB::table('projects')->insert([
-			['title' => 'PM1', 'product' => '',
+			['title' => 'PM1', 'product' => 'PM1 Template',
 			'start_date' => '2000-01-01', 'end_date' => '2000-12-31',
 			'level' => 1, 'status' => -1, 'notes' => "Proto / ES / ES DQA / PP / PP DQA"],
-			['title' => 'PM2', 'product' => '',
+			['title' => 'PM2', 'product' => 'PM2 Template',
 			'start_date' => '2000-01-01', 'end_date' => '2000-12-31',
 			'level' => 2, 'status' => -1, 'notes' => "ES / ES DQA / PP / PP DQA"],
-			['title' => 'PM3', 'product' => '',
+			['title' => 'PM3', 'product' => 'PM3 Template',
 			'start_date' => '2000-01-01', 'end_date' => '2000-12-31',
 			'level' => 3, 'status' => -1, 'notes' => "ES / ES DQA / PP"]
 		]);

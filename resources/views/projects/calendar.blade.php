@@ -86,7 +86,7 @@
 
 	scheduler.filter_month = scheduler.filter_week =
 	scheduler.filter_day = scheduler.filter_year = function(id, event) {
-		if ({{ iPMS::AuthUser("group") }} == 0 ||
+		if ({{ iPMS::isAuthGroup("Administrator") }} ||
 			Number(event.uid) <= 0 ||
 			event.uid == {{ iPMS::AuthUser("id") }}) return true;
 		return false;

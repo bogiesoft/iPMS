@@ -1,6 +1,6 @@
 <nav class="navbar navbar-inverse navbar-fixed-top" id="menubar">
 	<div class="container-fluid">
-		<div class="navbar-header"> {{ iPMS::AuthUser("group") }}
+		<div class="navbar-header">
 			<a class="navbar-brand" data-toggle="tooltip" data-placement="bottom"
 				title={{ iPMS::UserGroup(iPMS::AuthUser("group")) }}><span>
 				<img src="{{ iPMS::AuthUser("getAvatarUrl()") }}" height="24" width="24" style="border-radius:25px;" />
@@ -26,7 +26,7 @@
 			<li><a href="/statistics">
 				<span class="glyphicon glyphicon-equalizer"></span> Statistics</a></li>
 
-@if (iPMS::AuthUser("group") == 0)
+@if (iPMS::isAuthGroup("Administrator"))
 			<li class="dropdown">
 				<a class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-calendar"></span> Manage <span class="caret"></span></a>
 				<ul class="dropdown-menu">

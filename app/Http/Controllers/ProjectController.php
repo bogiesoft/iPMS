@@ -54,10 +54,14 @@ class ProjectController extends Controller
 		$project = Project::findOrFail($args[1]);
 
 		switch ($args[0]) {
+		case "edt":
+			//return view('projects.edit')->withProject($project);
+			return view('projects.edit', ['pid' => $id, 'project' => $project]);
 		case "tsk":
 			return view('projects.task')->withProject($project);
 		case "cal":
 			return view('projects.calendar')->withProject($project);
+		case "hst":
 		case "res":
 		default:
 			break;

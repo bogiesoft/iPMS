@@ -172,7 +172,7 @@ class iPMS {
 	{
 		foreach (self::$PROJECT_GROUP1 as $arr) {
 			echo "&nbsp; &nbsp; &nbsp; &nbsp;". $arr
-			." <span class='label label-primary'>".
+			." <span class='label label-primary' style='font-size:.9em'>".
 			0
 			."</span>";
 		}
@@ -182,8 +182,8 @@ class iPMS {
 	{
 		echo "[";
 		foreach (self::$PROJECT_GROUP1 as $arr) {
-			$d1 = 23;
-			$d2 = 30;
+			$d1 = 10 + rand(0, 20);
+			$d2 = 30 + rand(0, 30);
 			echo '{day1:"'. $d1 .'", day2:"'. $d2 .'", day:"'.
 				  ($d1+$d2) .'", group:"'. $arr .'"},';
 		}
@@ -224,6 +224,11 @@ class iPMS {
 		$ret = null;
 		if (Auth::user()) eval("\$ret = Auth::user()->". $attr .";");
 		return $ret;
+	}
+
+	public static function isAuthGroup($group)
+	{
+		return (self::$USER_GROUP[Auth::user()->group] == $group) ? 1 : 0;
 	}
 
 /////////////////////////////////////////////////////////////////////
